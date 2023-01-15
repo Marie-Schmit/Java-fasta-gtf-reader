@@ -201,8 +201,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
         
         //Open new panel actionPanel, close actucal panel
         this.setVisible(false);
-        actionPanel newActionPanel = new actionPanel();
-        newActionPanel.setVisible(true);        
+        mainFrame.actionPanel.setVisible(true);     
     }//GEN-LAST:event_confirmBtnActionPerformed
 
     private void searchBarFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarFileActionPerformed
@@ -218,11 +217,13 @@ public class fileChooserPanel extends javax.swing.JPanel {
     public void setFileChosenMessage(String filename){
         if(fileName.endsWith(".gtf")){
             gtfFile = true;
-            falseFileLbl.setText("The chosen gtf file is: " + filename);
+            fileChosenMessage = "The chosen gtf file is: " + filename;
+            falseFileLbl.setText(fileChosenMessage);
         }
         else if(fileName.endsWith(".fa")){
             fastaFile = true;
-            falseFileLbl.setText("The chosen fasta file is: " + filename);
+            fileChosenMessage = "The chosen fasta file is: " + filename;
+            falseFileLbl.setText(fileChosenMessage);
         }
         else{
             System.out.println("File is neither gtf nor fasta. Please select another file.");

@@ -47,9 +47,8 @@ public class mainFrame extends javax.swing.JFrame {
         jLayeredPaneLayout.setHorizontalGroup(
             jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPaneLayout.createSequentialGroup()
                     .addContainerGap()
@@ -59,15 +58,16 @@ public class mainFrame extends javax.swing.JFrame {
         jLayeredPaneLayout.setVerticalGroup(
             jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
                 .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPaneLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(fileChooserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(39, Short.MAX_VALUE)))
         );
+
+        actionPanel.getAccessibleContext().setAccessibleName("actionPanel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,8 +127,8 @@ public class mainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private actionPanel actionPanel;
-    private fileChooserPanel fileChooserPanel;
+    public static actionPanel actionPanel;
+    public static fileChooserPanel fileChooserPanel;
     private javax.swing.JLayeredPane jLayeredPane;
     // End of variables declaration//GEN-END:variables
 }
