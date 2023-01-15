@@ -1,3 +1,7 @@
+
+import java.awt.FileDialog;
+import java.awt.Frame;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -14,7 +18,20 @@ public class fileChooserPanel extends javax.swing.JPanel {
      */
     public fileChooserPanel() {
         initComponents();
+        
+        this.gtfFile = false;
+        this.fastaFile = false;
+        
+        clearBtn.setVisible(false);
+        confirmBtn.setVisible(false);
     }
+    
+    //Indicates if chosen file is fasta or gtf. If both are false, no file is chosen.
+    public static boolean gtfFile;
+    public static boolean fastaFile;
+    static String fileName;
+    static FileDialog nameBox;
+    public static String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -25,19 +42,143 @@ public class fileChooserPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fileBrowserBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
+        confirmBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        searchBarFile = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+
+        setAlignmentX(0.0F);
+        setAlignmentY(0.0F);
+        setPreferredSize(new java.awt.Dimension(940, 450));
+
+        fileBrowserBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        fileBrowserBtn.setText("Browse file");
+        fileBrowserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileBrowserBtnActionPerformed(evt);
+            }
+        });
+
+        clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
+
+        confirmBtn.setText("Confirm");
+        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Please browse a fasta or gtf file");
+
+        searchBarFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBarFileActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Pick a file");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(89, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchBarFile, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fileBrowserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(313, 313, 313)
+                        .addComponent(clearBtn)
+                        .addGap(82, 82, 82)
+                        .addComponent(confirmBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(281, 281, 281)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel1)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fileBrowserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBarFile, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(248, 248, 248))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        //No gtf nor fasta file is selected
+        gtfFile = false;
+        fastaFile = false;
+        
+        //Clear label indicating which file is selected
+        setFileChosenMessage("");
+        
+        //Display clear and confirm buttons
+        clearBtn.setVisible(false);
+        confirmBtn.setVisible(false);
+    }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void fileBrowserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowserBtnActionPerformed
+        //Fire file chooser when user clicks on button file browser
+        nameBox = new FileDialog(new Frame(), "Open gtf or fasta File", FileDialog.LOAD);
+        //Display file chooser and wait
+        nameBox.setVisible(true);
+    }//GEN-LAST:event_fileBrowserBtnActionPerformed
+
+    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
+        //Pass file name to label indicating which file is opened in actionFrame
+        setFileChosenMessage(fileName);
+
+        //Open new window action frame
+        
+    }//GEN-LAST:event_confirmBtnActionPerformed
+
+    private void searchBarFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarFileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBarFileActionPerformed
+
+    public void setFileChosenMessage(String filename){
+        if(gtfFile){
+            fileChosenMessage = "The chosen gtf file is: " + filename;
+        }
+        else if (fastaFile){
+            fileChosenMessage = "The chosen fasta file is: " + filename;
+        }
+        else{
+            fileChosenMessage = "";
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearBtn;
+    private javax.swing.JButton confirmBtn;
+    private javax.swing.JButton fileBrowserBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField searchBarFile;
     // End of variables declaration//GEN-END:variables
 }
