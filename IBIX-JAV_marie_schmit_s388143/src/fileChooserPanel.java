@@ -149,7 +149,12 @@ public class fileChooserPanel extends javax.swing.JPanel {
         nameBox = new FileDialog(new Frame(), "Open gtf or fasta File", FileDialog.LOAD);
         
         //Set a filter so the user can only choose gtf or fasta files
-        nameBox.setFile("*.(gtf|fa)");
+        nameBox.setFilenameFilter(new FilenameFilter(){
+            @Override
+            public boolean accept(File file, String str){
+                return str.contains(".gtf");
+            }
+        }) ;
         //Display file chooser and wait
         nameBox.setVisible(true);
     }//GEN-LAST:event_fileBrowserBtnActionPerformed
