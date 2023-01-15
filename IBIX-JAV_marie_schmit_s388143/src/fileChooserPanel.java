@@ -1,6 +1,8 @@
 
 import java.awt.FileDialog;
 import java.awt.Frame;
+import java.io.File;
+import java.io.FilenameFilter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -145,6 +147,9 @@ public class fileChooserPanel extends javax.swing.JPanel {
     private void fileBrowserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowserBtnActionPerformed
         //Fire file chooser when user clicks on button file browser
         nameBox = new FileDialog(new Frame(), "Open gtf or fasta File", FileDialog.LOAD);
+        
+        //Set a filter so the user can only choose gtf or fasta files
+        nameBox.setFile("*.(gtf|fa)");
         //Display file chooser and wait
         nameBox.setVisible(true);
     }//GEN-LAST:event_fileBrowserBtnActionPerformed
