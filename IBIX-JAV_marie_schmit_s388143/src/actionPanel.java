@@ -23,6 +23,15 @@ public class actionPanel extends javax.swing.JPanel {
         Container pane = ((BasicInternalFrameUI) internalFrame.getUI()).getNorthPane();
         pane.remove(0);
         
+        if(fileChooserPanel.gtfFile){
+            System.out.println(fileChooserPanel.gtfFile);
+            jMenu1.setVisible(false);
+        }
+        else if(fileChooserPanel.gtfFile){
+            System.out.println(fileChooserPanel.fastaFile);
+            jMenu1.setVisible(true);
+        }
+        
         //Write what is the chosen file
         //chosenFileLbl.setVisible(true);
         //chosenFileLbl.setText(fileChooserPanel.fileName);
@@ -42,12 +51,14 @@ public class actionPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
         internalFrame = new javax.swing.JInternalFrame();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
+        menuDisplayText = new javax.swing.JMenu();
+        menuStats = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         chosenFileLbl.setLabelFor(chosenFileLbl);
-        chosenFileLbl.setText("salut");
+        chosenFileLbl.setText("The actual file is: " + fileChooserPanel.fileName);
 
         newFileBtn.setText("New file");
         newFileBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -67,13 +78,22 @@ public class actionPanel extends javax.swing.JPanel {
         internalFrame.setFrameIcon(null);
         internalFrame.setVisible(true);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        menuBar.setBorder(null);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        menuDisplayText.setText("Display text");
+        menuBar.add(menuDisplayText);
 
-        internalFrame.setJMenuBar(jMenuBar1);
+        menuStats.setText("Statistics");
+
+        jMenuItem1.setText("jMenuItem1");
+        menuStats.add(jMenuItem1);
+
+        menuBar.add(menuStats);
+
+        jMenu1.setText("jMenu1");
+        menuBar.add(jMenu1);
+
+        internalFrame.setJMenuBar(menuBar);
 
         javax.swing.GroupLayout internalFrameLayout = new javax.swing.GroupLayout(internalFrame.getContentPane());
         internalFrame.getContentPane().setLayout(internalFrameLayout);
@@ -105,10 +125,10 @@ public class actionPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(internalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chosenFileLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newFileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -133,9 +153,11 @@ public class actionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel chosenFileLbl;
     private javax.swing.JInternalFrame internalFrame;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuDisplayText;
+    private javax.swing.JMenu menuStats;
     private javax.swing.JButton newFileBtn;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables

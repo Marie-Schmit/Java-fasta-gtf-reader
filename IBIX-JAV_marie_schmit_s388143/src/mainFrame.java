@@ -39,6 +39,9 @@ public class mainFrame extends javax.swing.JFrame {
         jLayeredPane.setAlignmentY(0.0F);
         jLayeredPane.setPreferredSize(new java.awt.Dimension(945, 450));
 
+        actionPanel.setAlignmentX(0.0F);
+        actionPanel.setAlignmentY(0.0F);
+
         jLayeredPane.setLayer(fileChooserPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane.setLayer(actionPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -46,25 +49,21 @@ public class mainFrame extends javax.swing.JFrame {
         jLayeredPane.setLayout(jLayeredPaneLayout);
         jLayeredPaneLayout.setHorizontalGroup(
             jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPaneLayout.createSequentialGroup()
-                .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(actionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
             .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPaneLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(fileChooserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(22, Short.MAX_VALUE)))
+                    .addContainerGap(23, Short.MAX_VALUE)))
         );
         jLayeredPaneLayout.setVerticalGroup(
             jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPaneLayout.createSequentialGroup()
-                .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(actionPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
             .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(fileChooserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(39, Short.MAX_VALUE)))
+                    .addGap(78, 78, 78)
+                    .addComponent(fileChooserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(48, Short.MAX_VALUE)))
         );
 
         actionPanel.getAccessibleContext().setAccessibleName("actionPanel");
@@ -73,17 +72,11 @@ public class mainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 940, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 450, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
         );
 
         pack();

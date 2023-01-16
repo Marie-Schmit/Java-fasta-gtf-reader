@@ -197,7 +197,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
         //Read file and store it's content
         fileContent = readFile(fileName);
         
-        System.out.println(fileContent);
+        //System.out.println(fileContent);
         
         //Open new panel actionPanel, close actucal panel
         this.setVisible(false);
@@ -213,7 +213,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
     //checkFileType(searchBarFile.getText());
     }//GEN-LAST:event_searchBarFileKeyReleased
 
-
+    //Set variable indicate the type of the file (gtf or fatsa). Set message indicating to the user which file was chosen.
     public void setFileChosenMessage(String filename){
         if(fileName.endsWith(".gtf")){
             gtfFile = true;
@@ -226,6 +226,8 @@ public class fileChooserPanel extends javax.swing.JPanel {
             falseFileLbl.setText(fileChosenMessage);
         }
         else{
+            fastaFile = false;
+            gtfFile = false;
             System.out.println("File is neither gtf nor fasta. Please select another file.");
             falseFileLbl.setText("File is neither gtf nor fasta. Please select another file.");
         }
