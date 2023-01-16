@@ -200,7 +200,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
         fileContent = readFile(fileName);
         
         //Set data
-        actionPanel.setData(this.fileName, this.fileChosenMessage);
+        actionPanel.setData(this);
         
         //Open new panel actionPanel, close actucal panel
         this.setVisible(false);

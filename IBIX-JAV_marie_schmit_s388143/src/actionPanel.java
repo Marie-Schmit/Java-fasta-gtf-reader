@@ -39,10 +39,14 @@ public class actionPanel extends javax.swing.JPanel {
         textArea = new javax.swing.JTextArea();
         internalFrame = new javax.swing.JInternalFrame();
         menuBar = new javax.swing.JMenuBar();
-        menuDisplayText = new javax.swing.JMenu();
-        menuStats = new javax.swing.JMenu();
+        gtfMenuDisplayText = new javax.swing.JMenu();
+        gtfMenuStats = new javax.swing.JMenu();
+        menuLongestShortestModel = new javax.swing.JMenuItem();
+        menuLongestShortestModels = new javax.swing.JMenuItem();
+        menuAverageGeneLength = new javax.swing.JMenuItem();
+        gtfMenuAllStats = new javax.swing.JMenuItem();
+        gtfMenuExons = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
 
         chosenFileLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         chosenFileLbl.setLabelFor(chosenFileLbl);
@@ -67,18 +71,41 @@ public class actionPanel extends javax.swing.JPanel {
 
         menuBar.setBorder(null);
 
-        menuDisplayText.setText("Display text");
-        menuBar.add(menuDisplayText);
+        gtfMenuDisplayText.setText("Display text");
+        menuBar.add(gtfMenuDisplayText);
 
-        menuStats.setText("Statistics");
+        gtfMenuStats.setText("gtf statistics");
 
-        jMenuItem1.setText("jMenuItem1");
-        menuStats.add(jMenuItem1);
+        menuLongestShortestModel.setText("Average number of exons");
+        menuLongestShortestModel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLongestShortestModelActionPerformed(evt);
+            }
+        });
+        gtfMenuStats.add(menuLongestShortestModel);
 
-        menuBar.add(menuStats);
+        menuLongestShortestModels.setText("Longest shortest genes models");
+        gtfMenuStats.add(menuLongestShortestModels);
 
-        jMenu1.setText("jMenu1");
-        menuBar.add(jMenu1);
+        menuAverageGeneLength.setText("Average gene length");
+        menuAverageGeneLength.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAverageGeneLengthActionPerformed(evt);
+            }
+        });
+        gtfMenuStats.add(menuAverageGeneLength);
+
+        gtfMenuAllStats.setText("All statistics");
+        gtfMenuStats.add(gtfMenuAllStats);
+
+        menuBar.add(gtfMenuStats);
+
+        gtfMenuExons.setText("Exons");
+
+        jMenuItem1.setText("Display text exons");
+        gtfMenuExons.add(jMenuItem1);
+
+        menuBar.add(gtfMenuExons);
 
         internalFrame.setJMenuBar(menuBar);
 
@@ -128,6 +155,14 @@ public class actionPanel extends javax.swing.JPanel {
         mainFrame.fileChooserPanel.setVisible(true);   
     }//GEN-LAST:event_newFileBtnActionPerformed
 
+    private void menuLongestShortestModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLongestShortestModelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuLongestShortestModelActionPerformed
+
+    private void menuAverageGeneLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAverageGeneLengthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuAverageGeneLengthActionPerformed
+
     private void displayText(String filename){
         /*
         int i;
@@ -139,12 +174,14 @@ public class actionPanel extends javax.swing.JPanel {
     }
     
     //Display different menu items according to the chosen file
-    public void setMenu(fileChooserPanel fileChooser){
+    public static void setMenu(fileChooserPanel fileChooser){
         if(fileChooser.gtfFile){
-            jMenu1.setVisible(false);
+            gtfMenuExons.setVisible(false);
+            gtfMenuStats.setVisible(true);
         }
-        else if(fileChooser.gtfFile){
-            jMenu1.setVisible(true);
+        else if(fileChooser.fastaFile){
+            gtfMenuExons.setVisible(true);
+            gtfMenuStats.setVisible(false);
         }
     }
     
@@ -153,17 +190,22 @@ public class actionPanel extends javax.swing.JPanel {
     public static void setData(fileChooserPanel fileChooser){
         //Display message of which file was chosen
         chosenFileLbl.setText(fileChooser.fileChosenMessage);
+        setMenu(fileChooser);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JLabel chosenFileLbl;
+    private javax.swing.JMenuItem gtfMenuAllStats;
+    private static javax.swing.JMenu gtfMenuDisplayText;
+    private javax.swing.JMenu gtfMenuExons;
+    private static javax.swing.JMenu gtfMenuStats;
     private javax.swing.JInternalFrame internalFrame;
-    private static javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem menuAverageGeneLength;
     private static javax.swing.JMenuBar menuBar;
-    private static javax.swing.JMenu menuDisplayText;
-    private static javax.swing.JMenu menuStats;
+    private javax.swing.JMenuItem menuLongestShortestModel;
+    private javax.swing.JMenuItem menuLongestShortestModels;
     private javax.swing.JButton newFileBtn;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables

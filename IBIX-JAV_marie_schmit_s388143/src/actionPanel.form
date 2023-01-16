@@ -121,7 +121,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="menuDisplayText">
+            <Menu class="javax.swing.JMenu" name="gtfMenuDisplayText">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Display text"/>
               </Properties>
@@ -129,28 +129,53 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="menuStats">
+            <Menu class="javax.swing.JMenu" name="gtfMenuStats">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Statistics"/>
+                <Property name="text" type="java.lang.String" value="gtf statistics"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                <MenuItem class="javax.swing.JMenuItem" name="menuLongestShortestModel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+                    <Property name="text" type="java.lang.String" value="Average number of exons"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuLongestShortestModelActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="menuLongestShortestModels">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Longest shortest genes models"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="menuAverageGeneLength">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Average gene length"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAverageGeneLengthActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="gtfMenuAllStats">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="All statistics"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu1">
+            <Menu class="javax.swing.JMenu" name="gtfMenuExons">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenu1"/>
+                <Property name="text" type="java.lang.String" value="Exons"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
-              </AuxValues>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Display text exons"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
             </Menu>
           </SubComponents>
         </Menu>
