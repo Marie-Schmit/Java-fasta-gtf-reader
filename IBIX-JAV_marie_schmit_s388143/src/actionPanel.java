@@ -145,7 +145,7 @@ public class actionPanel extends javax.swing.JPanel {
         int i;
         //Display every line of the saved text
         for (i = 0; i<fileChooserPanel.fileContent.size(); i++){
-            textArea.setText(myMainFrame.fileChooserPanel.fileContent.get(i).toString());
+            textArea.setText(fileChooserPanel.fileContent.get(i).toString());
         }
     }
     
