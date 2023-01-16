@@ -169,6 +169,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Exons"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="menuTextExons">
                   <Properties>
@@ -191,11 +194,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Display text"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </Menu>
             <Menu class="javax.swing.JMenu" name="fastaMenuStats">
               <Properties>
                 <Property name="text" type="java.lang.String" value="fasta statistics"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="menuSequenceLen">
                   <Properties>

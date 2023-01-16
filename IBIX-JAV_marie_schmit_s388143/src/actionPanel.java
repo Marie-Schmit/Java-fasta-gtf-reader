@@ -200,14 +200,18 @@ public class actionPanel extends javax.swing.JPanel {
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
-        if(fileChooser.gtfFile){
-            gtfMenuExons.setVisible(false);
-            gtfMenuStats.setVisible(true);
-        }
-        else if(fileChooser.fastaFile){
-            gtfMenuExons.setVisible(true);
-            gtfMenuStats.setVisible(false);
-        }
+        boolean gtf = fileChooser.gtfFile;
+        boolean fasta = fileChooser.fastaFile;
+        
+        //Set gtf menu visible or not
+        gtfMenuDisplayText.setVisible(gtf);
+        gtfMenuStats.setVisible(gtf);
+        gtfMenuExons.setVisible(gtf);
+        
+        //Set fasta menu visible or not
+        fastaMenuDisplayText.setVisible(fasta);
+        fastaMenuStats.setVisible(fasta);
+        
     }
     
     
@@ -220,11 +224,11 @@ public class actionPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JLabel chosenFileLbl;
-    private javax.swing.JMenu fastaMenuDisplayText;
-    private javax.swing.JMenu fastaMenuStats;
+    private static javax.swing.JMenu fastaMenuDisplayText;
+    private static javax.swing.JMenu fastaMenuStats;
     private javax.swing.JMenuItem gtfMenuAllStats;
     private static javax.swing.JMenu gtfMenuDisplayText;
-    private javax.swing.JMenu gtfMenuExons;
+    private static javax.swing.JMenu gtfMenuExons;
     private static javax.swing.JMenu gtfMenuStats;
     private javax.swing.JInternalFrame internalFrame;
     private javax.swing.JScrollPane jScrollPane1;
