@@ -227,8 +227,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchBarFileActionPerformed
 
     private void searchBarFileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchBarFileKeyReleased
-    //Enter message to informa user that the format of it's serach file is false        
-    //checkFileType(searchBarFile.getText());
+    
     }//GEN-LAST:event_searchBarFileKeyReleased
 
     //Set variable indicate the type of the file (gtf or fatsa). Set message indicating to the user which file was chosen.

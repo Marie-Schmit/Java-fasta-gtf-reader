@@ -64,9 +64,13 @@ public class actionPanel extends javax.swing.JPanel {
 
         menuNewFile.setText("Choose new file");
         menuNewFile.setBorderPainted(true);
-        menuNewFile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                menuNewFileMousePressed(evt);
+        menuNewFile.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                menuNewFileMenuSelected(evt);
             }
         });
         menuNewFile.addActionListener(new java.awt.event.ActionListener() {
@@ -189,24 +193,33 @@ public class actionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuSequenceLenActionPerformed
 
-    private void menuNewFileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNewFileMousePressed
-        // TODO add your handling code here:
-        //Go back to panel choose file
-        chooseNewFile();
-    }//GEN-LAST:event_menuNewFileMousePressed
-
     private void gtfMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gtfMenuDisplayTextMousePressed
         //Panel display results shows the card containing a table of the gtf file content
-        mainFrame.displayResultsPane.switchLastPanel("tableCard");
+        mainFrame.displayResultsPane.switchLastPanel("textCard");
     }//GEN-LAST:event_gtfMenuDisplayTextMousePressed
 
     private void fastaMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fastaMenuDisplayTextMousePressed
         //Panel display results shows the card containing a table of the gtf file content
         mainFrame.displayResultsPane.switchLastPanel("textCard");
         
+        //Opening on the first page
+        mainFrame.displayResultsPane.setPageNumber(0);
+        
+        //Do not display next button if maximal number of pages equal 0
+        if(mainFrame.displayResultsPane.maxNumberPages(mainFrame.fileChooserPanel.getFileContent()) == 0){
+            mainFrame.displayResultsPane.setNextBtnVisible(false);
+        }
+        
+        //Do not display previous button
+        mainFrame.displayResultsPane.setPreviousBtnVisible(false);
+        
         //Display content of fasta file, accessible from fileChooserPane
-        mainFrame.displayResultsPane.displayText(mainFrame.fileChooserPanel.getFileContent());
+        mainFrame.displayResultsPane.displayText(mainFrame.fileChooserPanel.getFileContent(), 0);
     }//GEN-LAST:event_fastaMenuDisplayTextMousePressed
+
+    private void menuNewFileMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuNewFileMenuSelected
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuNewFileMenuSelected
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
