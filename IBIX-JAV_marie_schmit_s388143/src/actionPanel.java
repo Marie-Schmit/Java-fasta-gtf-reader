@@ -46,7 +46,13 @@ public class actionPanel extends javax.swing.JPanel {
         menuAverageGeneLength = new javax.swing.JMenuItem();
         gtfMenuAllStats = new javax.swing.JMenuItem();
         gtfMenuExons = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuTextExons = new javax.swing.JMenuItem();
+        menuGraphExons = new javax.swing.JMenuItem();
+        menuExonsAllDisplay = new javax.swing.JMenuItem();
+        fastaMenuDisplayText = new javax.swing.JMenu();
+        fastaMenuStats = new javax.swing.JMenu();
+        menuSequenceLen = new javax.swing.JMenuItem();
+        menuGcContent = new javax.swing.JMenuItem();
 
         chosenFileLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         chosenFileLbl.setLabelFor(chosenFileLbl);
@@ -102,10 +108,29 @@ public class actionPanel extends javax.swing.JPanel {
 
         gtfMenuExons.setText("Exons");
 
-        jMenuItem1.setText("Display text exons");
-        gtfMenuExons.add(jMenuItem1);
+        menuTextExons.setText("Display exons textually");
+        gtfMenuExons.add(menuTextExons);
+
+        menuGraphExons.setText("Display exons graphically");
+        gtfMenuExons.add(menuGraphExons);
+
+        menuExonsAllDisplay.setText("Display exons textually and graphically");
+        gtfMenuExons.add(menuExonsAllDisplay);
 
         menuBar.add(gtfMenuExons);
+
+        fastaMenuDisplayText.setText("Display text");
+        menuBar.add(fastaMenuDisplayText);
+
+        fastaMenuStats.setText("fasta statistics");
+
+        menuSequenceLen.setText("Sequence length");
+        fastaMenuStats.add(menuSequenceLen);
+
+        menuGcContent.setText("GC content");
+        fastaMenuStats.add(menuGcContent);
+
+        menuBar.add(fastaMenuStats);
 
         internalFrame.setJMenuBar(menuBar);
 
@@ -195,17 +220,23 @@ public class actionPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JLabel chosenFileLbl;
+    private javax.swing.JMenu fastaMenuDisplayText;
+    private javax.swing.JMenu fastaMenuStats;
     private javax.swing.JMenuItem gtfMenuAllStats;
     private static javax.swing.JMenu gtfMenuDisplayText;
     private javax.swing.JMenu gtfMenuExons;
     private static javax.swing.JMenu gtfMenuStats;
     private javax.swing.JInternalFrame internalFrame;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem menuAverageGeneLength;
     private static javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuExonsAllDisplay;
+    private javax.swing.JMenuItem menuGcContent;
+    private javax.swing.JMenuItem menuGraphExons;
     private javax.swing.JMenuItem menuLongestShortestModel;
     private javax.swing.JMenuItem menuLongestShortestModels;
+    private javax.swing.JMenuItem menuSequenceLen;
+    private javax.swing.JMenuItem menuTextExons;
     private javax.swing.JButton newFileBtn;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables

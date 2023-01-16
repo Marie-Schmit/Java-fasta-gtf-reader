@@ -170,9 +170,41 @@
                 <Property name="text" type="java.lang.String" value="Exons"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                <MenuItem class="javax.swing.JMenuItem" name="menuTextExons">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Display text exons"/>
+                    <Property name="text" type="java.lang.String" value="Display exons textually"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="menuGraphExons">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Display exons graphically"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="menuExonsAllDisplay">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Display exons textually and graphically"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="fastaMenuDisplayText">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Display text"/>
+              </Properties>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="fastaMenuStats">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="fasta statistics"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="menuSequenceLen">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Sequence length"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="menuGcContent">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="GC content"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
