@@ -58,15 +58,13 @@ public class mainFrame extends javax.swing.JFrame {
         );
         jLayeredPaneLayout.setVerticalGroup(
             jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(actionPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+            .addComponent(actionPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPaneLayout.createSequentialGroup()
                     .addGap(78, 78, 78)
                     .addComponent(fileChooserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(48, Short.MAX_VALUE)))
         );
-
-        actionPanel.getAccessibleContext().setAccessibleName("actionPanel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +113,9 @@ public class mainFrame extends javax.swing.JFrame {
                 //CReation of a instance of mainFrame
                 mainFrame newFrame = new mainFrame() ;
                 newFrame.setVisible(true);
+                
+                fileChooserPanel.setParent(newFrame);
+                actionPanel.setParent(newFrame);
             }
         });
     }

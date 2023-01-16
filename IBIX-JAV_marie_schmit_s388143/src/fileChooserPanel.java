@@ -38,10 +38,10 @@ public class fileChooserPanel extends javax.swing.JPanel {
     public static boolean fastaFile; //Indicates if selected file is fa
     public static ArrayList<StringBuffer> fileContent; //content of the file
     static String fileName; //Name of the selected file
-    static String fileDirectory; //Name of the selected file directory
-    static FileDialog nameBox; //File browser
+    private static String fileDirectory; //Name of the selected file directory
+    private static FileDialog nameBox; //File browser
     public static String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
-    Pattern extension = Pattern.compile(".*\\.(gtf|fa)"); //Regex of files extensions
+    private Pattern extension = Pattern.compile(".*\\.(gtf|fa)"); //Regex of files extensions
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,7 +151,14 @@ public class fileChooserPanel extends javax.swing.JPanel {
                 .addContainerGap(159, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private mainFrame myMainFrame;
+    
+    public void setParent(mainFrame myMainFrame)
+    {
+        this.myMainFrame = myMainFrame;
+    }
+    
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         //No gtf nor fasta file is selected
         gtfFile = false;
