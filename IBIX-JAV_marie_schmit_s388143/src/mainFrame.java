@@ -18,6 +18,7 @@ public class mainFrame extends javax.swing.JFrame {
         //See panel file browser when at software opening
         fileChooserPanel.setVisible(true);
         actionPanel.setVisible(false);
+        displayResultsPane.setVisible(false);
     }
 
     /**
@@ -31,6 +32,7 @@ public class mainFrame extends javax.swing.JFrame {
 
         jLayeredPane = new javax.swing.JLayeredPane();
         fileChooserPanel = new fileChooserPanel();
+        displayResultsPane = new displayResultsPane();
         actionPanel = new actionPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -39,26 +41,46 @@ public class mainFrame extends javax.swing.JFrame {
         jLayeredPane.setAlignmentY(0.0F);
         jLayeredPane.setPreferredSize(new java.awt.Dimension(945, 450));
 
+        javax.swing.GroupLayout displayResultsPaneLayout = new javax.swing.GroupLayout(displayResultsPane);
+        displayResultsPane.setLayout(displayResultsPaneLayout);
+        displayResultsPaneLayout.setHorizontalGroup(
+            displayResultsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        displayResultsPaneLayout.setVerticalGroup(
+            displayResultsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 442, Short.MAX_VALUE)
+        );
+
         actionPanel.setAlignmentX(0.0F);
         actionPanel.setAlignmentY(0.0F);
 
         jLayeredPane.setLayer(fileChooserPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane.setLayer(displayResultsPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane.setLayer(actionPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPaneLayout = new javax.swing.GroupLayout(jLayeredPane);
         jLayeredPane.setLayout(jLayeredPaneLayout);
         jLayeredPaneLayout.setHorizontalGroup(
             jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(actionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 936, Short.MAX_VALUE)
+                    .addComponent(displayResultsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE))
+                .addGap(102, 102, 102))
             .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(fileChooserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(23, Short.MAX_VALUE)))
+                    .addComponent(fileChooserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 109, Short.MAX_VALUE)))
         );
         jLayeredPaneLayout.setVerticalGroup(
             jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(actionPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jLayeredPaneLayout.createSequentialGroup()
+                .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(displayResultsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(jLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPaneLayout.createSequentialGroup()
                     .addGap(78, 78, 78)
@@ -70,7 +92,9 @@ public class mainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,6 +144,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static actionPanel actionPanel;
+    public static displayResultsPane displayResultsPane;
     public static fileChooserPanel fileChooserPanel;
     private javax.swing.JLayeredPane jLayeredPane;
     // End of variables declaration//GEN-END:variables

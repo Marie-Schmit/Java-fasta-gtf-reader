@@ -1,5 +1,7 @@
 
+import java.awt.CardLayout;
 import java.awt.Container;
+import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /*
@@ -33,12 +35,9 @@ public class actionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        chosenFileLbl = new javax.swing.JLabel();
-        newFileBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textArea = new javax.swing.JTextArea();
         internalFrame = new javax.swing.JInternalFrame();
         menuBar = new javax.swing.JMenuBar();
+        menuNewFile = new javax.swing.JMenu();
         gtfMenuDisplayText = new javax.swing.JMenu();
         gtfMenuStats = new javax.swing.JMenu();
         menuLongestShortestModel = new javax.swing.JMenuItem();
@@ -54,20 +53,6 @@ public class actionPanel extends javax.swing.JPanel {
         menuSequenceLen = new javax.swing.JMenuItem();
         menuGcContent = new javax.swing.JMenuItem();
 
-        chosenFileLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chosenFileLbl.setLabelFor(chosenFileLbl);
-
-        newFileBtn.setText("New file");
-        newFileBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newFileBtnActionPerformed(evt);
-            }
-        });
-
-        textArea.setColumns(20);
-        textArea.setRows(5);
-        jScrollPane1.setViewportView(textArea);
-
         internalFrame.setBorder(null);
         internalFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         internalFrame.setEnabled(false);
@@ -77,7 +62,26 @@ public class actionPanel extends javax.swing.JPanel {
 
         menuBar.setBorder(null);
 
+        menuNewFile.setText("Choose new file");
+        menuNewFile.setBorderPainted(true);
+        menuNewFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuNewFileMousePressed(evt);
+            }
+        });
+        menuNewFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNewFileActionPerformed(evt);
+            }
+        });
+        menuBar.add(menuNewFile);
+
         gtfMenuDisplayText.setText("Display text");
+        gtfMenuDisplayText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                gtfMenuDisplayTextMousePressed(evt);
+            }
+        });
         menuBar.add(gtfMenuDisplayText);
 
         gtfMenuStats.setText("gtf statistics");
@@ -125,6 +129,11 @@ public class actionPanel extends javax.swing.JPanel {
         fastaMenuStats.setText("fasta statistics");
 
         menuSequenceLen.setText("Sequence length");
+        menuSequenceLen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSequenceLenActionPerformed(evt);
+            }
+        });
         fastaMenuStats.add(menuSequenceLen);
 
         menuGcContent.setText("GC content");
@@ -138,7 +147,7 @@ public class actionPanel extends javax.swing.JPanel {
         internalFrame.getContentPane().setLayout(internalFrameLayout);
         internalFrameLayout.setHorizontalGroup(
             internalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 945, Short.MAX_VALUE)
         );
         internalFrameLayout.setVerticalGroup(
             internalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,37 +158,16 @@ public class actionPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(internalFrame)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(chosenFileLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newFileBtn))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(internalFrame)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(internalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newFileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chosenFileLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    private void newFileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFileBtnActionPerformed
-        //Bring the fileChooserPanel back
-        this.setVisible(false);
-        mainFrame.fileChooserPanel.setVisible(true);   
-    }//GEN-LAST:event_newFileBtnActionPerformed
-
     private void menuLongestShortestModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLongestShortestModelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuLongestShortestModelActionPerformed
@@ -188,19 +176,28 @@ public class actionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuAverageGeneLengthActionPerformed
 
-    private void displayText(String filename){
-        /*
-        int i;
-        //Display every line of the saved text
-        for (i = 0; i<fileChooserPanel.fileContent.size(); i++){
-            textArea.setText(fileChooserPanel.fileContent.get(i).toString());
-        }
-        */
-    }
+    private void menuNewFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNewFileActionPerformed
+
+    }//GEN-LAST:event_menuNewFileActionPerformed
+
+    private void menuSequenceLenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSequenceLenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuSequenceLenActionPerformed
+
+    private void menuNewFileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNewFileMousePressed
+        // TODO add your handling code here:
+        //Go back to panel choose file
+        chooseNewFile();
+    }//GEN-LAST:event_menuNewFileMousePressed
+
+    private void gtfMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gtfMenuDisplayTextMousePressed
+        //Panel display results shows the card containing a table of the gtf file content
+        mainFrame.displayResultsPane.switchLastPanel("tableCard");
+    }//GEN-LAST:event_gtfMenuDisplayTextMousePressed
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
-        boolean gtf = fileChooser.gtfFile;
+        boolean gtf = getFileTypes(filename);
         boolean fasta = fileChooser.fastaFile;
         
         //Set gtf menu visible or not
@@ -213,25 +210,37 @@ public class actionPanel extends javax.swing.JPanel {
         fastaMenuStats.setVisible(fasta);
         
     }
-    
-    
+        
     //Display information from the previous panel and the chosen file to this panel
     public static void setData(fileChooserPanel fileChooser){
         //Display message of which file was chosen
-        chosenFileLbl.setText(fileChooser.fileChosenMessage);
+        internalFrame.setTitle(fileChooser.fileChosenMessage);
         setMenu(fileChooser);
     }
     
+    public void chooseNewFile(){
+        mainFrame.fileChooserPanel.setWaitMessage("");
+        //Bring the fileChooserPanel back
+        this.setVisible(false);
+        //Set displayResultPanel to false
+        mainFrame.displayResultsPane.setVisible(false);
+        mainFrame.fileChooserPanel.setVisible(true);
+    }
+    
+    //Make a new panel visible in th existing dataframe
+    private void openNewPanel(JPanel pane){
+        //Open new panel
+        pane.setVisible(true); 
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JLabel chosenFileLbl;
     private static javax.swing.JMenu fastaMenuDisplayText;
     private static javax.swing.JMenu fastaMenuStats;
     private javax.swing.JMenuItem gtfMenuAllStats;
     private static javax.swing.JMenu gtfMenuDisplayText;
     private static javax.swing.JMenu gtfMenuExons;
     private static javax.swing.JMenu gtfMenuStats;
-    private javax.swing.JInternalFrame internalFrame;
-    private javax.swing.JScrollPane jScrollPane1;
+    private static javax.swing.JInternalFrame internalFrame;
     private javax.swing.JMenuItem menuAverageGeneLength;
     private static javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuExonsAllDisplay;
@@ -239,9 +248,8 @@ public class actionPanel extends javax.swing.JPanel {
     private javax.swing.JMenuItem menuGraphExons;
     private javax.swing.JMenuItem menuLongestShortestModel;
     private javax.swing.JMenuItem menuLongestShortestModels;
+    private javax.swing.JMenu menuNewFile;
     private javax.swing.JMenuItem menuSequenceLen;
     private javax.swing.JMenuItem menuTextExons;
-    private javax.swing.JButton newFileBtn;
-    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }
