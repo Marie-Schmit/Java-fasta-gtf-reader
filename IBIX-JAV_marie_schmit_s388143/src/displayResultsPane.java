@@ -1,13 +1,11 @@
 
 import java.awt.CardLayout;
-
-
+import java.util.ArrayList;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author marie
@@ -31,8 +29,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     private void initComponents() {
 
         textPanel = new javax.swing.JPanel();
-        textArea = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textArea = new java.awt.TextArea();
         tabPanel = new javax.swing.JPanel();
         gtfTable = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -41,9 +38,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(900, 400));
         setLayout(new java.awt.CardLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        textArea.setViewportView(jTextArea1);
+        textPanel.setBackground(new java.awt.Color(204, 255, 204));
 
         javax.swing.GroupLayout textPanelLayout = new javax.swing.GroupLayout(textPanel);
         textPanel.setLayout(textPanelLayout);
@@ -85,24 +80,32 @@ public class displayResultsPane extends javax.swing.JPanel {
         add(tabPanel, "tableCard");
     }// </editor-fold>//GEN-END:initComponents
 
-    
     //Switch panels
-    public void switchLastPanel(String cardName){
+    public void switchLastPanel(String cardName) {
         //Make this panel visible
-        this.setVisible(true);        
+        this.setVisible(true);
         //Define a card layout
         this.setLayout(new java.awt.CardLayout());
-        CardLayout card = (CardLayout)(this.getLayout());
+        CardLayout card = (CardLayout) (this.getLayout());
         card.show(this, cardName);
-        
+
     }
+
+    //Display text stored in StringBuffer, in an ArrayList in text area
+    public void displayText(ArrayList<StringBuffer> textContent) {
+        int i;
+        for (i = 0; i < textContent.size(); i++) {
+            textArea.append(textContent.get(i).toString() + "\n");
+        }
+    }
+    
+    //Override displayText method, to display strings
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane gtfTable;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     public static javax.swing.JPanel tabPanel;
-    private javax.swing.JScrollPane textArea;
+    private java.awt.TextArea textArea;
     public static javax.swing.JPanel textPanel;
     // End of variables declaration//GEN-END:variables
 }

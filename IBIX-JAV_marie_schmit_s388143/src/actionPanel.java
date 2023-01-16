@@ -124,6 +124,11 @@ public class actionPanel extends javax.swing.JPanel {
         menuBar.add(gtfMenuExons);
 
         fastaMenuDisplayText.setText("Display text");
+        fastaMenuDisplayText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                fastaMenuDisplayTextMousePressed(evt);
+            }
+        });
         menuBar.add(fastaMenuDisplayText);
 
         fastaMenuStats.setText("fasta statistics");
@@ -194,6 +199,14 @@ public class actionPanel extends javax.swing.JPanel {
         //Panel display results shows the card containing a table of the gtf file content
         mainFrame.displayResultsPane.switchLastPanel("tableCard");
     }//GEN-LAST:event_gtfMenuDisplayTextMousePressed
+
+    private void fastaMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fastaMenuDisplayTextMousePressed
+        //Panel display results shows the card containing a table of the gtf file content
+        mainFrame.displayResultsPane.switchLastPanel("textCard");
+        
+        //Display content of fasta file, accessible from fileChooserPane
+        mainFrame.displayResultsPane.displayText(mainFrame.fileChooserPanel.getFileContent());
+    }//GEN-LAST:event_fastaMenuDisplayTextMousePressed
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
