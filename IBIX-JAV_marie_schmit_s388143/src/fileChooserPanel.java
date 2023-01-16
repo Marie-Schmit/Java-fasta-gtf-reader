@@ -34,13 +34,14 @@ public class fileChooserPanel extends javax.swing.JPanel {
     }
     
     //Indicates if chosen file is fasta or gtf. If both are false, no file is chosen.
-    public static boolean gtfFile; //Indicates if selected file is gft
-    public static boolean fastaFile; //Indicates if selected file is fa
-    public static ArrayList<StringBuffer> fileContent; //content of the file
-    static String fileName; //Name of the selected file
-    private static String fileDirectory; //Name of the selected file directory
-    private static FileDialog nameBox; //File browser
-    public static String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
+    public boolean gtfFile; //Indicates if selected file is gft
+    public boolean fastaFile; //Indicates if selected file is fa
+    public ArrayList<StringBuffer> fileContent; //content of the file
+    public String fileName; //Name of the selected file
+    public String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
+    
+    private String fileDirectory; //Name of the selected file directory
+    private FileDialog nameBox; //File browser
     private Pattern extension = Pattern.compile(".*\\.(gtf|fa)"); //Regex of files extensions
 
     /**
@@ -198,7 +199,8 @@ public class fileChooserPanel extends javax.swing.JPanel {
         //Read file and store it's content
         fileContent = readFile(fileName);
         
-        //System.out.println(fileContent);
+        //Set data
+        actionPanel.setData(this.fileName, this.fileChosenMessage);
         
         //Open new panel actionPanel, close actucal panel
         this.setVisible(false);
@@ -302,6 +304,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
         
         return fileText;
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearBtn;

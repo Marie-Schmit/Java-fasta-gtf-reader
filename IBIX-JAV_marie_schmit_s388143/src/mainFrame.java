@@ -114,7 +114,6 @@ public class mainFrame extends javax.swing.JFrame {
                 //CReation of a instance of mainFrame
                 mainFrame newFrame = new mainFrame() ;
                 newFrame.setVisible(true);
-                
             }
         });
     }

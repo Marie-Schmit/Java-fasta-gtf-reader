@@ -21,7 +21,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="internalFrame" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="chosenFileLbl" min="-2" pref="528" max="-2" attributes="0"/>
+                      <Component id="chosenFileLbl" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newFileBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -39,8 +39,8 @@
               <Component id="jScrollPane1" min="-2" pref="407" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="chosenFileLbl" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="newFileBtn" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="chosenFileLbl" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -50,13 +50,16 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="chosenFileLbl">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
         <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="chosenFileLbl"/>
         </Property>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;The actual file is: &quot; + fileChooserPanel.fileName" type="code"/>
-        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="newFileBtn">
       <Properties>
@@ -114,16 +117,25 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="menuDisplayText">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Display text"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </Menu>
             <Menu class="javax.swing.JMenu" name="menuStats">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Statistics"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
                   <Properties>
@@ -136,6 +148,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="jMenu1"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </Menu>
           </SubComponents>
         </Menu>

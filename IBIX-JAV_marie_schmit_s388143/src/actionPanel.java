@@ -18,24 +18,11 @@ public class actionPanel extends javax.swing.JPanel {
      */
     public actionPanel() {
         initComponents();
-        
+                
         //Delete the arrow icon of the internal frame
         Container pane = ((BasicInternalFrameUI) internalFrame.getUI()).getNorthPane();
         pane.remove(0);
-        
-        if(fileChooserPanel.gtfFile){
-            System.out.println(fileChooserPanel.gtfFile);
-            jMenu1.setVisible(false);
-        }
-        else if(fileChooserPanel.gtfFile){
-            System.out.println(fileChooserPanel.fastaFile);
-            jMenu1.setVisible(true);
-        }
-        
-        //Write what is the chosen file
-        //chosenFileLbl.setVisible(true);
-        //chosenFileLbl.setText(fileChooserPanel.fileName);
-    }
+            }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,8 +44,8 @@ public class actionPanel extends javax.swing.JPanel {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
 
+        chosenFileLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         chosenFileLbl.setLabelFor(chosenFileLbl);
-        chosenFileLbl.setText("The actual file is: " + fileChooserPanel.fileName);
 
         newFileBtn.setText("New file");
         newFileBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +102,7 @@ public class actionPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(internalFrame)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(chosenFileLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chosenFileLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(newFileBtn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE))
@@ -129,8 +116,8 @@ public class actionPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chosenFileLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newFileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newFileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chosenFileLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -142,22 +129,41 @@ public class actionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_newFileBtnActionPerformed
 
     private void displayText(String filename){
+        /*
         int i;
         //Display every line of the saved text
         for (i = 0; i<fileChooserPanel.fileContent.size(); i++){
             textArea.setText(fileChooserPanel.fileContent.get(i).toString());
         }
+        */
+    }
+    
+    //Display different menu items according to the chosen file
+    public void setMenu(fileChooserPanel fileChooser){
+        if(fileChooser.gtfFile){
+            jMenu1.setVisible(false);
+        }
+        else if(fileChooser.gtfFile){
+            jMenu1.setVisible(true);
+        }
+    }
+    
+    
+    //Display information from the previous panel and the chosen file to this panel
+    public static void setData(fileChooserPanel fileChooser){
+        //Display message of which file was chosen
+        chosenFileLbl.setText(fileChooser.fileChosenMessage);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel chosenFileLbl;
+    private static javax.swing.JLabel chosenFileLbl;
     private javax.swing.JInternalFrame internalFrame;
-    private javax.swing.JMenu jMenu1;
+    private static javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu menuDisplayText;
-    private javax.swing.JMenu menuStats;
+    private static javax.swing.JMenuBar menuBar;
+    private static javax.swing.JMenu menuDisplayText;
+    private static javax.swing.JMenu menuStats;
     private javax.swing.JButton newFileBtn;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
