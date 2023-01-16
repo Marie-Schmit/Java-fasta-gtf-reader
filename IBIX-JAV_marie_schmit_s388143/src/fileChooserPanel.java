@@ -339,6 +339,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
         waitMessage.setText(message);
     }
     
+    //Get methods to get private fileChooserVariable from other classes, which avoid to break the encapsulation of the variables.
     //Get variables gtfFiles and fasta file
     public boolean[] getFileTypes(){
         return new boolean[]{gtfFile, fastaFile};

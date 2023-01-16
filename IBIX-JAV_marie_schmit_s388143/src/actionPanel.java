@@ -197,8 +197,8 @@ public class actionPanel extends javax.swing.JPanel {
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
-        boolean gtf = fileChooser.getFileTypes()[1];
-        boolean fasta = fileChooser.getFileTypes()[2];
+        boolean gtf = fileChooser.getFileTypes()[0];
+        boolean fasta = fileChooser.getFileTypes()[1];
         
         //Set gtf menu visible or not
         gtfMenuDisplayText.setVisible(gtf);

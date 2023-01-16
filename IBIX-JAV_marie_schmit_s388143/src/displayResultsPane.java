@@ -31,42 +31,55 @@ public class displayResultsPane extends javax.swing.JPanel {
     private void initComponents() {
 
         textPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        textArea = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         tabPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        gtfTable = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(900, 400));
         setLayout(new java.awt.CardLayout());
 
-        jLabel1.setText("jLabel1");
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        textArea.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout textPanelLayout = new javax.swing.GroupLayout(textPanel);
         textPanel.setLayout(textPanelLayout);
         textPanelLayout.setHorizontalGroup(
             textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(textArea, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
         );
         textPanelLayout.setVerticalGroup(
             textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(textArea, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
         );
 
         add(textPanel, "textCard");
 
-        tabPanel.setBackground(new java.awt.Color(255, 204, 0));
-
-        jLabel2.setText("table panel");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        gtfTable.setViewportView(jTable1);
 
         javax.swing.GroupLayout tabPanelLayout = new javax.swing.GroupLayout(tabPanel);
         tabPanel.setLayout(tabPanelLayout);
         tabPanelLayout.setHorizontalGroup(
             tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
         );
         tabPanelLayout.setVerticalGroup(
             tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
         add(tabPanel, "tableCard");
@@ -85,9 +98,11 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane gtfTable;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     public static javax.swing.JPanel tabPanel;
+    private javax.swing.JScrollPane textArea;
     public static javax.swing.JPanel textPanel;
     // End of variables declaration//GEN-END:variables
 }
