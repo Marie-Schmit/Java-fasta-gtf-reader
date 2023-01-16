@@ -340,13 +340,23 @@ public class fileChooserPanel extends javax.swing.JPanel {
     }
     
     //Get variables gtfFiles and fasta file
-    public boolean[] getFileTypes(String filename){
+    public boolean[] getFileTypes(){
         return new boolean[]{gtfFile, fastaFile};
     }
     
     //Get file content
-    public ArrayList<StringBuffer> getFileContent(String filename){
+    public ArrayList<StringBuffer> getFileContent(){
         return fileContent;
+    }
+    
+    //Get filename
+    public String getFileName(){
+        return fileName;
+    }
+    
+    //Get fileChosenMessage
+    public String getFileChosenMessage(){
+        return fileChosenMessage;
     }
     
    

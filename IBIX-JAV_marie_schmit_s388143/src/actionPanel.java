@@ -197,8 +197,8 @@ public class actionPanel extends javax.swing.JPanel {
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
-        boolean gtf = getFileTypes(filename);
-        boolean fasta = fileChooser.fastaFile;
+        boolean gtf = fileChooser.getFileTypes()[1];
+        boolean fasta = fileChooser.getFileTypes()[2];
         
         //Set gtf menu visible or not
         gtfMenuDisplayText.setVisible(gtf);
@@ -214,7 +214,7 @@ public class actionPanel extends javax.swing.JPanel {
     //Display information from the previous panel and the chosen file to this panel
     public static void setData(fileChooserPanel fileChooser){
         //Display message of which file was chosen
-        internalFrame.setTitle(fileChooser.fileChosenMessage);
+        internalFrame.setTitle(fileChooser.getFileChosenMessage());
         setMenu(fileChooser);
     }
     
