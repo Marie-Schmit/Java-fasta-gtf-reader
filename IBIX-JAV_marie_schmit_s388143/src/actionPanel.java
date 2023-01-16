@@ -134,13 +134,6 @@ public class actionPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private mainFrame myMainFrame;
-    
-    public void setParent(mainFrame myMainFrame)
-    {
-        this.myMainFrame = myMainFrame;
-    }
     
     private void newFileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFileBtnActionPerformed
         //Bring the fileChooserPanel back

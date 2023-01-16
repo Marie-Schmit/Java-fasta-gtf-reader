@@ -152,12 +152,6 @@ public class fileChooserPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    private mainFrame myMainFrame;
-    
-    public void setParent(mainFrame myMainFrame)
-    {
-        this.myMainFrame = myMainFrame;
-    }
     
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         //No gtf nor fasta file is selected
