@@ -1,6 +1,7 @@
 
-import java.awt.CardLayout;
 import java.awt.Container;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -81,7 +82,7 @@ public class actionPanel extends javax.swing.JPanel {
 
         gtfMenuStats.setText("gtf statistics");
 
-        menuLongestShortestModel.setText("Average number of exons");
+        menuLongestShortestModel.setText("Average number of exons per gene");
         menuLongestShortestModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuLongestShortestModelActionPerformed(evt);
@@ -169,7 +170,14 @@ public class actionPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     private void menuLongestShortestModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLongestShortestModelActionPerformed
-        // TODO add your handling code here:
+        //Create instance of class gtfStatistics
+        gtfStatistics NumberExons = new gtfStatistics();
+        
+        double average = NumberExons.averageExons(mainFrame.fileChooserPanel.getFileContent()); //Average number of exons
+        String message = "The average number of exons for this file is: " + average; //Message to display to user
+        
+        //Display text on specific panel
+        mainFrame.displayResultsPane.displayText(message);
     }//GEN-LAST:event_menuLongestShortestModelActionPerformed
 
     private void menuAverageGeneLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAverageGeneLengthActionPerformed

@@ -99,7 +99,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="menuLongestShortestModel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Average number of exons"/>
+                    <Property name="text" type="java.lang.String" value="Average number of exons per gene"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuLongestShortestModelActionPerformed"/>
