@@ -62,12 +62,13 @@ public class displayResultsPane extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(900, 400));
 
         textArea.setBackground(new java.awt.Color(240, 240, 240));
+        textArea.setEditable(false);
 
         javax.swing.GroupLayout textPanelLayout = new javax.swing.GroupLayout(textPanel);
         textPanel.setLayout(textPanelLayout);
         textPanelLayout.setHorizontalGroup(
             textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textArea, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
+            .addComponent(textArea, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
         textPanelLayout.setVerticalGroup(
             textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,6 +443,11 @@ public class displayResultsPane extends javax.swing.JPanel {
         
         tabPanel.setVisible(!text);
         textPanel.setVisible(text);
+    }
+    
+    //Change sze of font text in text area
+    public void setFontTextArea(float newSize){
+        textArea.setFont(textArea.getFont().deriveFont(newSize));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

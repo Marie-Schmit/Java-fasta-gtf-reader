@@ -97,18 +97,21 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="menuLongestShortestModel">
+                <MenuItem class="javax.swing.JMenuItem" name="menuAverageNumberExons">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Average number of exons per gene"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuLongestShortestModelActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAverageNumberExonsActionPerformed"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="menuLongestShortestModels">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Longest shortest genes models"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuLongestShortestModelsActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="menuAverageGeneLength">
                   <Properties>

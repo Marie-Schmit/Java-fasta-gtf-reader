@@ -1,7 +1,6 @@
 
 import java.awt.Container;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.HashMap;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -41,7 +40,7 @@ public class actionPanel extends javax.swing.JPanel {
         menuNewFile = new javax.swing.JMenu();
         gtfMenuDisplayText = new javax.swing.JMenu();
         gtfMenuStats = new javax.swing.JMenu();
-        menuLongestShortestModel = new javax.swing.JMenuItem();
+        menuAverageNumberExons = new javax.swing.JMenuItem();
         menuLongestShortestModels = new javax.swing.JMenuItem();
         menuAverageGeneLength = new javax.swing.JMenuItem();
         gtfMenuAllStats = new javax.swing.JMenuItem();
@@ -82,15 +81,20 @@ public class actionPanel extends javax.swing.JPanel {
 
         gtfMenuStats.setText("gtf statistics");
 
-        menuLongestShortestModel.setText("Average number of exons per gene");
-        menuLongestShortestModel.addActionListener(new java.awt.event.ActionListener() {
+        menuAverageNumberExons.setText("Average number of exons per gene");
+        menuAverageNumberExons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuLongestShortestModelActionPerformed(evt);
+                menuAverageNumberExonsActionPerformed(evt);
             }
         });
-        gtfMenuStats.add(menuLongestShortestModel);
+        gtfMenuStats.add(menuAverageNumberExons);
 
         menuLongestShortestModels.setText("Longest shortest genes models");
+        menuLongestShortestModels.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLongestShortestModelsActionPerformed(evt);
+            }
+        });
         gtfMenuStats.add(menuLongestShortestModels);
 
         menuAverageGeneLength.setText("Average gene length");
@@ -169,16 +173,20 @@ public class actionPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    private void menuLongestShortestModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLongestShortestModelActionPerformed
+    private void menuAverageNumberExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAverageNumberExonsActionPerformed
         //Create instance of class gtfStatistics
         gtfStatistics NumberExons = new gtfStatistics();
         
         double average = NumberExons.averageExons(mainFrame.fileChooserPanel.getFileContent()); //Average number of exons
-        String message = "The average number of exons for this file is: " + average; //Message to display to user
+        String message = "The average number of exons for this file is: " + average +"."; //Message to display to user
         
+        //Increase font of text area since displayed text is small
+        mainFrame.displayResultsPane.setFontTextArea(20);
+        //Message displayed on text area
+        mainFrame.displayResultsPane.setPanelVisible(true);
         //Display text on specific panel
         mainFrame.displayResultsPane.displayText(message);
-    }//GEN-LAST:event_menuLongestShortestModelActionPerformed
+    }//GEN-LAST:event_menuAverageNumberExonsActionPerformed
 
     private void menuAverageGeneLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAverageGeneLengthActionPerformed
         // TODO add your handling code here:
@@ -234,6 +242,15 @@ public class actionPanel extends javax.swing.JPanel {
         chooseNewFile();
         mainFrame.displayResultsPane.resetText();
     }//GEN-LAST:event_menuNewFileMouseClicked
+
+    private void menuLongestShortestModelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLongestShortestModelsActionPerformed
+        //Create instance of class gtfStatistics
+        gtfStatistics geneModelsLength = new gtfStatistics();
+        
+        HashMap<String, String> hash = new HashMap<String, String>();
+        hash = geneModelsLength.hashLine(mainFrame.fileChooserPanel.getFileContent().get(5));
+        System.out.println(geneModelsLength.getLength(hash, "gene"));
+    }//GEN-LAST:event_menuLongestShortestModelsActionPerformed
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
@@ -281,11 +298,11 @@ public class actionPanel extends javax.swing.JPanel {
     private static javax.swing.JMenu gtfMenuStats;
     private static javax.swing.JInternalFrame internalFrame;
     private javax.swing.JMenuItem menuAverageGeneLength;
+    private javax.swing.JMenuItem menuAverageNumberExons;
     private static javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuExonsAllDisplay;
     private javax.swing.JMenuItem menuGcContent;
     private javax.swing.JMenuItem menuGraphExons;
-    private javax.swing.JMenuItem menuLongestShortestModel;
     private javax.swing.JMenuItem menuLongestShortestModels;
     private javax.swing.JMenu menuNewFile;
     private javax.swing.JMenuItem menuSequenceLen;

@@ -21,8 +21,9 @@ public class gtfStatistics {
     //Average number of exons per gene
     private double avgNumberExons;
     
+    //////////////////////////////////////// Calculation of average number of exons per gene ///////////////////////////////
     //Hashmap of each line
-    private HashMap hashLine(StringBuffer lineContent){
+    public HashMap hashLine(StringBuffer lineContent){
         //New hashmap
         HashMap<String, String> hash = new HashMap<String, String>();
         //Names of keys
@@ -53,15 +54,15 @@ public class gtfStatistics {
     }
     
     //Hashmap of the number of exon per gene
+    //Takes content of gtf file as argument, returns a HashMap with gene ids as keys and number of exon per gene as value
     private HashMap<String, Integer> setExonsPerGene(ArrayList<StringBuffer> textContent){
         int i;
         //Hashmap to store line values
         HashMap<String, String> line = new HashMap<String, String>();
         //Hashmap of exons per gene
         HashMap<String, Integer> exonsPerGene = new HashMap<String, Integer>();
-        System.out.println(textContent.size());
         
-        for (i = 6; i < textContent.size(); i++){
+        for (i = 5; i < textContent.size(); i++){
             line = hashLine(textContent.get(i));
             
             //If key gene_id does not exist, create it
@@ -81,6 +82,8 @@ public class gtfStatistics {
     }
     
     //If line is an exon, number of exon in corresponding gene in HashMap exonsPerGenes increases of 1
+    //Takes a line of gtf file, and a hashmap indicating the number of exons (value) per gene (key), as arguments
+    //Returns the hashMap with gene ids as key and the actualised number of exon for each gene id as value
     private HashMap<String, Integer> actualiseExonNumber(HashMap<String, String> line, HashMap<String, Integer> exonsPerGene){
         if(line.get("Feature").equals("exon")){ //Exon found
             //Calculate new number of exons
@@ -93,6 +96,8 @@ public class gtfStatistics {
     }
     
     //Calculate average number of exons
+    //Takes content of gtf file as argument
+    //Returns average number of exon per gene
     public double averageExons(ArrayList<StringBuffer> textContent){
         HashMap<String, Integer> hashExons = setExonsPerGene(textContent);
         double average = 0;
@@ -109,4 +114,54 @@ public class gtfStatistics {
         return average;
     }
     
+    /////////////////////////// Calculation of longest and shortest gene models within the file //////////////////////
+    
+    //Hashmap of the length per gene model
+    //Takes content of gtf file as argument
+    //Returns
+    private HashMap<String, Integer> setLengthPerGene(ArrayList<StringBuffer> textContent){
+        int i;
+        //Hashmap to store line values
+        HashMap<String, String> line = new HashMap<String, String>();
+        //Hashmap of length per gene
+        HashMap<String, Integer> lengthPerGene = new HashMap<String, Integer>();
+        
+        int maxLen; //Maximal Length
+        int minLen; //Minimal length
+        
+        for (i = 6; i < textContent.size(); i++){
+            line = hashLine(textContent.get(i));
+            
+            //If key gene_id does not exist, create it
+            if(lengthPerGene.get(line.get("Gene ID")) == null){
+                lengthPerGene.put(line.get("Gene ID").toString(), 0);
+                
+                //If line is a gene, actualise number of genes
+                actualiseExonNumber(line, lengthPerGene);
+            }
+            else{
+                //If gene id already exists in the hashmap, actualise number of exons
+                actualiseExonNumber(line, lengthPerGene);
+            }
+        }
+        return(lengthPerGene);
+    }
+    
+    //Caclulate length of a gene model
+    public int getLength(HashMap<String, String> line, String feature){
+        int length = -1; //Impossible length if the feature is not "gene"
+        int start;
+        int end;
+        
+        if (line.get("Feature").equals(feature)){ //Only specific features are considered
+            //Get start and end values from the HashMap and cast to integers
+            start = Integer.parseInt(line.get("Start"));
+            end = Integer.parseInt(line.get("End"));
+            
+            //Caclulate length with start and end values
+            length = end - start;
+        }
+        
+        return length;
+    }
 }
