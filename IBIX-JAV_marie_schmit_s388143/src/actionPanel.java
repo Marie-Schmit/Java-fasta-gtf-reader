@@ -64,18 +64,9 @@ public class actionPanel extends javax.swing.JPanel {
 
         menuNewFile.setText("Choose new file");
         menuNewFile.setBorderPainted(true);
-        menuNewFile.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                menuNewFileMenuSelected(evt);
-            }
-        });
-        menuNewFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuNewFileActionPerformed(evt);
+        menuNewFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuNewFileMouseClicked(evt);
             }
         });
         menuBar.add(menuNewFile);
@@ -185,10 +176,6 @@ public class actionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuAverageGeneLengthActionPerformed
 
-    private void menuNewFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNewFileActionPerformed
-
-    }//GEN-LAST:event_menuNewFileActionPerformed
-
     private void menuSequenceLenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSequenceLenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuSequenceLenActionPerformed
@@ -217,9 +204,10 @@ public class actionPanel extends javax.swing.JPanel {
         mainFrame.displayResultsPane.displayText(mainFrame.fileChooserPanel.getFileContent(), 0);
     }//GEN-LAST:event_fastaMenuDisplayTextMousePressed
 
-    private void menuNewFileMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuNewFileMenuSelected
+    private void menuNewFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNewFileMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuNewFileMenuSelected
+        chooseNewFile();
+    }//GEN-LAST:event_menuNewFileMouseClicked
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){

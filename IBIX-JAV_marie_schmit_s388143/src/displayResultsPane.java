@@ -228,10 +228,10 @@ public class displayResultsPane extends javax.swing.JPanel {
         int maxNumber;
         
         //Calculate maximum page number
-        maxNumber = textContent.size()/100;
+        maxNumber = textContent.size()/1000;
         
         //Last lines on last page
-        if(maxNumber%100 != 0){
+        if(maxNumber%1000 != 0){
             maxNumber ++;
         }
         

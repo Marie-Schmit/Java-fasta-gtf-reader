@@ -75,8 +75,7 @@
                 <Property name="borderPainted" type="boolean" value="true"/>
               </Properties>
               <Events>
-                <EventHandler event="menuSelected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="menuNewFileMenuSelected"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuNewFileActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuNewFileMouseClicked"/>
               </Events>
             </Menu>
             <Menu class="javax.swing.JMenu" name="gtfMenuDisplayText">
