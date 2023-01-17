@@ -30,6 +30,8 @@ public class displayResultsPane extends javax.swing.JPanel {
     private int presentPage;
     //Maximum number of pages
     private int maxPages;
+    //Display should be text or table
+    private boolean text;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -211,7 +213,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         presentPage++;
 
         //Display text on text area, presentPage
-        displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage);
+        displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage, text);
 
         //Buttons visibility
         nextPreviousBtnVisible();
@@ -222,7 +224,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         presentPage--;
 
         //Display text on text area, presentPage
-        displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage);
+        displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage, text);
 
         //Change buttons visibility
         nextPreviousBtnVisible();
@@ -242,7 +244,7 @@ public class displayResultsPane extends javax.swing.JPanel {
             nextPreviousBtnVisible();
 
             //Display text
-            displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage);
+            displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage, text);
         }
     }//GEN-LAST:event_goBtnActionPerformed
 
@@ -263,9 +265,11 @@ public class displayResultsPane extends javax.swing.JPanel {
 */
 
     //Display text stored in StringBuffer, in an ArrayList in text area, one page at a time
-    public void displayText(ArrayList<StringBuffer> textContent, int pageNumber) {
+    public void displayText(ArrayList<StringBuffer> textContent, int pageNumber, boolean textType) {
         int startLine;
         int endLine;
+        
+        text = textType;
 
         maxPages = maxNumberPages(textContent);
 
@@ -283,9 +287,16 @@ public class displayResultsPane extends javax.swing.JPanel {
         if (endLine >= textContent.size()) {
             endLine = textContent.size();
         }
-
-        //Display lines in this interval
-        displayPage(textContent, startLine, endLine);
+        
+        //Dislay text
+        if(textType){
+            //Display lines in this interval
+            displayPage(textContent, startLine, endLine);
+        }
+        //Display table
+        else{
+            displayTablePage(textContent, startLine, endLine);
+        }
     }
 
     //Override displayText method, to display strings
@@ -297,6 +308,33 @@ public class displayResultsPane extends javax.swing.JPanel {
         textArea.append(textContent);
     }
 
+    //Display text on a page page of text (1000 lines)
+    public void displayPage(ArrayList<StringBuffer> textContent, int startLine, int endLine) {
+        int i;
+        //Clear text area for new page
+        textArea.setText(null);
+        
+        for (i = startLine; i < endLine; i++) {
+            textArea.append(textContent.get(i).toString() + "\n");
+        }
+    }
+    
+    //Display table on a page
+    public void displayTablePage(ArrayList<StringBuffer> textContent, int startLine, int endLine){
+        int i;
+        //Clear table for new page
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        tableModel.setRowCount(0);
+        
+        //Starts at line 6 because first 5 lines of the file are not gene models
+        for (i = startLine + 6; i < endLine; i++) {
+            String[] row;
+            //Each line of the gtf file is converted to a table row
+            row = contentToString(textContent.get(i));
+            addToTable(row);
+        }
+    }
+    
     //Convert a string buffer to a row of table
     public String[] contentToString(StringBuffer rowContent) {
         String rowText = rowContent.toString();
@@ -308,16 +346,13 @@ public class displayResultsPane extends javax.swing.JPanel {
         return row;
     }
 
-    //Display lines in table, for gtf file
-    public void displayTable(String[] row) {
+    //Add line to table, for gtf file
+    public void addToTable(String[] row) {
         int i;
 
         //Set default table of jTable1
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
-
-        //String[] row = {"chr1", "HAVANA", "gene", "11869", "14409", ".","+", ".","gene_id ENSG00000290825.1; gene_type lncRNA; gene_name DDX11L2; level 2; tag overlaps_pseudogene"};
         tableModel.addRow(row);
-
         //Resize col 8 (attributes) of table
         setColSize(jTable1, 8);
     }
@@ -381,14 +416,6 @@ public class displayResultsPane extends javax.swing.JPanel {
     //Reset text and table area
     public void resetText(){
         displayText(null);
-    }
-
-    //Display one page of text (1000 lines)
-    public void displayPage(ArrayList<StringBuffer> textContent, int startLine, int endLine) {
-        int i;
-        for (i = startLine; i < endLine; i++) {
-            textArea.append(textContent.get(i).toString() + "\n");
-        }
     }
 
     //Set next button to visible or invisible

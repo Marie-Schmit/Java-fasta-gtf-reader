@@ -183,14 +183,6 @@ public class actionPanel extends javax.swing.JPanel {
     private void gtfMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gtfMenuDisplayTextMousePressed
         //Display table, not text result
         mainFrame.displayResultsPane.setPanelVisible(false);
-        
-        mainFrame.displayResultsPane.displayTable(mainFrame.displayResultsPane.contentToString(mainFrame.fileChooserPanel.getFileContent().get(7)));
-    }//GEN-LAST:event_gtfMenuDisplayTextMousePressed
-
-    private void fastaMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fastaMenuDisplayTextMousePressed
-        //Display text result
-        mainFrame.displayResultsPane.setPanelVisible(true);
-        
         //Opening on the first page
         mainFrame.displayResultsPane.setPageNumber(0);
         
@@ -198,12 +190,35 @@ public class actionPanel extends javax.swing.JPanel {
         if(mainFrame.displayResultsPane.maxNumberPages(mainFrame.fileChooserPanel.getFileContent()) == 0){
             mainFrame.displayResultsPane.setNextBtnVisible(false);
         }
+        else{
+            mainFrame.displayResultsPane.setNextBtnVisible(true);
+        }
+        
+        //Do not display previous button
+        mainFrame.displayResultsPane.setPreviousBtnVisible(false);
+        
+        mainFrame.displayResultsPane.displayText(mainFrame.fileChooserPanel.getFileContent(), 0, false);
+    }//GEN-LAST:event_gtfMenuDisplayTextMousePressed
+
+    private void fastaMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fastaMenuDisplayTextMousePressed
+        //Display text result
+        mainFrame.displayResultsPane.setPanelVisible(true);
+        //Opening on the first page
+        mainFrame.displayResultsPane.setPageNumber(0);
+        
+        //Do not display next button if maximal number of pages equal 0
+        if(mainFrame.displayResultsPane.maxNumberPages(mainFrame.fileChooserPanel.getFileContent()) == 0){
+            mainFrame.displayResultsPane.setNextBtnVisible(false);
+        }
+        else{
+            mainFrame.displayResultsPane.setNextBtnVisible(true);
+        }
         
         //Do not display previous button
         mainFrame.displayResultsPane.setPreviousBtnVisible(false);
         
         //Display content of fasta file, accessible from fileChooserPane
-        mainFrame.displayResultsPane.displayText(mainFrame.fileChooserPanel.getFileContent(), 0);
+        mainFrame.displayResultsPane.displayText(mainFrame.fileChooserPanel.getFileContent(), 0, true);
     }//GEN-LAST:event_fastaMenuDisplayTextMousePressed
 
     private void menuNewFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNewFileMouseClicked
