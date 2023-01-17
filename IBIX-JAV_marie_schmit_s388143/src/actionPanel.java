@@ -106,6 +106,11 @@ public class actionPanel extends javax.swing.JPanel {
         gtfMenuStats.add(menuAverageGeneLength);
 
         gtfMenuAllStats.setText("All statistics");
+        gtfMenuAllStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gtfMenuAllStatsActionPerformed(evt);
+            }
+        });
         gtfMenuStats.add(gtfMenuAllStats);
 
         menuBar.add(gtfMenuStats);
@@ -189,7 +194,23 @@ public class actionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_menuAverageNumberExonsActionPerformed
 
     private void menuAverageGeneLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAverageGeneLengthActionPerformed
-        // TODO add your handling code here:
+        //Create instance of class gtfStatistics
+        gtfStatistics statistics = new gtfStatistics();
+        
+        //HashMap containing average length
+        HashMap<String, Object[]> hashResults = new HashMap<String, Object[]>();
+        //Run code to calculate length and their average
+        hashResults = statistics.getMinMaxLength(mainFrame.fileChooserPanel.getFileContent());
+        
+        //Set messages to display
+        String message = "The average length gene is: " + (double)hashResults.get("Average")[0];
+        
+        //Increase font of text area since displayed text is small
+        mainFrame.displayResultsPane.setFontTextArea(20);
+        //Message displayed on text area
+        mainFrame.displayResultsPane.setPanelVisible(true);
+        //Display text on specific panel
+        mainFrame.displayResultsPane.displayText(message);
     }//GEN-LAST:event_menuAverageGeneLengthActionPerformed
 
     private void menuSequenceLenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSequenceLenActionPerformed
@@ -245,12 +266,54 @@ public class actionPanel extends javax.swing.JPanel {
 
     private void menuLongestShortestModelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLongestShortestModelsActionPerformed
         //Create instance of class gtfStatistics
-        gtfStatistics geneModelsLength = new gtfStatistics();
+        gtfStatistics statistics = new gtfStatistics();
         
-        HashMap<String, String> hash = new HashMap<String, String>();
-        hash = geneModelsLength.hashLine(mainFrame.fileChooserPanel.getFileContent().get(5));
-        System.out.println(geneModelsLength.getLength(hash, "gene"));
+        //HashMap to contain longest and shortest genes
+        HashMap<String, Object[]> hashResults = new HashMap<String, Object[]>();
+        //Run code to find shortest and longest genes
+        hashResults = statistics.getMinMaxLength(mainFrame.fileChooserPanel.getFileContent());
+        
+        //Set messages to display
+        String message1 = "The shortest gene is: " + (String)hashResults.get("Shortest")[1] + " with a length of: " + (int)hashResults.get("Shortest")[0] + "\n";
+        String message2 = "The longest gene is: " + (String)hashResults.get("Longest")[1] + " with a length of: " + (int)hashResults.get("Longest")[0];
+        
+        //Increase font of text area since displayed text is small
+        mainFrame.displayResultsPane.setFontTextArea(20);
+        //Message displayed on text area
+        mainFrame.displayResultsPane.setPanelVisible(true);
+        //Display text on specific panel
+        mainFrame.displayResultsPane.displayText(message1 + message2);
     }//GEN-LAST:event_menuLongestShortestModelsActionPerformed
+
+    private void gtfMenuAllStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gtfMenuAllStatsActionPerformed
+        //Get results from all statistics functions
+        //Create instance of class gtfStatistics
+        gtfStatistics statistics = new gtfStatistics();
+        
+        //Calculate average number of exons per genes
+        double average = statistics.averageExons(mainFrame.fileChooserPanel.getFileContent()); //Average number of exons
+        String messageNbExons = "The average number of exons for this file is: " + average + "." + "\n\n";
+        
+        //HashMap to contain longest and shortest genes
+        HashMap<String, Object[]> hashResults = new HashMap<String, Object[]>();
+        //Run code to find shortest and longest genes
+        hashResults = statistics.getMinMaxLength(mainFrame.fileChooserPanel.getFileContent());
+        
+        //Set messages to display shortest and longest genes
+        String messageShortest = "The shortest gene is: " + (String)hashResults.get("Shortest")[1] + " with a length of: " + (int)hashResults.get("Shortest")[0] + "\n";
+        String messageLongest = "The longest gene is: " + (String)hashResults.get("Longest")[1] + " with a length of: " + (int)hashResults.get("Longest")[0] + "\n\n";
+        
+        //Set message to display average of length
+        String messageAverage = "The average length gene is: " + (double)hashResults.get("Average")[0];
+        
+        //Increase font of text area since displayed text is small
+        mainFrame.displayResultsPane.setFontTextArea(20);
+        //Message displayed on text area
+        mainFrame.displayResultsPane.setPanelVisible(true);
+        //Display text on specific panel
+        mainFrame.displayResultsPane.displayText(messageNbExons + messageShortest + messageLongest + messageAverage);
+        
+    }//GEN-LAST:event_gtfMenuAllStatsActionPerformed
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
