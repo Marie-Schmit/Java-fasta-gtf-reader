@@ -181,15 +181,15 @@ public class actionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_menuSequenceLenActionPerformed
 
     private void gtfMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gtfMenuDisplayTextMousePressed
-        //Panel display results shows the card containing a table of the gtf file content
-        mainFrame.displayResultsPane.switchLastPanel("tableCard");
+        //Display table, not text result
+        mainFrame.displayResultsPane.setPanelVisible(false);
         
-        mainFrame.displayResultsPane.displayTable();
+        mainFrame.displayResultsPane.displayTable(mainFrame.displayResultsPane.contentToString(mainFrame.fileChooserPanel.getFileContent().get(7)));
     }//GEN-LAST:event_gtfMenuDisplayTextMousePressed
 
     private void fastaMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fastaMenuDisplayTextMousePressed
-        //Panel display results shows the card containing a table of the gtf file content
-        mainFrame.displayResultsPane.switchLastPanel("textCard");
+        //Display text result
+        mainFrame.displayResultsPane.setPanelVisible(true);
         
         //Opening on the first page
         mainFrame.displayResultsPane.setPageNumber(0);
@@ -209,6 +209,7 @@ public class actionPanel extends javax.swing.JPanel {
     private void menuNewFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNewFileMouseClicked
         // TODO add your handling code here:
         chooseNewFile();
+        mainFrame.displayResultsPane.resetText();
     }//GEN-LAST:event_menuNewFileMouseClicked
     
     //Display different menu items according to the chosen file
@@ -223,8 +224,7 @@ public class actionPanel extends javax.swing.JPanel {
         
         //Set fasta menu visible or not
         fastaMenuDisplayText.setVisible(fasta);
-        fastaMenuStats.setVisible(fasta);
-        
+        fastaMenuStats.setVisible(fasta); 
     }
         
     //Display information from the previous panel and the chosen file to this panel

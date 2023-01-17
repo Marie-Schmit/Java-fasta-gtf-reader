@@ -215,11 +215,16 @@ public class fileChooserPanel extends javax.swing.JPanel {
         fileContent = readFile(fileName);
         
         //Set data
-        actionPanel.setData(this); 
+        actionPanel.setData(this);
                 
         //Open actionpanel and display results panel
-        this.setVisible(false);
+        
+        mainFrame.displayResultsPane.setVisible(true);
         mainFrame.actionPanel.setVisible(true);
+        //Display text area of displayResultsPane
+        mainFrame.displayResultsPane.setPanelVisible(true);
+        
+        this.setVisible(false);
     }//GEN-LAST:event_confirmBtnActionPerformed
 
     private void searchBarFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarFileActionPerformed

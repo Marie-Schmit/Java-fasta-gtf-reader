@@ -20,28 +20,16 @@ public class displayResultsPane extends javax.swing.JPanel {
     /**
      * Creates new form displayResultsPane
      */
+
+    public displayResultsPane() {
+        initComponents();
+        presentPage = 0;
+    }
     
     //Present page
     private int presentPage;
     //Maximum number of pages
     private int maxPages;
-    
-    /*
-    static String columns[] = {"Sequence name", "Source", "Feature", "Start", "End", "Score", "Strand", "Frame", "Attribute"};
-    private static DefaultTableModel tableModel = new DefaultTableModel(columns,0);
-    /*
-    /*
-        //Set columns of default table
-        String columns[] = {"Sequence name", "Source", "Feature", "Start", "End", "Score", "Strand", "Frame", "Attribute"};
-        //Initialisation of default table model for gtf files
-        tableModel = new DefaultTableModel(columns,0);
-        System.out.println(tableModel == null);
-    */
-    
-    public displayResultsPane() {
-        presentPage = 0;
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,21 +40,36 @@ public class displayResultsPane extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        textPanel = new javax.swing.JPanel();
+        textArea = new java.awt.TextArea();
         tabPanel = new javax.swing.JPanel();
         gtfTable = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        textPanel = new javax.swing.JPanel();
-        textArea = new java.awt.TextArea();
+        buttonsPanel = new javax.swing.JPanel();
         nextBtn = new javax.swing.JButton();
         previousBtn = new javax.swing.JButton();
-        pageNumberLbl = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         goToPageField = new javax.swing.JTextField();
         goBtn = new javax.swing.JButton();
+        pageNumberLbl = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(900, 400));
-        setLayout(new java.awt.CardLayout());
+
+        textArea.setBackground(new java.awt.Color(240, 240, 240));
+
+        javax.swing.GroupLayout textPanelLayout = new javax.swing.GroupLayout(textPanel);
+        textPanel.setLayout(textPanelLayout);
+        textPanelLayout.setHorizontalGroup(
+            textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(textArea, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
+        );
+        textPanelLayout.setVerticalGroup(
+            textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(textPanelLayout.createSequentialGroup()
+                .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
 
         gtfTable.setFocusable(false);
 
@@ -86,16 +89,34 @@ public class displayResultsPane extends javax.swing.JPanel {
         tabPanel.setLayout(tabPanelLayout);
         tabPanelLayout.setHorizontalGroup(
             tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
+            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
         );
         tabPanelLayout.setVerticalGroup(
             tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
 
-        add(tabPanel, "tableCard");
+        jLayeredPane1.setLayer(textPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(tabPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        textArea.setBackground(new java.awt.Color(240, 240, 240));
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(tabPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(textPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 405, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(tabPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(textPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         nextBtn.setText("Next page");
         nextBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -129,73 +150,91 @@ public class displayResultsPane extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout textPanelLayout = new javax.swing.GroupLayout(textPanel);
-        textPanel.setLayout(textPanelLayout);
-        textPanelLayout.setHorizontalGroup(
-            textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(textPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pageNumberLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(goToPageField, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(goBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
-                .addComponent(previousBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nextBtn)
-                .addContainerGap())
-        );
-        textPanelLayout.setVerticalGroup(
-            textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textPanelLayout.createSequentialGroup()
-                .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nextBtn)
-                    .addComponent(previousBtn)
-                    .addComponent(pageNumberLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
+        buttonsPanel.setLayout(buttonsPanelLayout);
+        buttonsPanelLayout.setHorizontalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(buttonsPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pageNumberLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(126, 126, 126)
                     .addComponent(jLabel1)
-                    .addComponent(goToPageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goBtn)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(goToPageField, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(goBtn)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                    .addComponent(previousBtn)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(nextBtn)
+                    .addContainerGap()))
+        );
+        buttonsPanelLayout.setVerticalGroup(
+            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 48, Short.MAX_VALUE)
+            .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(buttonsPanelLayout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nextBtn)
+                            .addComponent(previousBtn)
+                            .addComponent(goToPageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(goBtn))
+                        .addComponent(pageNumberLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        add(textPanel, "textCard");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLayeredPane1)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        buttonsPanel.getAccessibleContext().setAccessibleParent(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         //Increment present page number
         presentPage++;
-        
+
         //Display text on text area, presentPage
         displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage);
-        
+
         //Buttons visibility
         nextPreviousBtnVisible();
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void previousBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousBtnActionPerformed
         //Decremente present page number
-        presentPage--;       
-        
+        presentPage--;
+
         //Display text on text area, presentPage
         displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage);
-        
+
         //Change buttons visibility
         nextPreviousBtnVisible();
     }//GEN-LAST:event_previousBtnActionPerformed
 
     private void goBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBtnActionPerformed
         int pageNumber = Integer.parseInt(goToPageField.getText()); //Desired page
-        
+
         //If entered page does not correspond
-        if((pageNumber < 0) || (pageNumber > maxPages)){
+        if ((pageNumber < 0) || (pageNumber > maxPages)) {
             displayText("Number of pages must be contained between 0 and " + maxPages + ". Please retry.");
-        }
-        else{
+        } else {
             //New current page
             presentPage = Integer.parseInt(goToPageField.getText());
 
@@ -212,6 +251,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel1AncestorAdded
 
     //Switch panels
+    /*
     public void switchLastPanel(String cardName) {
         //Make this panel visible
         this.setVisible(true);
@@ -220,65 +260,78 @@ public class displayResultsPane extends javax.swing.JPanel {
         CardLayout card = (CardLayout) (this.getLayout());
         card.show(this, cardName);
     }
+*/
 
     //Display text stored in StringBuffer, in an ArrayList in text area, one page at a time
     public void displayText(ArrayList<StringBuffer> textContent, int pageNumber) {
         int startLine;
         int endLine;
-        
+
         maxPages = maxNumberPages(textContent);
-        
+
         //Set page number
         pageNumberLbl.setText("Page " + pageNumber + "/" + maxPages);
-        
+
         //Reset text area
         textArea.setText(null);
-        
+
         //Set end and start lines for ta page
-        startLine = 1000*pageNumber;
+        startLine = 1000 * pageNumber;
         endLine = startLine + 1000;
-        
+
         //End line cannot be higher than maximum number of lines
-        if(endLine >= textContent.size()) endLine = textContent.size();
-        
+        if (endLine >= textContent.size()) {
+            endLine = textContent.size();
+        }
+
         //Display lines in this interval
-        displayPage(textContent, startLine, endLine);     
+        displayPage(textContent, startLine, endLine);
     }
-    
+
     //Override displayText method, to display strings
     public void displayText(String textContent) {
         //Reset text area
         textArea.setText(null);
-        
+
         //Add new string to text area
         textArea.append(textContent);
     }
-    
-    
+
+    //Convert a string buffer to a row of table
+    public String[] contentToString(StringBuffer rowContent) {
+        String rowText = rowContent.toString();
+        String[] row;
+
+        //Cells of a row are separated by a tab: separate the row text by tabs
+        row = rowText.split("\t");
+
+        return row;
+    }
+
     //Display lines in table, for gtf file
-    public void displayTable(String[] row){
+    public void displayTable(String[] row) {
         int i;
-        
+
         //Set default table of jTable1
-        DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
-        
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+
         //String[] row = {"chr1", "HAVANA", "gene", "11869", "14409", ".","+", ".","gene_id ENSG00000290825.1; gene_type lncRNA; gene_name DDX11L2; level 2; tag overlaps_pseudogene"};
         tableModel.addRow(row);
 
-        //Resize col 9 of table
-        setTableSize(jTable1, 8);
+        //Resize col 8 (attributes) of table
+        setColSize(jTable1, 8);
     }
-    
+
     //Resize colulumn of index colNumber of JTable table
-    public void setTableSize(JTable table, int colNumber){
+    public void setColSize(JTable table, int colNumber) {
         TableColumn tableCol = table.getColumnModel().getColumn(colNumber); //get desired column
-        
+
         //Set initial width
         int bestWidth = tableCol.getMinWidth();
-        
+
         //For each row
         int i;
-        for (i=0; i < table.getRowCount(); i++){
+        for (i = 0; i < table.getRowCount(); i++) {
             //Get component used to draw the cell
             TableCellRenderer render = table.getCellRenderer(i, colNumber);
             //Prepare the renderer of a cell
@@ -289,74 +342,83 @@ public class displayResultsPane extends javax.swing.JPanel {
             //The width of the column is the maximal width of all rows
             bestWidth = Math.max(bestWidth, width); //Keep maximal width, i)
         }
-        
+
         tableCol.setPreferredWidth(bestWidth);
-        
-        
     }
-    
+
     //Get maximal number of pages
-    public int maxNumberPages(ArrayList<StringBuffer> textContent){
+    public int maxNumberPages(ArrayList<StringBuffer> textContent) {
         int maxNumber;
-        
+
         //Calculate maximum page number
-        maxNumber = textContent.size()/1000;
-        
+        maxNumber = textContent.size() / 1000;
+
         //Last lines on last page
-        if(maxNumber%1000 != 0){
-            maxNumber ++;
+        if (maxNumber % 1000 != 0) {
+            maxNumber++;
         }
-        
+
         return maxNumber;
     }
-    
+
     //Set next and previous buttons visibility
-    public void nextPreviousBtnVisible(){
+    public void nextPreviousBtnVisible() {
         //If maximal number of page attained
-        if(presentPage + 1 >= maxPages){
+        if (presentPage + 1 >= maxPages) {
             nextBtn.setVisible(false);
-        }
-        else{
+        } else {
             nextBtn.setVisible(true);
         }
         //Set previous button to visible when page number is more than 0
-        if(presentPage - 1 > 0){
+        if (presentPage - 1 > 0) {
             previousBtn.setVisible(true);
-        }
-        //Set previous button to unvisible
-        else{
+        } //Set previous button to unvisible
+        else {
             previousBtn.setVisible(false);
         }
     }
     
+    //Reset text and table area
+    public void resetText(){
+        displayText(null);
+    }
+
     //Display one page of text (1000 lines)
-    public void displayPage(ArrayList<StringBuffer> textContent, int startLine, int endLine){
+    public void displayPage(ArrayList<StringBuffer> textContent, int startLine, int endLine) {
         int i;
         for (i = startLine; i < endLine; i++) {
             textArea.append(textContent.get(i).toString() + "\n");
         }
     }
-    
+
     //Set next button to visible or invisible
-    public void setNextBtnVisible(boolean visibility){
+    public void setNextBtnVisible(boolean visibility) {
         nextBtn.setVisible(visibility);
     }
-    
+
     //Set previous button to visible or invisible
-    public void setPreviousBtnVisible(boolean visibility){
+    public void setPreviousBtnVisible(boolean visibility) {
         previousBtn.setVisible(visibility);
     }
-    
+
     //Set page number
-    public void setPageNumber(int newNumber){
+    public void setPageNumber(int newNumber) {
         presentPage = newNumber;
+    }
+    
+    //Set one panel visible if the result is text
+    public void setPanelVisible(boolean text){         
+        tabPanel.setVisible(!text);
+        textPanel.setVisible(text);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton goBtn;
     private javax.swing.JTextField goToPageField;
     private javax.swing.JScrollPane gtfTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private static javax.swing.JTable jTable1;
     private javax.swing.JButton nextBtn;
     private javax.swing.JLabel pageNumberLbl;
