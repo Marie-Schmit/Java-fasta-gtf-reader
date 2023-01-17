@@ -182,7 +182,9 @@ public class actionPanel extends javax.swing.JPanel {
 
     private void gtfMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gtfMenuDisplayTextMousePressed
         //Panel display results shows the card containing a table of the gtf file content
-        mainFrame.displayResultsPane.switchLastPanel("textCard");
+        mainFrame.displayResultsPane.switchLastPanel("tableCard");
+        
+        mainFrame.displayResultsPane.displayTable();
     }//GEN-LAST:event_gtfMenuDisplayTextMousePressed
 
     private void fastaMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fastaMenuDisplayTextMousePressed

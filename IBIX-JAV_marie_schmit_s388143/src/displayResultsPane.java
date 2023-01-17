@@ -1,6 +1,11 @@
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,15 +20,28 @@ public class displayResultsPane extends javax.swing.JPanel {
     /**
      * Creates new form displayResultsPane
      */
-    public displayResultsPane() {
-        initComponents();
-        presentPage = 0;
-    }
     
     //Present page
     private int presentPage;
     //Maximum number of pages
     private int maxPages;
+    
+    /*
+    static String columns[] = {"Sequence name", "Source", "Feature", "Start", "End", "Score", "Strand", "Frame", "Attribute"};
+    private static DefaultTableModel tableModel = new DefaultTableModel(columns,0);
+    /*
+    /*
+        //Set columns of default table
+        String columns[] = {"Sequence name", "Source", "Feature", "Start", "End", "Score", "Strand", "Frame", "Attribute"};
+        //Initialisation of default table model for gtf files
+        tableModel = new DefaultTableModel(columns,0);
+        System.out.println(tableModel == null);
+    */
+    
+    public displayResultsPane() {
+        presentPage = 0;
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +52,9 @@ public class displayResultsPane extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tabPanel = new javax.swing.JPanel();
+        gtfTable = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         textPanel = new javax.swing.JPanel();
         textArea = new java.awt.TextArea();
         nextBtn = new javax.swing.JButton();
@@ -42,13 +63,37 @@ public class displayResultsPane extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         goToPageField = new javax.swing.JTextField();
         goBtn = new javax.swing.JButton();
-        tabPanel = new javax.swing.JPanel();
-        gtfTable = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(900, 400));
         setLayout(new java.awt.CardLayout());
+
+        gtfTable.setFocusable(false);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+
+            new Object [][] {
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Sequence name", "Source", "Feature", "Start", "End", "Score", "Strand", "Frame", "Attribute"
+            }
+        ));
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        gtfTable.setViewportView(jTable1);
+
+        javax.swing.GroupLayout tabPanelLayout = new javax.swing.GroupLayout(tabPanel);
+        tabPanel.setLayout(tabPanelLayout);
+        tabPanelLayout.setHorizontalGroup(
+            tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
+        );
+        tabPanelLayout.setVerticalGroup(
+            tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+        );
+
+        add(tabPanel, "tableCard");
 
         textArea.setBackground(new java.awt.Color(240, 240, 240));
 
@@ -67,6 +112,15 @@ public class displayResultsPane extends javax.swing.JPanel {
         });
 
         jLabel1.setText("Go to page: ");
+        jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         goBtn.setText("Go");
         goBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +143,7 @@ public class displayResultsPane extends javax.swing.JPanel {
                 .addComponent(goToPageField, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(goBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
                 .addComponent(previousBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nextBtn)
@@ -110,32 +164,6 @@ public class displayResultsPane extends javax.swing.JPanel {
         );
 
         add(textPanel, "textCard");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        gtfTable.setViewportView(jTable1);
-
-        javax.swing.GroupLayout tabPanelLayout = new javax.swing.GroupLayout(tabPanel);
-        tabPanel.setLayout(tabPanelLayout);
-        tabPanelLayout.setHorizontalGroup(
-            tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
-        );
-        tabPanelLayout.setVerticalGroup(
-            tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-        );
-
-        add(tabPanel, "tableCard");
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
@@ -179,6 +207,10 @@ public class displayResultsPane extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_goBtnActionPerformed
 
+    private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1AncestorAdded
+
     //Switch panels
     public void switchLastPanel(String cardName) {
         //Make this panel visible
@@ -187,7 +219,6 @@ public class displayResultsPane extends javax.swing.JPanel {
         this.setLayout(new java.awt.CardLayout());
         CardLayout card = (CardLayout) (this.getLayout());
         card.show(this, cardName);
-
     }
 
     //Display text stored in StringBuffer, in an ArrayList in text area, one page at a time
@@ -211,7 +242,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         if(endLine >= textContent.size()) endLine = textContent.size();
         
         //Display lines in this interval
-        displayPage(textContent, startLine, endLine);      
+        displayPage(textContent, startLine, endLine);     
     }
     
     //Override displayText method, to display strings
@@ -221,6 +252,47 @@ public class displayResultsPane extends javax.swing.JPanel {
         
         //Add new string to text area
         textArea.append(textContent);
+    }
+    
+    
+    //Display lines in table, for gtf file
+    public void displayTable(String[] row){
+        int i;
+        
+        //Set default table of jTable1
+        DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
+        
+        //String[] row = {"chr1", "HAVANA", "gene", "11869", "14409", ".","+", ".","gene_id ENSG00000290825.1; gene_type lncRNA; gene_name DDX11L2; level 2; tag overlaps_pseudogene"};
+        tableModel.addRow(row);
+
+        //Resize col 9 of table
+        setTableSize(jTable1, 8);
+    }
+    
+    //Resize colulumn of index colNumber of JTable table
+    public void setTableSize(JTable table, int colNumber){
+        TableColumn tableCol = table.getColumnModel().getColumn(colNumber); //get desired column
+        
+        //Set initial width
+        int bestWidth = tableCol.getMinWidth();
+        
+        //For each row
+        int i;
+        for (i=0; i < table.getRowCount(); i++){
+            //Get component used to draw the cell
+            TableCellRenderer render = table.getCellRenderer(i, colNumber);
+            //Prepare the renderer of a cell
+            Component component = table.prepareRenderer(render, i, colNumber);
+            int width;
+            //Calculate width
+            width = component.getPreferredSize().width + table.getIntercellSpacing().width; //New width is based on preferred width and space of cells
+            //The width of the column is the maximal width of all rows
+            bestWidth = Math.max(bestWidth, width); //Keep maximal width, i)
+        }
+        
+        tableCol.setPreferredWidth(bestWidth);
+        
+        
     }
     
     //Get maximal number of pages
@@ -285,7 +357,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     private javax.swing.JTextField goToPageField;
     private javax.swing.JScrollPane gtfTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTable jTable1;
+    private static javax.swing.JTable jTable1;
     private javax.swing.JButton nextBtn;
     private javax.swing.JLabel pageNumberLbl;
     private javax.swing.JButton previousBtn;
