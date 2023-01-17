@@ -80,7 +80,7 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="gtfMenuDisplayText">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Display text"/>
+                <Property name="text" type="java.lang.String" value="Display table"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="gtfMenuDisplayTextMousePressed"/>

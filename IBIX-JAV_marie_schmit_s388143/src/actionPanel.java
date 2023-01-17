@@ -71,7 +71,7 @@ public class actionPanel extends javax.swing.JPanel {
         });
         menuBar.add(menuNewFile);
 
-        gtfMenuDisplayText.setText("Display text");
+        gtfMenuDisplayText.setText("Display table");
         gtfMenuDisplayText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 gtfMenuDisplayTextMousePressed(evt);

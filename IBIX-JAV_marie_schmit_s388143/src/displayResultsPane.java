@@ -24,6 +24,9 @@ public class displayResultsPane extends javax.swing.JPanel {
     public displayResultsPane() {
         initComponents();
         presentPage = 0;
+        
+        //Button panel initially invisible
+        buttonsPanel.setVisible(false);
     }
     
     //Present page
@@ -211,10 +214,11 @@ public class displayResultsPane extends javax.swing.JPanel {
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         //Increment present page number
         presentPage++;
+        //Previous button is visible
+        setPreviousBtnVisible(true);
 
         //Display text on text area, presentPage
         displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage, text);
-
         //Buttons visibility
         nextPreviousBtnVisible();
     }//GEN-LAST:event_nextBtnActionPerformed
@@ -225,7 +229,6 @@ public class displayResultsPane extends javax.swing.JPanel {
 
         //Display text on text area, presentPage
         displayText(mainFrame.fileChooserPanel.getFileContent(), presentPage, text);
-
         //Change buttons visibility
         nextPreviousBtnVisible();
     }//GEN-LAST:event_previousBtnActionPerformed
@@ -405,7 +408,7 @@ public class displayResultsPane extends javax.swing.JPanel {
             nextBtn.setVisible(true);
         }
         //Set previous button to visible when page number is more than 0
-        if (presentPage - 1 > 0) {
+        if (presentPage > 0) {
             previousBtn.setVisible(true);
         } //Set previous button to unvisible
         else {
@@ -434,7 +437,9 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
     
     //Set one panel visible if the result is text
-    public void setPanelVisible(boolean text){         
+    public void setPanelVisible(boolean text){  
+        buttonsPanel.setVisible(true);
+        
         tabPanel.setVisible(!text);
         textPanel.setVisible(text);
     }
