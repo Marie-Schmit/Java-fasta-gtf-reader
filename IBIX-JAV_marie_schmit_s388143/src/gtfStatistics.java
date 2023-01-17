@@ -20,10 +20,12 @@ public class gtfStatistics {
   
     //Average number of exons per gene
     private double avgNumberExons;
+    //Infinite length value
+    private final int HIGH_LENGTH = 1000000;
     
     //////////////////////////////////////// Calculation of average number of exons per gene ///////////////////////////////
     //Hashmap of each line
-    public HashMap hashLine(StringBuffer lineContent){
+    private HashMap hashLine(StringBuffer lineContent){
         //New hashmap
         HashMap<String, String> hash = new HashMap<String, String>();
         //Names of keys
@@ -118,37 +120,38 @@ public class gtfStatistics {
     
     //Hashmap of the length per gene model
     //Takes content of gtf file as argument
-    //Returns
-    private HashMap<String, Integer> setLengthPerGene(ArrayList<StringBuffer> textContent){
+    //Returns a hashmap of the min or max values and the coresponding genes id
+    private HashMap<String, String[]> getMinMaxLength(ArrayList<StringBuffer> textContent){
         int i;
+        
+        //Hashmap to store results. The keys are max or min and the values are a list of length value and coresponding gene
+        HashMap<String, String[]>resultMap = new HashMap<String, String[]>();
+        
         //Hashmap to store line values
         HashMap<String, String> line = new HashMap<String, String>();
-        //Hashmap of length per gene
-        HashMap<String, Integer> lengthPerGene = new HashMap<String, Integer>();
         
-        int maxLen; //Maximal Length
-        int minLen; //Minimal length
+        int maxLen = 0; //Maximal Length
+        int minLen = HIGH_LENGTH; //Minimal length
+        String maxGene; //ID of longest gene
+        String minGene; //ID of shortest gene
         
         for (i = 6; i < textContent.size(); i++){
+            //Convert each line of the file to hashmap
             line = hashLine(textContent.get(i));
             
-            //If key gene_id does not exist, create it
-            if(lengthPerGene.get(line.get("Gene ID")) == null){
-                lengthPerGene.put(line.get("Gene ID").toString(), 0);
+            //Caclulate length of considered line
+            int length = getLength(line, "gene");
+            
+            if(length >=0){ //The line corresponds to gene model
+                maxLen = Math.max(maxGene, length);
                 
-                //If line is a gene, actualise number of genes
-                actualiseExonNumber(line, lengthPerGene);
-            }
-            else{
-                //If gene id already exists in the hashmap, actualise number of exons
-                actualiseExonNumber(line, lengthPerGene);
             }
         }
-        return(lengthPerGene);
+        return resultMap;
     }
     
     //Caclulate length of a gene model
-    public int getLength(HashMap<String, String> line, String feature){
+    private int getLength(HashMap<String, String> line, String feature){
         int length = -1; //Impossible length if the feature is not "gene"
         int start;
         int end;
