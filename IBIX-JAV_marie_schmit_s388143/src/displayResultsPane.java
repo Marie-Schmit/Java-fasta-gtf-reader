@@ -53,6 +53,9 @@ public class displayResultsPane extends javax.swing.JPanel {
         tabPanel = new javax.swing.JPanel();
         gtfTable = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        exonsPane = new javax.swing.JPanel();
+        textPane = new javax.swing.JPanel();
+        graphicalPanel = new javax.swing.JPanel();
         buttonsPanel = new javax.swing.JPanel();
         nextBtn = new javax.swing.JButton();
         previousBtn = new javax.swing.JButton();
@@ -67,6 +70,7 @@ public class displayResultsPane extends javax.swing.JPanel {
 
         textArea.setBackground(new java.awt.Color(240, 240, 240));
         textArea.setEditable(false);
+        textArea.setName(""); // NOI18N
 
         javax.swing.GroupLayout textPanelLayout = new javax.swing.GroupLayout(textPanel);
         textPanel.setLayout(textPanelLayout);
@@ -104,8 +108,37 @@ public class displayResultsPane extends javax.swing.JPanel {
             .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
 
+        exonsPane.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout textPaneLayout = new javax.swing.GroupLayout(textPane);
+        textPane.setLayout(textPaneLayout);
+        textPaneLayout.setHorizontalGroup(
+            textPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        textPaneLayout.setVerticalGroup(
+            textPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 405, Short.MAX_VALUE)
+        );
+
+        exonsPane.add(textPane, "card2");
+
+        javax.swing.GroupLayout graphicalPanelLayout = new javax.swing.GroupLayout(graphicalPanel);
+        graphicalPanel.setLayout(graphicalPanelLayout);
+        graphicalPanelLayout.setHorizontalGroup(
+            graphicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+        );
+        graphicalPanelLayout.setVerticalGroup(
+            graphicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 405, Short.MAX_VALUE)
+        );
+
+        exonsPane.add(graphicalPanel, "card3");
+
         jLayeredPane1.setLayer(textPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(tabPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(exonsPane, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -116,6 +149,8 @@ public class displayResultsPane extends javax.swing.JPanel {
                 .addComponent(tabPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(textPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(exonsPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,6 +159,8 @@ public class displayResultsPane extends javax.swing.JPanel {
                 .addComponent(tabPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(textPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(exonsPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         nextBtn.setText("Next page");
@@ -181,7 +218,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         );
         buttonsPanelLayout.setVerticalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(buttonsPanelLayout.createSequentialGroup()
                     .addGap(10, 10, 10)
@@ -207,8 +244,8 @@ public class displayResultsPane extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         buttonsPanel.getAccessibleContext().setAccessibleParent(null);
@@ -454,8 +491,10 @@ public class displayResultsPane extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JPanel exonsPane;
     private javax.swing.JButton goBtn;
     private javax.swing.JTextField goToPageField;
+    private javax.swing.JPanel graphicalPanel;
     private javax.swing.JScrollPane gtfTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -467,6 +506,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     private javax.swing.JButton previousBtn;
     public static javax.swing.JPanel tabPanel;
     private java.awt.TextArea textArea;
+    private javax.swing.JPanel textPane;
     public static javax.swing.JPanel textPanel;
     // End of variables declaration//GEN-END:variables
 }
