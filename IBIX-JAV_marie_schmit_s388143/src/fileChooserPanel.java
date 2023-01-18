@@ -27,8 +27,10 @@ public class fileChooserPanel extends javax.swing.JPanel {
     public fileChooserPanel() {
         initComponents();
         
-        this.gtfFile = false;
-        this.fastaFile = false;
+        FileClass fileData = new FileClass();
+        
+        fileData.gtfFile = false;
+        fileData.fastaFile = false;
         
         clearBtn.setVisible(false);
         confirmBtn.setVisible(false);
@@ -36,26 +38,15 @@ public class fileChooserPanel extends javax.swing.JPanel {
         secondFileExons = false; //First file to be chosen, not for exons display
     }
     
-    //Override constructor to add functionalities to confirm button
-    //In this case, the file to choose is the second one, for exons display
-    public fileChooserPanel(exonsPanel isExons){
-        initComponents();
-        
-        this.gtfFile = false;
-        this.fastaFile = false;
-        
-        clearBtn.setVisible(false);
-        confirmBtn.setVisible(false);
-        
-        secondFileExons = true; //Second file to be chosen, in case of exons display
-    }
     
+    /*
     //Indicates if chosen file is fasta or gtf. If both are false, no file is chosen.
     private boolean gtfFile; //Indicates if selected file is gft
     private boolean fastaFile; //Indicates if selected file is fa
     private ArrayList<StringBuffer> fileContent; //content of the file
     private String fileName; //Name of the selected file
     private String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
+    */
     
     private String fileDirectory; //Name of the selected file directory
     private FileDialog nameBox; //File browser
@@ -75,7 +66,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
         fileBrowserBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         confirmBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        textLbl = new javax.swing.JLabel();
         searchBarFile = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         falseFileLbl = new javax.swing.JLabel();
@@ -110,8 +101,8 @@ public class fileChooserPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Please browse a fasta or gtf file");
+        textLbl.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        textLbl.setText("Please browse a fasta or gtf file");
 
         searchBarFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,7 +145,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(281, 281, 281)
-                        .addComponent(jLabel1))
+                        .addComponent(textLbl))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(346, 346, 346)
                         .addComponent(clearBtn)
@@ -173,7 +164,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel1)
+                .addComponent(textLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
@@ -376,37 +367,46 @@ public class fileChooserPanel extends javax.swing.JPanel {
         waitMessage.setText(message);
     }
     
-    //Get methods to get private fileChooserVariable from other classes, which avoid to break the encapsulation of the variables.
-    //Get variables gtfFiles and fasta file
-    public boolean[] getFileTypes(){
-        return new boolean[]{gtfFile, fastaFile};
-    }
-    
-    //Get file content
-    public ArrayList<StringBuffer> getFileContent(){
-        return fileContent;
-    }
-    
-    //Get filename
-    public String getFileName(){
-        return fileName;
-    }
-    
-    //Get fileChosenMessage
-    public String getFileChosenMessage(){
-        return fileChosenMessage;
-    }
+    //Create a nested class to get file chosen data
+    final class FileClass{
+        private boolean gtfFile; //Indicates if selected file is gft
+        private boolean fastaFile; //Indicates if selected file is fa
+        private ArrayList<StringBuffer> fileContent; //content of the file
+        private String fileName; //Name of the selected file
+        private String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
+        
+        //Get methods to get private fileChooserVariable from other classes, which avoid to break the encapsulation of the variables.
+        //Get variables gtfFiles and fasta file
+        public boolean[] getFileTypes(){
+            return new boolean[]{gtfFile, fastaFile};
+        }
+
+        //Get file content
+        public ArrayList<StringBuffer> getFileContent(){
+            return fileContent;
+        }
+
+        //Get filename
+        public String getFileName(){
+            return fileName;
+        }
+
+        //Get fileChosenMessage
+        public String getFileChosenMessage(){
+            return fileChosenMessage;
+        }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearBtn;
     private javax.swing.JButton confirmBtn;
     private javax.swing.JLabel falseFileLbl;
     private javax.swing.JButton fileBrowserBtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField searchBarFile;
+    private javax.swing.JLabel textLbl;
     private javax.swing.JLabel waitMessage;
     // End of variables declaration//GEN-END:variables
 }
