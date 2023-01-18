@@ -187,6 +187,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="GC content"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuGcContentActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="menuAllFastaStats">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="All fasta statistics"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAllFastaStatsActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

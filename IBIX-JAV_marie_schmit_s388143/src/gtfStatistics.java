@@ -147,16 +147,17 @@ public class gtfStatistics {
 
             if (length >= 0) { //The line corresponds to gene model
                 if (maxLen < length) {
-                    maxLen = length;
-                    maxGene = line.get("Gene ID");
+                    maxLen = (int)length;
+                    maxGene = (String) line.get("Gene ID");
                 } else if (minLen > length) {
-                    minLen = length;
-                    minGene = line.get("Gene ID");
+                    minLen = (int)length; //Cast to int because object does not impose a type
+                    minGene = (String) line.get("Gene ID");
                 }
             }
         }
         //Calculate average of length
         average = averageLength(allLength);
+        
         //Store results in HashMap
         resultMap.put("Longest", new Object[]{maxLen, maxGene});
         resultMap.put("Shortest", new Object[]{minLen, minGene});
@@ -164,7 +165,7 @@ public class gtfStatistics {
         
         return resultMap;
     }
-
+    
     //Calculate length of a gene model
     private int getLength(HashMap<String, String> line, String feature) {
         int length = -1; //Impossible length if the feature is not "gene"
@@ -190,18 +191,20 @@ public class gtfStatistics {
         double average;
         //Average calculation
         try{
+            //Calculate sum of sequences length for every line of the file
             for(i = 0; i < listLength.size(); i++){
                 sum += (int)listLength.get(i);
             }
-            
-            average = (sum/i);
+            if (i == 0) { //Division per 0
+                average = 0;
+                //Throw exception
+                throw new IllegalStateException("Division by 0. The list of length is null. Please try to select a gtf file with gene length information.");
+            }
+            else
+                average = (sum/i);
         }
         catch(NumberFormatException e){ //Length are not integers
             System.out.println("List of length should be an array list of integers.");
-            average = 0;
-        }
-        catch(ArithmeticException e){ //Division per 0
-            System.out.println("The list of length is null. Please try to select a gtf file with gene length information.");
             average = 0;
         }
         return average;

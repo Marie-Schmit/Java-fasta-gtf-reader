@@ -52,6 +52,7 @@ public class actionPanel extends javax.swing.JPanel {
         fastaMenuStats = new javax.swing.JMenu();
         menuSequenceLen = new javax.swing.JMenuItem();
         menuGcContent = new javax.swing.JMenuItem();
+        menuAllFastaStats = new javax.swing.JMenuItem();
 
         internalFrame.setBorder(null);
         internalFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -147,7 +148,20 @@ public class actionPanel extends javax.swing.JPanel {
         fastaMenuStats.add(menuSequenceLen);
 
         menuGcContent.setText("GC content");
+        menuGcContent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuGcContentActionPerformed(evt);
+            }
+        });
         fastaMenuStats.add(menuGcContent);
+
+        menuAllFastaStats.setText("All fasta statistics");
+        menuAllFastaStats.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAllFastaStatsActionPerformed(evt);
+            }
+        });
+        fastaMenuStats.add(menuAllFastaStats);
 
         menuBar.add(fastaMenuStats);
 
@@ -217,17 +231,16 @@ public class actionPanel extends javax.swing.JPanel {
         //Create instance of fastaStatistics
         fastaStatistics fastaStats = new fastaStatistics();
         //Create instance of class lengthResult to get the results of calculation
-        lengthResult result = fastaStats.statisticSeqLength(mainFrame.fileChooserPanel.getFileContent());
-        
-        
+        fastaStatistics.lengthResult result = fastaStats.statisticSeqLength(mainFrame.fileChooserPanel.getFileContent());
+  
        //Message to display
         String message;
         
         //Set messages to display
         if(result.getType().equals("single")) 
-            message = "The sequence is " + result.getType() + ". It's length is " + result.getLength();
+            message = "The sequence is " + result.getType() + ". It's length is " + result.getLength() + ".";
         else
-            message = "The sequence is " + result.getType() + ". The average length of it's sequences is " + result.getLength();
+            message = "The sequence is " + result.getType() + ". The average length of its sequences is " + result.getLength() + ".";
         
         //Increase font of text area since displayed text is small
         mainFrame.displayResultsPane.setFontTextArea(20);
@@ -334,6 +347,52 @@ public class actionPanel extends javax.swing.JPanel {
         mainFrame.displayResultsPane.displayText(messageNbExons + messageShortest + messageLongest + messageAverage);
         
     }//GEN-LAST:event_gtfMenuAllStatsActionPerformed
+
+    private void menuAllFastaStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAllFastaStatsActionPerformed
+        //Create instance of class gtfStatistics
+        fastaStatistics fastaStats = new fastaStatistics();
+        
+        //Get GC content
+        double gc = fastaStats.getGC(mainFrame.fileChooserPanel.getFileContent());
+        //Set messages to display
+        String messageGC = "The GC content is: " + gc;
+        
+        //Create instance of class lengthResult to get the results of calculation
+        fastaStatistics.lengthResult result = fastaStats.statisticSeqLength(mainFrame.fileChooserPanel.getFileContent());
+       //Message to display
+        String messageLen;
+        
+        //Set messages to display
+        if(result.getType().equals("single")) 
+            messageLen = "The sequence is " + result.getType() + ". It's length is " + result.getLength() + ".";
+        else
+            messageLen = "The sequence is " + result.getType() + ". The average length of its sequences is " + result.getLength() + ".";
+        
+        //Increase font of text area since displayed text is small
+        mainFrame.displayResultsPane.setFontTextArea(20);
+        //Message displayed on text area
+        mainFrame.displayResultsPane.setPanelVisible(true);
+        //Display text on specific panel
+        mainFrame.displayResultsPane.displayText(messageLen + "\n\n" + messageGC);
+    }//GEN-LAST:event_menuAllFastaStatsActionPerformed
+
+    private void menuGcContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGcContentActionPerformed
+        //Create instance of class gtfStatistics
+        fastaStatistics statistics = new fastaStatistics();
+        
+        //Get GC content
+        double gc = statistics.getGC(mainFrame.fileChooserPanel.getFileContent());
+        
+        //Set messages to display
+        String message = "The GC content is: " + gc;
+        
+        //Increase font of text area since displayed text is small
+        mainFrame.displayResultsPane.setFontTextArea(20);
+        //Message displayed on text area
+        mainFrame.displayResultsPane.setPanelVisible(true);
+        //Display text on specific panel
+        mainFrame.displayResultsPane.displayText(message);
+    }//GEN-LAST:event_menuGcContentActionPerformed
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
@@ -380,6 +439,7 @@ public class actionPanel extends javax.swing.JPanel {
     private static javax.swing.JMenu gtfMenuExons;
     private static javax.swing.JMenu gtfMenuStats;
     private static javax.swing.JInternalFrame internalFrame;
+    private javax.swing.JMenuItem menuAllFastaStats;
     private javax.swing.JMenuItem menuAverageGeneLength;
     private javax.swing.JMenuItem menuAverageNumberExons;
     private static javax.swing.JMenuBar menuBar;
