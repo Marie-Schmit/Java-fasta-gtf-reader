@@ -32,6 +32,22 @@ public class fileChooserPanel extends javax.swing.JPanel {
         
         clearBtn.setVisible(false);
         confirmBtn.setVisible(false);
+        
+        secondFileExons = false; //First file to be chosen, not for exons display
+    }
+    
+    //Override constructor to add functionalities to confirm button
+    //In this case, the file to choose is the second one, for exons display
+    public fileChooserPanel(exonsPanel isExons){
+        initComponents();
+        
+        this.gtfFile = false;
+        this.fastaFile = false;
+        
+        clearBtn.setVisible(false);
+        confirmBtn.setVisible(false);
+        
+        secondFileExons = true; //Second file to be chosen, in case of exons display
     }
     
     //Indicates if chosen file is fasta or gtf. If both are false, no file is chosen.
@@ -44,6 +60,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
     private String fileDirectory; //Name of the selected file directory
     private FileDialog nameBox; //File browser
     private Pattern extension = Pattern.compile(".*\\.(gtf|fa)"); //Regex of files extensions
+    private boolean secondFileExons; //If second file choosen in case of exons calculation
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -216,7 +233,6 @@ public class fileChooserPanel extends javax.swing.JPanel {
         //Set clear and confirm buttons to visible
         clearBtn.setVisible(true);
         confirmBtn.setVisible(true);
-        falseFileLbl.setText("");
     }//GEN-LAST:event_fileBrowserBtnActionPerformed
 
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
@@ -231,13 +247,15 @@ public class fileChooserPanel extends javax.swing.JPanel {
         
         //Set data
         actionPanel.setData(this);
+        //No more message
+        falseFileLbl.setText("");
                 
-        //Open actionpanel and display results panel
-        
+        //Open actionpanel and display results panel        
         mainFrame.displayResultsPane.setVisible(true);
         mainFrame.actionPanel.setVisible(true);
+        mainFrame.displayResultsPane.setVisible(true);
         //Display text area of displayResultsPane
-        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text panel is visible
+        //mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text panel is visible
         
         this.setVisible(false);
     }//GEN-LAST:event_confirmBtnActionPerformed
@@ -378,8 +396,6 @@ public class fileChooserPanel extends javax.swing.JPanel {
     public String getFileChosenMessage(){
         return fileChosenMessage;
     }
-    
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearBtn;

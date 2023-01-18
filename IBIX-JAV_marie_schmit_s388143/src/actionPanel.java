@@ -1,6 +1,8 @@
 
 import java.awt.Container;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -162,6 +164,11 @@ public class actionPanel extends javax.swing.JPanel {
         MenuExons.add(menuTextExons);
 
         menuGraphExons.setText("Display exons graphically");
+        menuGraphExons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuGraphExonsActionPerformed(evt);
+            }
+        });
         MenuExons.add(menuGraphExons);
 
         menuBar.add(MenuExons);
@@ -295,7 +302,8 @@ public class actionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_fastaMenuDisplayTextMousePressed
 
     private void menuNewFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNewFileMouseClicked
-        // TODO add your handling code here:
+        //Close all panels that are not text
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text panel is visible
         chooseNewFile();
         mainFrame.displayResultsPane.resetText();
     }//GEN-LAST:event_menuNewFileMouseClicked
@@ -398,8 +406,23 @@ public class actionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_menuGcContentActionPerformed
 
     private void menuTextExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTextExonsActionPerformed
-        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text is visible
+        //Open panel to display results
+        mainFrame.displayResultsPane.setPanelVisible(false, false, false, true); //Only text is visible
+        //Set the type of display: here textual
+        mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(true);
+        //Panel to display is textual
+        mainFrame.displayResultsPane.exonsPanel.changeCardPanel("textual");
+        
     }//GEN-LAST:event_menuTextExonsActionPerformed
+
+    private void menuGraphExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGraphExonsActionPerformed
+        //Exon panel becomes visible
+        mainFrame.displayResultsPane.setPanelVisible(false, false, false, true);
+        //Set the type of display: here graphical
+        mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(false);
+        //Panel to display is graphical
+        mainFrame.displayResultsPane.exonsPanel.changeCardPanel("textual");
+    }//GEN-LAST:event_menuGraphExonsActionPerformed
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
@@ -413,7 +436,7 @@ public class actionPanel extends javax.swing.JPanel {
         //Set fasta menu visible or not
         fastaMenuDisplayText.setVisible(fasta);
         fastaMenuStats.setVisible(fasta); 
-        MenuExons.setVisible(gtf);
+        MenuExons.setVisible((gtf|fasta));
     }
         
     //Display information from the previous panel and the chosen file to this panel

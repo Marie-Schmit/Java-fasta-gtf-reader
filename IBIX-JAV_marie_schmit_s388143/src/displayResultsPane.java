@@ -27,6 +27,12 @@ public class displayResultsPane extends javax.swing.JPanel {
         
         //Button panel initially invisible
         buttonsPanel.setVisible(false);
+        
+        //No nested panel visible at opening
+        buttonsPanel.setVisible(false); //Panel containing the buttons for page management when file content is displayed
+        exonsPane.setVisible(false);
+        tabPanel.setVisible(false); //Panel containing the table of gtf files
+        textPanel.setVisible(false);
     }
     
     //Present page
@@ -54,10 +60,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         gtfTable = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         exonsPane = new javax.swing.JPanel();
-        textPane = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        graphicalPanel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        exonsPanel = new exonsPanel();
         buttonsPanel = new javax.swing.JPanel();
         nextBtn = new javax.swing.JButton();
         previousBtn = new javax.swing.JButton();
@@ -103,64 +106,27 @@ public class displayResultsPane extends javax.swing.JPanel {
         tabPanel.setLayout(tabPanelLayout);
         tabPanelLayout.setHorizontalGroup(
             tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gtfTable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
         tabPanelLayout.setVerticalGroup(
             tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
 
-        exonsPane.setLayout(new java.awt.CardLayout());
-
-        jLabel2.setText("text pane");
-
-        javax.swing.GroupLayout textPaneLayout = new javax.swing.GroupLayout(textPane);
-        textPane.setLayout(textPaneLayout);
-        textPaneLayout.setHorizontalGroup(
-            textPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout exonsPaneLayout = new javax.swing.GroupLayout(exonsPane);
+        exonsPane.setLayout(exonsPaneLayout);
+        exonsPaneLayout.setHorizontalGroup(
+            exonsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 900, Short.MAX_VALUE)
-            .addGroup(textPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(textPaneLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(exonsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(exonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
         );
-        textPaneLayout.setVerticalGroup(
-            textPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        exonsPaneLayout.setVerticalGroup(
+            exonsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 405, Short.MAX_VALUE)
-            .addGroup(textPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(textPaneLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(exonsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(exonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))
         );
-
-        exonsPane.add(textPane, "textExon");
-
-        jLabel3.setText("graphical");
-
-        javax.swing.GroupLayout graphicalPanelLayout = new javax.swing.GroupLayout(graphicalPanel);
-        graphicalPanel.setLayout(graphicalPanelLayout);
-        graphicalPanelLayout.setHorizontalGroup(
-            graphicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-            .addGroup(graphicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(graphicalPanelLayout.createSequentialGroup()
-                    .addGap(431, 431, 431)
-                    .addComponent(jLabel3)
-                    .addContainerGap(420, Short.MAX_VALUE)))
-        );
-        graphicalPanelLayout.setVerticalGroup(
-            graphicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
-            .addGroup(graphicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(graphicalPanelLayout.createSequentialGroup()
-                    .addGap(194, 194, 194)
-                    .addComponent(jLabel3)
-                    .addContainerGap(195, Short.MAX_VALUE)))
-        );
-
-        exonsPane.add(graphicalPanel, "graphExon");
 
         jLayeredPane1.setLayer(textPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(tabPanel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -371,7 +337,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     //Override displayText method, to display strings
     public void displayText(String textContent) {
         //Reset text area
-        textArea.setText(null);
+        textArea.setText("");
 
         //Add new string to text area
         textArea.append(textContent);
@@ -505,6 +471,10 @@ public class displayResultsPane extends javax.swing.JPanel {
     //Set one panel visible if the result is text
     public void setPanelVisible(boolean text, boolean table, boolean buttons, boolean exons){  
         buttonsPanel.setVisible(buttons); //Panel containing the buttons for page management when file content is displayed
+        //Panel exon opens on file chosing
+        if (exons)
+                exonsPanel.fileChoiceVisibility(true);
+        
         exonsPane.setVisible(exons);
         tabPanel.setVisible(table); //Panel containing the table of gtf files
         textPanel.setVisible(text); //Panel containing the text content of java files
@@ -518,13 +488,11 @@ public class displayResultsPane extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JPanel exonsPane;
+    public exonsPanel exonsPanel;
     private javax.swing.JButton goBtn;
     private javax.swing.JTextField goToPageField;
-    private javax.swing.JPanel graphicalPanel;
     private javax.swing.JScrollPane gtfTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private static javax.swing.JTable jTable1;
@@ -534,7 +502,6 @@ public class displayResultsPane extends javax.swing.JPanel {
     private javax.swing.JButton previousBtn;
     public static javax.swing.JPanel tabPanel;
     private java.awt.TextArea textArea;
-    private javax.swing.JPanel textPane;
     public static javax.swing.JPanel textPanel;
     // End of variables declaration//GEN-END:variables
 }

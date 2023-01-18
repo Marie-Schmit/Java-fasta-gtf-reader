@@ -56,14 +56,20 @@ public class fastaStatistics {
         int[] listLen = new int[numberSequences];
         int sequenceIndex = 0;
 
-        for (int i = 0; i < fileContent.size(); i++) {
-            String line = fileContent.get(i).toString(); //Set line of text
+        //If the file is empty, length is null
+        if (numberSequences == 0) {
+            listLen[0] = 0;
+        } else {
+            for (int i = 0; i < fileContent.size(); i++) {
+                String line = fileContent.get(i).toString(); //Set line of text
 
-            if (!line.startsWith(">")) { //Is a sequence
-                listLen[sequenceIndex] = (line.length()); //Add length of stringBuffer to list of length
-                sequenceIndex++;
+                if (!line.startsWith(">")) { //Is a sequence
+                    listLen[sequenceIndex] = (line.length()); //Add length of stringBuffer to list of length
+                    sequenceIndex++;
+                }
             }
         }
+
         return listLen;
     }
 
@@ -75,11 +81,12 @@ public class fastaStatistics {
             int numberLines = fileContent.size() - numberSequences; //Number of lines of the sequence
             int lenList[] = listLength(fileContent, numberLines); //List with the length of avery line of the sequence
             int len = 0; //Length initialisation
-            
+
             //Sum all the length of the sequence
-            for (int val : lenList)
+            for (int val : lenList) {
                 len += val;
-            
+            }
+
             return new lengthResult(len, "single");
         } else { //Multiple sequences
             double average = averageLengthSequences(listLength(fileContent, numberSequences));
@@ -89,6 +96,7 @@ public class fastaStatistics {
 
     //Class to return results of length calculation (length value and indication of single or multiple sequences)
     final class lengthResult {
+
         private final double length;
         private final String sequenceType;
 
@@ -146,10 +154,9 @@ public class fastaStatistics {
             gc = 0;
             //Throw exception
             throw new IllegalStateException("Division by 0. The number of C in fasta file sequence is null. File might be empty, please try with a new file.");
+        } else {
+            gc = numberG / numberC; //Calculate GC content
         }
-        else
-            gc = numberG/numberC; //Calculate GC content
-        
-        return gc ;
+        return gc;
     }
 }
