@@ -17,9 +17,6 @@ public class exonsPanel extends javax.swing.JPanel {
      */
     public exonsPanel() {
         initComponents();
-        
-        //Set values of second file chooser
-        secondFileChooser.setVariable(this, mainFrame.fileChooserPanel.getFileTypes(), mainFrame.fileChooserPanel.getFileName());
     }
 
     /**

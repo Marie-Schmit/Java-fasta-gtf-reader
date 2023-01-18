@@ -412,6 +412,9 @@ public class actionPanel extends javax.swing.JPanel {
         //mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(true);
         //Panel to display is textual
         //mainFrame.displayResultsPane.exonsPanel.changeCardPanel("textual");
+        
+        //Pass variables to second file chooser
+        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVariable(mainFrame.fileChooserPanel.getFileTypes(), mainFrame.fileChooserPanel.getFileName());
         //Open second file selection panel
         mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVisible(true);
         //Text display

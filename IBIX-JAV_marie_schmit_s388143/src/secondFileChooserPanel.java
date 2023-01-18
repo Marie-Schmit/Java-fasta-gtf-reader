@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class secondFileChooserPanel extends fileChooserPanel {
 
     //Constructor
+    /*
     public secondFileChooserPanel(exonsPanel exonsPane, boolean[] firstType, String firstName) {
         super(); //Call constructor of class parent
         this.exonsPanel = exonsPane;
@@ -21,21 +22,19 @@ public class secondFileChooserPanel extends fileChooserPanel {
         //Modify some components
         reInitComponents();
     }
+    */
 
     //Override constructor
     public secondFileChooserPanel() {
         super();
-        //Modify some components
-        reInitComponents();
     }
-
-    //
-    public void setVariable(exonsPanel exonsPane, boolean[] firstType, String firstName) {
-        this.exonsPanel = exonsPane;
+    
+    public void setVariable(boolean[] firstType, String firstName) {
+        //Set variables with first selected file information
         this.firstFileName = firstName;
         this.firstFileTypes = firstType;
 
-        //Modify some components
+        //Modify the design of some components
         reInitComponents();
     }
 
@@ -45,18 +44,16 @@ public class secondFileChooserPanel extends fileChooserPanel {
     private boolean textual; //Is the selected display textual or graphical
 
     //Data related to first chosen file
-    public boolean firstGtfFile; //Indicates if selected file is gft
-    public boolean firstFastaFile; //Indicates if selected file is fa
     public String firstFileName; //Name of the selected file
     public String firstFileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
 
     //Change some components of the panel
     private void reInitComponents() {
         //Set message displayed to user according to the first chosen file
-        if (firstGtfFile) {
+        if (firstFileTypes[0]) {
+            textLbl.setText("Please select a fasta file");
+        } else if (firstFileTypes[1]) {
             textLbl.setText("Please select a gtf file");
-        } else if (firstFastaFile) {
-            textLbl.setText("Please select fasta gtf file");
         }
 
         //Add previous filename
