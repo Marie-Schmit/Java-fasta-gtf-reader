@@ -35,11 +35,11 @@ public class fileChooserPanel extends javax.swing.JPanel {
     }
     
     //Indicates if chosen file is fasta or gtf. If both are false, no file is chosen.
-    private boolean gtfFile; //Indicates if selected file is gft
-    private boolean fastaFile; //Indicates if selected file is fa
-    private ArrayList<StringBuffer> fileContent; //content of the file
-    private String fileName; //Name of the selected file
-    private String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
+    public boolean gtfFile; //Indicates if selected file is gft
+    public boolean fastaFile; //Indicates if selected file is fa
+    public ArrayList<StringBuffer> fileContent; //content of the file
+    public String fileName; //Name of the selected file
+    public String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
 
     private String fileDirectory; //Name of the selected file directory
     private FileDialog nameBox; //File browser
@@ -122,10 +122,6 @@ public class fileChooserPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(waitMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 87, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,9 +144,11 @@ public class fileChooserPanel extends javax.swing.JPanel {
                         .addGap(363, 363, 363)
                         .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(falseFileLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(waitMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(falseFileLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -233,15 +231,9 @@ public class fileChooserPanel extends javax.swing.JPanel {
         actionPanel.setData(this);
         //No more message
         falseFileLbl.setText("");
-
-        //Open actionpanel and display results panel        
-        mainFrame.displayResultsPane.setVisible(true);
-        mainFrame.actionPanel.setVisible(true);
-        mainFrame.displayResultsPane.setVisible(true);
-        //Display text area of displayResultsPane
-        //mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text panel is visible
-
-        this.setVisible(false);
+        
+        //Display proper panels (function useful in child class when overriden)
+        confirm();
     }//GEN-LAST:event_confirmBtnActionPerformed
 
     private void searchBarFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarFileActionPerformed
@@ -347,6 +339,17 @@ public class fileChooserPanel extends javax.swing.JPanel {
 
         return fileText;
     }
+    
+    //When confirmation of selected file, save variables of file
+    public void confirm(){
+        //Open actionpanel and display results panel        
+        mainFrame.displayResultsPane.setVisible(true);
+        mainFrame.actionPanel.setVisible(true);
+        mainFrame.displayResultsPane.setVisible(true);
+        
+        this.setVisible(false);
+    }
+    
 
     //Set variable setWaitMessage
     public void setWaitMessage(String message) {
@@ -383,7 +386,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField searchBarFile;
-    private javax.swing.JLabel textLbl;
-    private javax.swing.JLabel waitMessage;
+    public javax.swing.JLabel textLbl;
+    public javax.swing.JLabel waitMessage;
     // End of variables declaration//GEN-END:variables
 }

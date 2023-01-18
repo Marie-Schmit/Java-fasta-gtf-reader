@@ -25,9 +25,6 @@ public class exonsPanel extends javax.swing.JPanel {
         exonsMainLabel.setText("Please chose a second file, a gtf or fasta for the same genome.");
     }
 
-    //If the display is a text
-    private boolean textual;
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,32 +127,9 @@ public class exonsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_changeFileBtnActionPerformed
 
     private void displayExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayExonsActionPerformed
-        //Check file type
-        checkFileType(mainFrame.fileChooserPanel.getFileTypes(), secondFileChoose.getFileTypes());
-        //Allow to see graphical or textual panels
-        jLayeredPane1.setVisible(true);
-        //Set right card panel
-        if(textual)
-            changeCardPanel("textual");
-        else
-            changeCardPanel("graphical");
+        
     }//GEN-LAST:event_displayExonsActionPerformed
 
-    //Set the type of displayed required
-    public void setTextualDisplay(boolean textual) {
-        this.textual = textual;
-    }
-
-    //Check second choosen file type: should be a fasta file
-    private void checkFileType(boolean[] firstType, boolean[] secondType) {
-        if (firstType[0] && secondType[0]) { //First and second files selected are gtf
-            exonsMainLabel.setText("Please chose another file, format should be fasta.");
-            secondFileChoose.setVisible(true);
-        } else if (firstType[1] && secondType[1]) {//Both files are fasta
-            exonsMainLabel.setText("Please chose another file, format should be fasta.");
-            secondFileChoose.setVisible(true);
-        }
-    }
 
     public void fileChoiceVisibility(boolean choice) {
         if (choice) {
