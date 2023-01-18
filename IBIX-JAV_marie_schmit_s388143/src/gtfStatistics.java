@@ -10,7 +10,7 @@ import java.lang.Math;
  */
 /**
  *
- * @author marie
+ * @author marie 
  */
 public class gtfStatistics {
 
@@ -78,7 +78,6 @@ public class gtfStatistics {
                 actualiseExonNumber(line, exonsPerGene);
             }
         }
-        System.out.println(exonsPerGene);
         return (exonsPerGene);
     }
 
