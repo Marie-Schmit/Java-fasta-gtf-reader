@@ -237,7 +237,7 @@ public class fileChooserPanel extends javax.swing.JPanel {
         mainFrame.displayResultsPane.setVisible(true);
         mainFrame.actionPanel.setVisible(true);
         //Display text area of displayResultsPane
-        mainFrame.displayResultsPane.setPanelVisible(true, false);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text panel is visible
         
         this.setVisible(false);
     }//GEN-LAST:event_confirmBtnActionPerformed

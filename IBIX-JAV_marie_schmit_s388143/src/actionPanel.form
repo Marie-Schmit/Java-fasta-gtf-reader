@@ -188,15 +188,13 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Display exons textually"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuTextExonsActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="menuGraphExons">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Display exons graphically"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="menuExonsAllDisplay">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Display exons textually and graphically"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>

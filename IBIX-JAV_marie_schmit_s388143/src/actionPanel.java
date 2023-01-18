@@ -52,7 +52,6 @@ public class actionPanel extends javax.swing.JPanel {
         MenuExons = new javax.swing.JMenu();
         menuTextExons = new javax.swing.JMenuItem();
         menuGraphExons = new javax.swing.JMenuItem();
-        menuExonsAllDisplay = new javax.swing.JMenuItem();
 
         internalFrame.setBorder(null);
         internalFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -155,13 +154,15 @@ public class actionPanel extends javax.swing.JPanel {
         MenuExons.setText("Exons");
 
         menuTextExons.setText("Display exons textually");
+        menuTextExons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTextExonsActionPerformed(evt);
+            }
+        });
         MenuExons.add(menuTextExons);
 
         menuGraphExons.setText("Display exons graphically");
         MenuExons.add(menuGraphExons);
-
-        menuExonsAllDisplay.setText("Display exons textually and graphically");
-        MenuExons.add(menuExonsAllDisplay);
 
         menuBar.add(MenuExons);
 
@@ -202,7 +203,7 @@ public class actionPanel extends javax.swing.JPanel {
         //Increase font of text area since displayed text is small
         mainFrame.displayResultsPane.setFontTextArea(20);
         //Message displayed on text area
-        mainFrame.displayResultsPane.setPanelVisible(true, false);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text is visible
         //Display text on specific panel
         mainFrame.displayResultsPane.displayText(message);
     }//GEN-LAST:event_menuAverageNumberExonsActionPerformed
@@ -222,7 +223,7 @@ public class actionPanel extends javax.swing.JPanel {
         //Increase font of text area since displayed text is small
         mainFrame.displayResultsPane.setFontTextArea(20);
         //Message displayed on text area
-        mainFrame.displayResultsPane.setPanelVisible(true, false);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text is visible
         //Display text on specific panel
         mainFrame.displayResultsPane.displayText(message);
     }//GEN-LAST:event_menuAverageGeneLengthActionPerformed
@@ -245,14 +246,14 @@ public class actionPanel extends javax.swing.JPanel {
         //Increase font of text area since displayed text is small
         mainFrame.displayResultsPane.setFontTextArea(20);
         //Message displayed on text area
-        mainFrame.displayResultsPane.setPanelVisible(true, false);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text is visible
         //Display text on specific panel
         mainFrame.displayResultsPane.displayText(message);
     }//GEN-LAST:event_menuSequenceLenActionPerformed
 
     private void gtfMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gtfMenuDisplayTextMousePressed
         //Display table, not text result
-        mainFrame.displayResultsPane.setPanelVisible(false, true);
+        mainFrame.displayResultsPane.setPanelVisible(false, true, true, false); //Only table is visible
         //Opening on the first page
         mainFrame.displayResultsPane.setPageNumber(0);
         
@@ -272,7 +273,7 @@ public class actionPanel extends javax.swing.JPanel {
 
     private void fastaMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fastaMenuDisplayTextMousePressed
         //Display text result
-        mainFrame.displayResultsPane.setPanelVisible(true, true);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, true, false); //Text and buttons are visible
         //Set font of text results
         mainFrame.displayResultsPane.setFontTextArea(12);
         //Opening on the first page
@@ -315,7 +316,7 @@ public class actionPanel extends javax.swing.JPanel {
         //Increase font of text area since displayed text is small
         mainFrame.displayResultsPane.setFontTextArea(20);
         //Message displayed on text area
-        mainFrame.displayResultsPane.setPanelVisible(true, false);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text is visibles
         //Display text on specific panel
         mainFrame.displayResultsPane.displayText(message1 + message2);
     }//GEN-LAST:event_menuLongestShortestModelsActionPerformed
@@ -344,7 +345,7 @@ public class actionPanel extends javax.swing.JPanel {
         //Increase font of text area since displayed text is small
         mainFrame.displayResultsPane.setFontTextArea(20);
         //Message displayed on text area
-        mainFrame.displayResultsPane.setPanelVisible(true, false);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false);//Only text is visible
         //Display text on specific panel
         mainFrame.displayResultsPane.displayText(messageNbExons + messageShortest + messageLongest + messageAverage);
         
@@ -373,7 +374,7 @@ public class actionPanel extends javax.swing.JPanel {
         //Increase font of text area since displayed text is small
         mainFrame.displayResultsPane.setFontTextArea(20);
         //Message displayed on text area
-        mainFrame.displayResultsPane.setPanelVisible(true, false);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text is visible
         //Display text on specific panel
         mainFrame.displayResultsPane.displayText(messageLen + "\n\n" + messageGC);
     }//GEN-LAST:event_menuAllFastaStatsActionPerformed
@@ -391,10 +392,14 @@ public class actionPanel extends javax.swing.JPanel {
         //Increase font of text area since displayed text is small
         mainFrame.displayResultsPane.setFontTextArea(20);
         //Message displayed on text area
-        mainFrame.displayResultsPane.setPanelVisible(true, false);
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text is visibles
         //Display text on specific panel
         mainFrame.displayResultsPane.displayText(message);
     }//GEN-LAST:event_menuGcContentActionPerformed
+
+    private void menuTextExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTextExonsActionPerformed
+        mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text is visible
+    }//GEN-LAST:event_menuTextExonsActionPerformed
     
     //Display different menu items according to the chosen file
     public static void setMenu(fileChooserPanel fileChooser){
@@ -445,7 +450,6 @@ public class actionPanel extends javax.swing.JPanel {
     private javax.swing.JMenuItem menuAverageGeneLength;
     private javax.swing.JMenuItem menuAverageNumberExons;
     private static javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem menuExonsAllDisplay;
     private javax.swing.JMenuItem menuGcContent;
     private javax.swing.JMenuItem menuGraphExons;
     private javax.swing.JMenuItem menuLongestShortestModels;
