@@ -26,7 +26,7 @@ public class actionPanel extends javax.swing.JPanel {
         //Delete the arrow icon of the internal frame
         Container pane = ((BasicInternalFrameUI) internalFrame.getUI()).getNorthPane();
         pane.remove(0);
-            }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -409,9 +409,13 @@ public class actionPanel extends javax.swing.JPanel {
         //Open panel to display results
         mainFrame.displayResultsPane.setPanelVisible(false, false, false, true); //Only text is visible
         //Set the type of display: here textual
-        mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(true);
+        //mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(true);
         //Panel to display is textual
-        mainFrame.displayResultsPane.exonsPanel.changeCardPanel("textual");
+        //mainFrame.displayResultsPane.exonsPanel.changeCardPanel("textual");
+        //Open second file selection panel
+        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVisible(true);
+        //Text display
+        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setTextual(true);
         
     }//GEN-LAST:event_menuTextExonsActionPerformed
 
@@ -419,9 +423,13 @@ public class actionPanel extends javax.swing.JPanel {
         //Exon panel becomes visible
         mainFrame.displayResultsPane.setPanelVisible(false, false, false, true);
         //Set the type of display: here graphical
-        mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(false);
+        //mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(false);
         //Panel to display is graphical
-        mainFrame.displayResultsPane.exonsPanel.changeCardPanel("textual");
+        mainFrame.displayResultsPane.exonsPanel.changeCardPanel("graphical");
+        //Open second file selection panel
+        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVisible(true);
+        //Graphical display
+        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setTextual(false);
     }//GEN-LAST:event_menuGraphExonsActionPerformed
     
     //Display different menu items according to the chosen file
