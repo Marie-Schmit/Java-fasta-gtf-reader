@@ -408,11 +408,6 @@ public class actionPanel extends javax.swing.JPanel {
     private void menuTextExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTextExonsActionPerformed
         //Open panel to display results
         mainFrame.displayResultsPane.setPanelVisible(false, false, false, true); //Only text is visible
-        //Set the type of display: here textual
-        //mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(true);
-        //Panel to display is textual
-        //mainFrame.displayResultsPane.exonsPanel.changeCardPanel("textual");
-        
         //Pass variables to second file chooser
         mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVariable(mainFrame.fileChooserPanel.getFileTypes(), mainFrame.fileChooserPanel.getFileName());
         //Open second file selection panel
@@ -425,10 +420,8 @@ public class actionPanel extends javax.swing.JPanel {
     private void menuGraphExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGraphExonsActionPerformed
         //Exon panel becomes visible
         mainFrame.displayResultsPane.setPanelVisible(false, false, false, true);
-        //Set the type of display: here graphical
-        //mainFrame.displayResultsPane.exonsPanel.setTextualDisplay(false);
-        //Panel to display is graphical
-        mainFrame.displayResultsPane.exonsPanel.changeCardPanel("graphical");
+        //Pass variables to second file chooser
+        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVariable(mainFrame.fileChooserPanel.getFileTypes(), mainFrame.fileChooserPanel.getFileName());
         //Open second file selection panel
         mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVisible(true);
         //Graphical display

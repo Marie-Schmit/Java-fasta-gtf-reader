@@ -12,17 +12,11 @@ import java.util.ArrayList;
 public class secondFileChooserPanel extends fileChooserPanel {
 
     //Constructor
-    /*
-    public secondFileChooserPanel(exonsPanel exonsPane, boolean[] firstType, String firstName) {
+    public secondFileChooserPanel(exonsPanel exonsPane) {
         super(); //Call constructor of class parent
+        //Access to some elements of exon panel
         this.exonsPanel = exonsPane;
-        this.firstFileName = firstName;
-        this.firstFileTypes = firstType;
-
-        //Modify some components
-        reInitComponents();
     }
-    */
 
     //Override constructor
     public secondFileChooserPanel() {
@@ -63,37 +57,43 @@ public class secondFileChooserPanel extends fileChooserPanel {
 
     //Overrid confirm function
     public void confirm() {
-        //Open actionpanel and display results panel        
-        mainFrame.displayResultsPane.setVisible(true);
-        mainFrame.actionPanel.setVisible(true);
-        mainFrame.displayResultsPane.setVisible(true);
-
-        //Check type of the file
-        checkFileType(firstFileTypes, gtfFile, fastaFile);
-
-        this.setVisible(false);
-
+        boolean rightFormat;
+        rightFormat = checkFileType(firstFileTypes, gtfFile, fastaFile); //Check the type of the file
+        
+        if(rightFormat){
+            //Open actionpanel and display results panel        
+            mainFrame.displayResultsPane.setVisible(true);
+            mainFrame.actionPanel.setVisible(true);
+            mainFrame.displayResultsPane.setVisible(true);
+            
+            //This chooser disappears 
+            this.setVisible(false);
+        }
+        else{
+            waitMessage.setVisible(true);
+        }
     }
 
     //Check second choosen file type: should be a fasta file
-    public void checkFileType(boolean[] firstType, boolean gtf, boolean fasta) {
+    //Returns true if the file has the right format
+    public boolean checkFileType(boolean[] firstType, boolean gtf, boolean fasta) {
         if (firstType[0] && gtf) { //First and second files selected are gtf
             waitMessage.setText("Please chose another file, format should be fasta.");
-            waitMessage.setVisible(true);
+            return false; //File does not have the right format
         } else if (firstType[1] && fasta) {//Both files are fasta
             waitMessage.setText("Please chose another file, format should be fasta.");
-            waitMessage.setVisible(true);
+            return false; //File does not have the right format
         } else {
+            //Panels to display text or graphics are visible
             exonsPanel.jLayeredPane1.setVisible(true);
             //Change the card panel according to the selected type pof display
             //Set right card panel
             if(textual) { //Show text
-                System.out.println("textual");
                 exonsPanel.changeCardPanel("textual");
             } else { //Show graphic
-                System.out.println("graphical");
                 exonsPanel.changeCardPanel("graphical");
             }
+            return true; //File has the right format
         }
     }
 

@@ -33,7 +33,7 @@ public class exonsPanel extends javax.swing.JPanel {
         jTextPane = new javax.swing.JTextPane();
         graphicExons = new javax.swing.JPanel();
         label1 = new java.awt.Label();
-        secondFileChooser = new secondFileChooserPanel();
+        secondFileChooser = new secondFileChooserPanel(this);
 
         jLayeredPane1.setLayout(new java.awt.CardLayout());
 

@@ -103,6 +103,7 @@
     </Container>
     <Component class="secondFileChooserPanel" name="secondFileChooser">
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new secondFileChooserPanel(this)"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
