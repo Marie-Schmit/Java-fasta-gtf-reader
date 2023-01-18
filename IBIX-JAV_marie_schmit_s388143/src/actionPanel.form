@@ -91,7 +91,7 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="gtfMenuStats">
               <Properties>
-                <Property name="text" type="java.lang.String" value="gtf statistics"/>
+                <Property name="text" type="java.lang.String" value="Gtf statistics"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
@@ -131,31 +131,6 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="gtfMenuExons">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Exons"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
-              </AuxValues>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="menuTextExons">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Display exons textually"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="menuGraphExons">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Display exons graphically"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="menuExonsAllDisplay">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Display exons textually and graphically"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
             <Menu class="javax.swing.JMenu" name="fastaMenuDisplayText">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Display text"/>
@@ -169,7 +144,7 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="fastaMenuStats">
               <Properties>
-                <Property name="text" type="java.lang.String" value="fasta statistics"/>
+                <Property name="text" type="java.lang.String" value="Fasta statistics"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
@@ -198,6 +173,31 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAllFastaStatsActionPerformed"/>
                   </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="MenuExons">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Exons"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="menuTextExons">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Display exons textually"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="menuGraphExons">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Display exons graphically"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="menuExonsAllDisplay">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Display exons textually and graphically"/>
+                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>

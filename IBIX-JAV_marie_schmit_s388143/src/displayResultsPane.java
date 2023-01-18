@@ -45,6 +45,8 @@ public class displayResultsPane extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         textPanel = new javax.swing.JPanel();
         textArea = new java.awt.TextArea();
@@ -59,6 +61,8 @@ public class displayResultsPane extends javax.swing.JPanel {
         goBtn = new javax.swing.JButton();
         pageNumberLbl = new javax.swing.JLabel();
 
+        jScrollPane1.setViewportView(jTextPane1);
+
         setPreferredSize(new java.awt.Dimension(900, 400));
 
         textArea.setBackground(new java.awt.Color(240, 240, 240));
@@ -72,9 +76,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         );
         textPanelLayout.setVerticalGroup(
             textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textPanelLayout.createSequentialGroup()
-                .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+            .addComponent(textArea, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
 
         gtfTable.setFocusable(false);
@@ -95,7 +97,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         tabPanel.setLayout(tabPanelLayout);
         tabPanelLayout.setHorizontalGroup(
             tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+            .addComponent(gtfTable, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
         tabPanelLayout.setVerticalGroup(
             tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,8 +440,8 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
     
     //Set one panel visible if the result is text
-    public void setPanelVisible(boolean text){  
-        buttonsPanel.setVisible(true);
+    public void setPanelVisible(boolean text, boolean buttons){  
+        buttonsPanel.setVisible(buttons);
         
         tabPanel.setVisible(!text);
         textPanel.setVisible(text);
@@ -457,7 +459,9 @@ public class displayResultsPane extends javax.swing.JPanel {
     private javax.swing.JScrollPane gtfTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     private static javax.swing.JTable jTable1;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JButton nextBtn;
     private javax.swing.JLabel pageNumberLbl;
     private javax.swing.JButton previousBtn;
