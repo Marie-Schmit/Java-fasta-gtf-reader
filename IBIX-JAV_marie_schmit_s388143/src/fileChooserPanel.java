@@ -8,13 +8,11 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 import java.lang.StringBuffer;
 import java.util.ArrayList;
-import javax.swing.JPanel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author marie
@@ -26,28 +24,23 @@ public class fileChooserPanel extends javax.swing.JPanel {
      */
     public fileChooserPanel() {
         initComponents();
-        
-        FileClass fileData = new FileClass();
-        
-        fileData.gtfFile = false;
-        fileData.fastaFile = false;
-        
+
+        gtfFile = false;
+        fastaFile = false;
+
         clearBtn.setVisible(false);
         confirmBtn.setVisible(false);
-        
+
         secondFileExons = false; //First file to be chosen, not for exons display
     }
     
-    
-    /*
     //Indicates if chosen file is fasta or gtf. If both are false, no file is chosen.
     private boolean gtfFile; //Indicates if selected file is gft
     private boolean fastaFile; //Indicates if selected file is fa
     private ArrayList<StringBuffer> fileContent; //content of the file
     private String fileName; //Name of the selected file
     private String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
-    */
-    
+
     private String fileDirectory; //Name of the selected file directory
     private FileDialog nameBox; //File browser
     private Pattern extension = Pattern.compile(".*\\.(gtf|fa)"); //Regex of files extensions
@@ -183,22 +176,22 @@ public class fileChooserPanel extends javax.swing.JPanel {
                 .addGap(65, 65, 65))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
-    
+
+
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         //No gtf nor fasta file is selected
         gtfFile = false;
         fastaFile = false;
-        
+
         //Clear label indicating which file is selected
         setFileChosenMessage("");
         //CLear search bar
         searchBarFile.setText("");
-        
+
         //Display clear and confirm buttons
         clearBtn.setVisible(false);
         confirmBtn.setVisible(false);
-        
+
         //Delete wait message
         setWaitMessage("");
     }//GEN-LAST:event_clearBtnActionPerformed
@@ -206,21 +199,21 @@ public class fileChooserPanel extends javax.swing.JPanel {
     private void fileBrowserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowserBtnActionPerformed
         //Fire file chooser when user clicks on button file browser
         nameBox = new FileDialog(new Frame(), "Open gtf or fasta File", FileDialog.LOAD);
-        
+
         //Define search terms according to information in search bar
         searchTerms();
-        
+
         //Display file chooser and wait
         nameBox.setVisible(true);
-        
+
         //Set variables directory and file name
         fileDirectory = nameBox.getDirectory();
         fileName = nameBox.getFile();
         fileName = fileDirectory.concat(fileName);
-        
+
         //Display a message indicating which file was chosen
         setFileChosenMessage(fileName);
-              
+
         //Set clear and confirm buttons to visible
         clearBtn.setVisible(true);
         confirmBtn.setVisible(true);
@@ -232,22 +225,22 @@ public class fileChooserPanel extends javax.swing.JPanel {
 
         //Set file name to display in panel actionPanel
         setFileChosenMessage(fileName);
-        
+
         //Read file and store it's content
         fileContent = readFile(fileName);
-        
+
         //Set data
         actionPanel.setData(this);
         //No more message
         falseFileLbl.setText("");
-                
+
         //Open actionpanel and display results panel        
         mainFrame.displayResultsPane.setVisible(true);
         mainFrame.actionPanel.setVisible(true);
         mainFrame.displayResultsPane.setVisible(true);
         //Display text area of displayResultsPane
         //mainFrame.displayResultsPane.setPanelVisible(true, false, false, false); //Only text panel is visible
-        
+
         this.setVisible(false);
     }//GEN-LAST:event_confirmBtnActionPerformed
 
@@ -256,146 +249,130 @@ public class fileChooserPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchBarFileActionPerformed
 
     private void searchBarFileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchBarFileKeyReleased
-    
+
     }//GEN-LAST:event_searchBarFileKeyReleased
 
     //Set variable indicate the type of the file (gtf or fatsa). Set message indicating to the user which file was chosen.
-    public void setFileChosenMessage(String filename){
-        if(fileName.endsWith(".gtf")){
+    public void setFileChosenMessage(String filename) {
+        if (fileName.endsWith(".gtf")) {
             //Set type of file to gtf
             gtfFile = true;
             fastaFile = false;
-            
+
             //Update message indicating chosen file
             fileChosenMessage = "The chosen gtf file is: " + filename;
-            
+
             //Display message indicating chosen file in label
             falseFileLbl.setText(fileChosenMessage);
-        }
-        else if(fileName.endsWith(".fa")){
+        } else if (fileName.endsWith(".fa")) {
             //Set type of file to fasta
             gtfFile = false;
             fastaFile = true;
-            
+
             //Update message indicating chosen file
             fileChosenMessage = "The chosen fasta file is: " + filename;
-            
+
             //Display message indicating chosen file in label
             falseFileLbl.setText(fileChosenMessage);
-        }
-        else{
+        } else {
             //Update file type (none)
             fastaFile = false;
             gtfFile = false;
-            
+
             //Display error message text on label
             falseFileLbl.setText("File is neither gtf nor fasta. Please select another file.");
         }
     }
-    
+
     //Define search browser according to information (path or filename) entered in search bar
-    public void searchTerms(){
+    public void searchTerms() {
         String path = searchBarFile.getText(); //Text entered by user in search bar
         //If file location entered in text field, set directory
-        if(path.endsWith("\\")){
+        if (path.endsWith("\\")) {
             //Text entered is a path
             nameBox.setDirectory(path);
             nameBox.setFile("*.fa;*.gtf");
-        }
-        else if(path.matches(".*[\\.](gtf|fa)")){
+        } else if (path.matches(".*[\\.](gtf|fa)")) {
             //Text entered is a filename
             nameBox.setFile(path);
-        }
-        else{
+        } else {
             //User can only choose fasta or gtf file
             nameBox.setFile("*.fa;*.gtf");
         }
     }
-    
+
     //Check the type of the chosen file: it can only be .gtf or .fa
-    public void checkFileType(String filename){
-        if(!filename.matches(".*[\\.](gtf|fa)") | !filename.endsWith("\\")){
+    public void checkFileType(String filename) {
+        if (!filename.matches(".*[\\.](gtf|fa)") | !filename.endsWith("\\")) {
             falseFileLbl.setText("Please choose a path, or a fasta or gtf file.");
-        }
-        else{
+        } else {
             falseFileLbl.setText("  ");
         }
     }
-    
+
     //Argument is a string of the name of the file to red. Read this file and return the result.
-    public ArrayList<StringBuffer> readFile(String filename){
-        ArrayList<StringBuffer> fileText = new ArrayList<StringBuffer> (); //Contend of the read file
+    public ArrayList<StringBuffer> readFile(String filename) {
+        ArrayList<StringBuffer> fileText = new ArrayList<StringBuffer>(); //Contend of the read file
         BufferedReader buffer = null; //Read the text with a BufferedReader
         String inLine; //A line read from the file
-        
-        try{
+
+        try {
             //Create buffered stream
             buffer = new BufferedReader(new FileReader(filename));
-            
+
             //Read a line, append it to the StringBuffer
-            while((inLine = buffer.readLine()) != null){
+            while ((inLine = buffer.readLine()) != null) {
                 fileText.add(new StringBuffer(inLine + "\n")); //StringBuffer contains the lines of the file
             }
-        }
-        //Message if file not found
-        catch(FileNotFoundException ex){
+        } //Message if file not found
+        catch (FileNotFoundException ex) {
             System.out.println("File not found: " + filename);
             falseFileLbl.setText("File not found: " + filename);
-        }
-        //Message if error occurs
-        catch(IOException ex){
+        } //Message if error occurs
+        catch (IOException ex) {
             System.out.println(ex.getMessage());
             falseFileLbl.setText(ex.getMessage());
-        }
-        finally{
-            try{
+        } finally {
+            try {
                 //Close file if it was not empty
-                if(fileText != null) buffer.close();
-            }
-            //Rause exception if file was empty
-            catch(IOException ex){
+                if (fileText != null) {
+                    buffer.close();
+                }
+            } //Rause exception if file was empty
+            catch (IOException ex) {
                 System.out.println(ex.getMessage());
                 falseFileLbl.setText(ex.getMessage());
             }
         }
-        
+
         return fileText;
     }
-    
+
     //Set variable setWaitMessage
-    public void setWaitMessage(String  message){
+    public void setWaitMessage(String message) {
         waitMessage.setText(message);
     }
     
-    //Create a nested class to get file chosen data
-    final class FileClass{
-        private boolean gtfFile; //Indicates if selected file is gft
-        private boolean fastaFile; //Indicates if selected file is fa
-        private ArrayList<StringBuffer> fileContent; //content of the file
-        private String fileName; //Name of the selected file
-        private String fileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
-        
-        //Get methods to get private fileChooserVariable from other classes, which avoid to break the encapsulation of the variables.
-        //Get variables gtfFiles and fasta file
-        public boolean[] getFileTypes(){
-            return new boolean[]{gtfFile, fastaFile};
-        }
+    //Get methods to get private fileChooserVariable from other classes, which avoid to break the encapsulation of the variables.
+    //Get variables gtfFiles and fasta file
+    public boolean[] getFileTypes() {
+        return new boolean[]{gtfFile, fastaFile};
+    }
 
-        //Get file content
-        public ArrayList<StringBuffer> getFileContent(){
-            return fileContent;
-        }
+    //Get file content
+    public ArrayList<StringBuffer> getFileContent() {
+        return fileContent;
+    }
 
-        //Get filename
-        public String getFileName(){
-            return fileName;
-        }
+    //Get filename
+    public String getFileName() {
+        return fileName;
+    }
 
-        //Get fileChosenMessage
-        public String getFileChosenMessage(){
-            return fileChosenMessage;
-        }
-}
+    //Get fileChosenMessage
+    public String getFileChosenMessage() {
+        return fileChosenMessage;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearBtn;
