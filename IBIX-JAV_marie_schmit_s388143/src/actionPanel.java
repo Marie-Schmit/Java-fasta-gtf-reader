@@ -214,7 +214,27 @@ public class actionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_menuAverageGeneLengthActionPerformed
 
     private void menuSequenceLenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSequenceLenActionPerformed
-        // TODO add your handling code here:
+        //Create instance of fastaStatistics
+        fastaStatistics fastaStats = new fastaStatistics();
+        //Create instance of class lengthResult to get the results of calculation
+        lengthResult result = fastaStats.statisticSeqLength(mainFrame.fileChooserPanel.getFileContent());
+        
+        
+       //Message to display
+        String message;
+        
+        //Set messages to display
+        if(result.getType().equals("single")) 
+            message = "The sequence is " + result.getType() + ". It's length is " + result.getLength();
+        else
+            message = "The sequence is " + result.getType() + ". The average length of it's sequences is " + result.getLength();
+        
+        //Increase font of text area since displayed text is small
+        mainFrame.displayResultsPane.setFontTextArea(20);
+        //Message displayed on text area
+        mainFrame.displayResultsPane.setPanelVisible(true);
+        //Display text on specific panel
+        mainFrame.displayResultsPane.displayText(message);
     }//GEN-LAST:event_menuSequenceLenActionPerformed
 
     private void gtfMenuDisplayTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gtfMenuDisplayTextMousePressed

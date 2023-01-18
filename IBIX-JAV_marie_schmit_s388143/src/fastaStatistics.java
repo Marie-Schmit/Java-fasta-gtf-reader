@@ -60,23 +60,44 @@ public class fastaStatistics {
             String line = fileContent.get(i).toString(); //Set line of text
             
             if(!line.startsWith(">")){ //Is a sequence
-                sequenceIndex ++;
                 listLen[sequenceIndex] = (line.length()); //Add length of stringBuffer to list of length
+                sequenceIndex ++;
             }
         }
         return listLen;
     }
     
     //Calculate sequence length or average of sequences length for given file content
-    public double statisticSeqLength(ArrayList<StringBuffer> fileContent){
+    public lengthResult statisticSeqLength(ArrayList<StringBuffer> fileContent){
         int numberSequences = numberSequence(fileContent);
-        double length;
         
         if(numberSequences == 1){ //Only one sequence
-            return listLength(fileContent, numberSequences)[0];
+            double len = (double)listLength(fileContent, numberSequences)[0];
+            return new lengthResult(len, "single");
         }
         else{ //Multiple sequences
-            return averageLengthSequences(listLength(fileContent, numberSequences));
+            double average = averageLengthSequences(listLength(fileContent, numberSequences));
+            return new lengthResult(average, "multiple");
         }
     }
+}
+
+//Class to return results of length calculation (length value and indication of single or multiple sequences)
+final class lengthResult{
+    private final double length;
+    private final String sequenceType;
+    
+    public lengthResult(double length, String sequenceType){
+        this.length = length;
+        this.sequenceType = sequenceType;
+    }
+    
+    public double getLength(){
+        return length;
+    }
+    
+    public String getType(){
+        return sequenceType;
+    }
+    
 }
