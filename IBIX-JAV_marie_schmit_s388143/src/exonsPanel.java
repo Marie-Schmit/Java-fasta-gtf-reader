@@ -102,7 +102,7 @@ public class exonsPanel extends javax.swing.JPanel {
         //Apply to some parts of text
         StyledDocument styleDoc = jTextPane.getStyledDocument();
         for(int row = 0; row < offsetLength.length; row++){
-            styleDoc.setCharacterAttributes(offsetLength[row][0], offsetLength[row][0], attributes, false);
+            styleDoc.setCharacterAttributes(offsetLength[row][0], offsetLength[row][1], attributes, false);
         }
     }
     
@@ -115,7 +115,7 @@ public class exonsPanel extends javax.swing.JPanel {
         exons exons = new exons();
         
         //Matrix with start and length coordinates
-        int[][] offsetLength = exons.getSingleColoration(gtfContent);
+        int[][] offsetLength = exons.getSingleColoration(gtfContent, fastaContent);
         
         for (int i = 1; i < fastaContent.size(); i++){ //The first line is the sequence indication
             text += fastaContent.get(i).toString();
@@ -148,8 +148,6 @@ public class exonsPanel extends javax.swing.JPanel {
         }
         
     }
-    
-    
     
     //Graphical representation of one exon
     
