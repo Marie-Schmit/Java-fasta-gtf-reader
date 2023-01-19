@@ -17,6 +17,56 @@ public class exons {
 
     }
 
+    public ArrayList<int[][]> getMultipleColoration(ArrayList<StringBuffer> gtfContent, ArrayList<StringBuffer> fastaContent){
+        int lenAnnotation = 0; //Length of the annotation line before a sequence
+        int lenPreviousLines = 0; //Sum of the length of all the previous sequences
+        
+        int numberSequences = fastaContent.size()/2; //Number of sequences in the file
+        
+        ArrayList<int[][]> allIndexes = new ArrayList<int[][]>();
+        int lenAnnotations = 0; //Sum of length of annotations
+        int lenSequences = 0; //Sum of length of sequences
+                
+        //Parse 2 lignes of annotation and sequence in an ArrayList of StringBuffer
+        for(int seq=0; seq < fastaContent.size()-1; seq +=2){
+            //Get annotation
+            StringBuffer annotation = new StringBuffer(fastaContent.get(seq));
+            //Get sequence
+            StringBuffer sequence = new StringBuffer(fastaContent.get(seq+1));
+            
+            //Calculate len of sum of annotations
+            lenAnnotations += annotation.length();
+            
+            //Add them into an ArrayList
+            ArrayList singleSeq = new ArrayList();
+            singleSeq.add(annotation);
+            singleSeq.add(sequence);
+            
+            //This arrayList is like a fasta file with a single sequence
+            int[][] indexSequence = getSingleColoration(gtfContent, singleSeq);
+            
+            //The index of start must take the length of the previous lines (annotations and sequences) into account
+            for(int i = 0; i < indexSequence.length; i++){
+                //If start is not null
+                if(indexSequence[i][0] != 0){
+                    System.out.println("Start" + indexSequence[i][0]);
+                    indexSequence[i][0] += lenAnnotations; //Add len of all the previous annotations
+                    indexSequence[i][0] += lenSequences; //Add length of all the previous sequences
+                    System.out.println("len ANNo "+ lenAnnotations);
+                    System.out.println("len seq "+ lenSequences);
+                    System.out.println("Start + annotations" + indexSequence[i][0]);
+                    System.out.println();
+                }
+            }
+            //Actualise len of sequences
+            lenSequences += sequence.length();
+            //Add matrix of each sequence on matrix of all the sequences
+            allIndexes.add(indexSequence);
+        }
+        
+        return allIndexes;
+    }
+    
     //Get a hashmap of exons from gtf file.  The map contains the name of the sequence, start and end position of exons.
     public int[][] getSingleColoration(ArrayList<StringBuffer> gtfContent, ArrayList<StringBuffer> fastaContent) {
         //Make a hashmap of each gtf file line
@@ -40,15 +90,11 @@ public class exons {
             line = gtfStats.hashLine(gtfContent.get(row)); //Format gtf content to hashMap
 
             //If index of coloration is not null, add index to matrix row
-            indexColoration = isGtfExon(line, fastaAnnotation);
-            
+            indexColoration = isGtfExon(line, fastaAnnotation);            
                     
             //Add to matrix if coloration indexes are not null
             indexMatrix[row] = indexColoration;
         }
-        
-        
-        
         return indexMatrix;
     }
 
@@ -59,15 +105,29 @@ public class exons {
         //Line is an exon
         boolean feature = line.get("Feature").equals("exon");
 
-        //Line corresponds to the right chromosome, indicated in fasta annotation
-        boolean chromosome = line.get("Sequence name").endsWith(fastaAnnotation[3]);
-
         //Sequence from fasta and gtf exons must overlap each other
         //Parse fasta and gtf ends and starts to integers
         int gtfStart = Integer.parseInt(line.get("Start"));
         int gtfEnd = Integer.parseInt(line.get("End"));
-        int faStart = Integer.parseInt(fastaAnnotation[4]);
-        int faEnd = Integer.parseInt(fastaAnnotation[5]);
+        int faStart;
+        int faEnd;
+        
+        boolean chromosome; //Is the chromosome right?
+        
+        
+        //If file has long annotations
+        if(fastaAnnotation.length > 3){
+            //Line corresponds to the right chromosome, indicated in fasta annotation
+            chromosome = line.get("Sequence name").endsWith(fastaAnnotation[3]);
+            faStart = Integer.parseInt(fastaAnnotation[4]);
+            faEnd = Integer.parseInt(fastaAnnotation[5]);
+        }
+        else{
+            //Line corresponds to the right chromosome, indicated in fasta annotation
+            chromosome = line.get("Sequence name").endsWith(fastaAnnotation[0]);
+            faStart = Integer.parseInt(fastaAnnotation[1]);
+            faEnd = Integer.parseInt(fastaAnnotation[2]);
+        }
         
         //Store indexes of coloration
         int[] indexColoration = {0,0};
@@ -110,7 +170,6 @@ public class exons {
         int startIndex = start - faStart;
         //Set the length
         int length = end - start;
-        
         //Sequence cannot end before start
         if(length < 0)
             length =0;
@@ -121,56 +180,31 @@ public class exons {
         return index;
     }
 
-    /*
-    //Use a hashmap of exons (containing their sequence name and their indexes of end and start)
-    //Map the indexes of start and end with a single fasta sequence
-    //Return an array: each line of the array coontains the start indice and the length of an exon
-    public int[][] getSingleColoration(ArrayList<StringBuffer> gtfContent) {
-        //Create instance of class exonData to number of exons and hashmap
-        exonsData exonsData = getExons(gtfContent);
-
-        //Get number of exons
-        int numberExons = exonsData.numberExons;
-        //Get HashMap of all exons
-        HashMap<String, int[]> exonsMap = exonsData.exonsMap;
-
-        //Matrix to store in each row the start indexes, and length, of colored characters of the sequence
-        int[][] indexMatrix = new int[numberExons][2];
-        int row = 0; //Index of row in matrix
-
-        //For every element in the hashmap
-        for (Map.Entry<String, int[]> exon : exonsMap.entrySet()) {
-            int start = exon.getValue()[0];
-            int end = exon.getValue()[1];
-            int length = end - start;
-
-            //Store start and length in the matrix
-            indexMatrix[row][0] = start;
-            indexMatrix[row][1] = length;
-
-            //Next row
-            row++;
-        }
-
-        for (int i = 0; i < indexMatrix.length; i++) { //this equals to the row in our matrix.
-            for (int j = 0; j < indexMatrix[i].length; j++) { //this equals to the column in each row.
-                System.out.print(indexMatrix[i][j] + " ");
-            }
-            System.out.println(); //change line on console as row comes to end in the matrix.
-        }
-
-        return indexMatrix;
-    }
-*/
-
     //Get chromosome and chromosome location from single sequence fasta file annotation
     private String[] parseAnnotation(ArrayList<StringBuffer> fastaContent) {
         StringBuffer lineContent = fastaContent.get(0); //First line of the file, containing the annotation
 
         //Separate each element into list of strings
-        String lineText = lineContent.toString(); //STring buffer into string
+        String lineText = lineContent.toString(); //String buffer into string
+        
         String[] line = lineText.split(":"); //Split at each ":"
-
-        return line;
+        
+        //If annotations are shortest
+        if(line.length == 2){
+            //Split the second object of line
+            String[] splitLine = line[1].split("-");
+            
+            String[] newLine =  new String[3];
+            newLine[0] = line[0];
+            newLine[1] = splitLine[0];
+            newLine[2] = splitLine[1].replaceAll("\n", "");         
+           
+            return newLine;
+        }
+        else{
+            return line;
+        }
     }
+    
+    
 }

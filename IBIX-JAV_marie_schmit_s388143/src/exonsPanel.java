@@ -118,7 +118,7 @@ public class exonsPanel extends javax.swing.JPanel {
         int[][] offsetLength = exons.getSingleColoration(gtfContent, fastaContent);
         
         for (int i = 1; i < fastaContent.size(); i++){ //The first line is the sequence indication
-            text += fastaContent.get(i).toString();
+            text += fastaContent.get(i).toString(); //Add every line of the file to the text to display
         }
         
         //Put proper colors to the text
@@ -127,7 +127,37 @@ public class exonsPanel extends javax.swing.JPanel {
     
     //Display colored lignes for exons
     public void textExonsMultiple(ArrayList<StringBuffer> gtfContent, ArrayList<StringBuffer> fastaContent){
+        exons exons = new exons();
         
+        //ArrayList, each Array is a matrix of sequence indexs
+        ArrayList<int[][]> indexSequences = new ArrayList<int[][]>();
+        indexSequences = exons.getMultipleColoration(gtfContent, fastaContent);
+        
+        String text = "";
+        //Text is the file content
+        for (int i = 0; i < fastaContent.size(); i++){ //The first line is the sequence indication
+            text += fastaContent.get(i).toString(); //Add every line of the file to the text to display
+            text += "\n";
+        }        
+        
+        jTextPane.setText(text);
+        //Creat attribute set to change color
+        SimpleAttributeSet attributes = new SimpleAttributeSet();
+        StyleConstants.setForeground(attributes, Color.cyan);
+        
+        //Apply to some parts of text
+        StyledDocument styleDoc = jTextPane.getStyledDocument();
+        
+        //Define each position of color
+        for(int seq = 0; seq < indexSequences.size(); seq++){//One matrix of positions per sequence
+            //Get the matrix of indexes of the sequence seq
+            int[][] offsetLength = indexSequences.get(seq);
+            
+            //Get each exons (ie each row of matrix offLength)
+            for(int row = 0; row < offsetLength.length; row++){
+            styleDoc.setCharacterAttributes(offsetLength[row][0], offsetLength[row][1], attributes, false);
+            }
+        }
     }
     
     //Display colored lines for exons, with distinction between single or multiple lines in fasta file
@@ -146,7 +176,6 @@ public class exonsPanel extends javax.swing.JPanel {
         else if(numberSequences > 1){
             textExonsMultiple(gtfContent, fastaContent);
         }
-        
     }
     
     //Graphical representation of one exon
