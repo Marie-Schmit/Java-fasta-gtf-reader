@@ -90,6 +90,11 @@ public class secondFileChooserPanel extends fileChooserPanel {
             //Set right card panel
             if(textual) { //Show text
                 exonsPanel.changeCardPanel("textual");
+                
+                //New instance of class exons
+                exons exons = new exons();
+                //Display text exon with propoer colors
+                exons.getExons(this.fileContent);
             } else { //Show graphic
                 exonsPanel.changeCardPanel("graphical");
             }

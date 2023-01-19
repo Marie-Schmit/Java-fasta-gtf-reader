@@ -67,8 +67,6 @@ public class gtfStatistics {
 
         for (i = 5; i < textContent.size(); i++) {
             line = hashLine(textContent.get(i));
-            
-            //If it is an exons
 
             //If key gene_id does not exist, create it
             if (exonsPerGene.get(line.get("Gene ID")) == null) {
