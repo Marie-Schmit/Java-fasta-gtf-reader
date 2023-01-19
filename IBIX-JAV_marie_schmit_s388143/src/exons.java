@@ -112,34 +112,14 @@ public class exons {
     }
     
     //Get chromosome and chromosome location from single sequence fasta file annotation
-    private HashMap hashAnnotation(ArrayList<StringBuffer> gtfContent) {
-        //New hashmap
-        HashMap<String, String> hash = new HashMap<String, String>();
-        //Names of keys
-        String[] keys = {"Sequence name", "Source", "Feature", "Start", "End", "Score", "Strand", "Frame", "Attributes"};
-
-        //Separate each element into list of strings
-        String lineText = lineContent.toString();
-        String[] line = lineText.split("\t");
+    public String[] parseAnnotation(ArrayList<StringBuffer> fastaContent) {
+        StringBuffer lineContent = fastaContent.get(0); //First line of the file, containing the annotation
         
-        //Each value of the gtf line is linked to a key
-        for (int i = 0; i < keys.length; i++) {
-            hash.put(keys[i], line[i]);
-        }
-
-        //Transform attribute into string
-        String[] attributes = hash.get("Attributes").split(";");
-        //New entry gene id in hashmap (extract only the string after "gene_id")
-        String geneID = attributes[0].replace("gene_id ", "");
-        geneID = geneID.replace("\"", "");
-
-        hash.put("Gene ID", geneID);
-
-        //Extract gene id from attributes, which is between: gene_id " and: ";
-        //Pattern pattern = Pattern.compile("(?<=gene_id\s\").*?(?=\")");
-        //Matcher matcher = pattern.matcher(attributes[0]);
-        //hash.put("geneID", matcher.group().toString());
-        return hash;
+        //Separate each element into list of strings
+        String lineText = lineContent.toString(); //STring buffer into string
+        String[] line = lineText.split(":"); //Split at each ":"
+        
+        return line;
     }
     
     
