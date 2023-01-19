@@ -36,7 +36,6 @@ public class exonsPanel extends javax.swing.JPanel {
         textExons = new javax.swing.JScrollPane();
         jTextPane = new javax.swing.JTextPane();
         graphicExons = new javax.swing.JPanel();
-        label1 = new java.awt.Label();
         secondFileChooser = new secondFileChooserPanel(this);
 
         jLayeredPane1.setLayout(new java.awt.CardLayout());
@@ -46,19 +45,15 @@ public class exonsPanel extends javax.swing.JPanel {
         jLayeredPane1.setLayer(textExons, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(textExons, "textual");
 
-        graphicExons.setBackground(new java.awt.Color(204, 0, 204));
-
-        label1.setText("graphic");
-
         javax.swing.GroupLayout graphicExonsLayout = new javax.swing.GroupLayout(graphicExons);
         graphicExons.setLayout(graphicExonsLayout);
         graphicExonsLayout.setHorizontalGroup(
             graphicExonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+            .addGap(0, 964, Short.MAX_VALUE)
         );
         graphicExonsLayout.setVerticalGroup(
             graphicExonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(label1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+            .addGap(0, 463, Short.MAX_VALUE)
         );
 
         jLayeredPane1.setLayer(graphicExons, javax.swing.JLayeredPane.PALETTE_LAYER);
@@ -77,7 +72,7 @@ public class exonsPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -130,13 +125,40 @@ public class exonsPanel extends javax.swing.JPanel {
         textLineExons(offsetLength, text);
     }
     
+    //Display colored lignes for exons
+    public void textExonsMultiple(ArrayList<StringBuffer> gtfContent, ArrayList<StringBuffer> fastaContent){
+        
+    }
+    
+    //Display colored lines for exons, with distinction between single or multiple lines in fasta file
+    public void exonsText(ArrayList<StringBuffer> gtfContent, ArrayList<StringBuffer> fastaContent){
+        //Instance of fastaStatistic: determine if the file comports single or multiple sequences
+        fastaStatistics fastaStats = new fastaStatistics();
+        
+        int numberSequences = fastaStats.numberSequence(fastaContent);
+        
+        if(numberSequences == 0){
+            jTextPane.setText("The fasta file does not have any sequence. Please select another fasta file.");
+        }
+        else if(numberSequences == 1){
+            textExonsSingle(gtfContent, fastaContent);
+        }
+        else if(numberSequences > 1){
+            textExonsMultiple(gtfContent, fastaContent);
+        }
+        
+    }
+    
+    
+    
+    //Graphical representation of one exon
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel graphicExons;
     public javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JTextPane jTextPane;
-    private java.awt.Label label1;
     public secondFileChooserPanel secondFileChooser;
     private javax.swing.JScrollPane textExons;
     // End of variables declaration//GEN-END:variables

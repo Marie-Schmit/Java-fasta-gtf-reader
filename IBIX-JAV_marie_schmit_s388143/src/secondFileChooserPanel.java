@@ -104,10 +104,10 @@ public class secondFileChooserPanel extends fileChooserPanel {
         //Display text exon with propoer colors
         if (gtfFile) //If second chosen file is gtf, first is fasta
         {
-            exonsPanel.textExonsSingle(fileContent, firstFileContent);
+            exonsPanel.exonsText(fileContent, firstFileContent);
         } else if (fastaFile)//If second chosen file is fasta, first is gtf
         {
-            exonsPanel.textExonsSingle(firstFileContent, fileContent);
+            exonsPanel.exonsText(firstFileContent, fileContent);
         }
     }
 

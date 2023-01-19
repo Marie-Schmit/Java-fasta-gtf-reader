@@ -17,7 +17,7 @@ public class fastaStatistics {
     }
 
     //Calculates number of sequences in the fasta file (passed as ArrayList)
-    private int numberSequence(ArrayList<StringBuffer> fileContent) {
+    public int numberSequence(ArrayList<StringBuffer> fileContent) {
         int numberSequence = 0; //Number of sequences
 
         //Check the number of lines starting with > (indicating a new sequence)

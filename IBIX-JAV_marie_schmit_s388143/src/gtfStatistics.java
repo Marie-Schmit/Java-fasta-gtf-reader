@@ -48,11 +48,6 @@ public class gtfStatistics {
         geneID = geneID.replace("\"", "");
 
         hash.put("Gene ID", geneID);
-
-        //Extract gene id from attributes, which is between: gene_id " and: ";
-        //Pattern pattern = Pattern.compile("(?<=gene_id\s\").*?(?=\")");
-        //Matcher matcher = pattern.matcher(attributes[0]);
-        //hash.put("geneID", matcher.group().toString());
         return hash;
     }
 
