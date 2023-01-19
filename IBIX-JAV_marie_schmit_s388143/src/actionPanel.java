@@ -409,22 +409,18 @@ public class actionPanel extends javax.swing.JPanel {
         //Open panel to display results
         mainFrame.displayResultsPane.setPanelVisible(false, false, false, true); //Only text is visible
         //Pass variables to second file chooser
-        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVariable(mainFrame.fileChooserPanel.getFileTypes(), mainFrame.fileChooserPanel.getFileName());
+        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVariable(mainFrame.fileChooserPanel.getFileTypes(), mainFrame.fileChooserPanel.getFileName(), mainFrame.fileChooserPanel.getFileContent());
         //Open second file selection panel
         mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVisible(true);
         //Text display
         mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setTextual(true);
-        
-        int[][] matrix = {{1, 5},{10, 9}, {25, 3}};
-        mainFrame.displayResultsPane.exonsPanel.textExons(matrix);
-        
     }//GEN-LAST:event_menuTextExonsActionPerformed
 
     private void menuGraphExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGraphExonsActionPerformed
         //Exon panel becomes visible
         mainFrame.displayResultsPane.setPanelVisible(false, false, false, true);
         //Pass variables to second file chooser
-        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVariable(mainFrame.fileChooserPanel.getFileTypes(), mainFrame.fileChooserPanel.getFileName());
+        mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVariable(mainFrame.fileChooserPanel.getFileTypes(), mainFrame.fileChooserPanel.getFileName(), mainFrame.fileChooserPanel.getFileContent());
         //Open second file selection panel
         mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setVisible(true);
         //Graphical display

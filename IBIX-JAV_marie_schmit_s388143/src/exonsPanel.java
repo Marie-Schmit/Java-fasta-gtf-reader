@@ -1,6 +1,7 @@
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -97,15 +98,8 @@ public class exonsPanel extends javax.swing.JPanel {
         card.show(this.jLayeredPane1, cardName);
     }
 
-    public void textExons(int[][] offsetLength){
-        /*
-        jTextPane.setContentType("text/html"); //The content type is html
-        String message = "<font color = 'red'> Hellos it's me </font>" + "<font color = 'blue'> MARIE </font>";
-        jTextPane.setText(message);
-        */
-        
-        String message = "Hello cest moi Marie et je veux changer la couleur des exons!!!";
-        jTextPane.setText(message);
+    private void textLineExons(int[][] offsetLength, String text){
+        jTextPane.setText(text);
         //Creat attribute set to change color
         SimpleAttributeSet attributes = new SimpleAttributeSet();
         StyleConstants.setForeground(attributes, Color.cyan);
@@ -115,9 +109,28 @@ public class exonsPanel extends javax.swing.JPanel {
         for(int row = 0; row < offsetLength.length; row++){
             styleDoc.setCharacterAttributes(offsetLength[row][0], offsetLength[row][0], attributes, false);
         }
-        //styleDoc.setCharacterAttributes(1, 5, attributes, false);
-        //styleDoc.setCharacterAttributes(15, 3, attributes, false);
     }
+    
+    //Display all the text and set every line to the right color
+    public void textExonsSingle(ArrayList<StringBuffer> gtfContent, ArrayList<StringBuffer> fastaContent){
+        //Concat text into a single string
+        String text = "";
+        
+        //Instance of exons
+        exons exons = new exons();
+        
+        //Matrix with start and length coordinates
+        int[][] offsetLength = exons.getSingleColoration(gtfContent);
+        
+        for (int i = 1; i < fastaContent.size(); i++){ //The first line is the sequence indication
+            text += fastaContent.get(i).toString();
+        }
+        
+        //Put proper colors to the text
+        textLineExons(offsetLength, text);
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel graphicExons;

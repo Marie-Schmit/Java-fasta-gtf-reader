@@ -66,6 +66,7 @@ public class gtfStatistics {
         HashMap<String, Integer> exonsPerGene = new HashMap<String, Integer>();
 
         for (i = 5; i < textContent.size(); i++) {
+            //Create a hashmap for every line of the file, for an easy access to information
             line = hashLine(textContent.get(i));
 
             //If key gene_id does not exist, create it

@@ -22,11 +22,12 @@ public class secondFileChooserPanel extends fileChooserPanel {
     public secondFileChooserPanel() {
         super();
     }
-    
-    public void setVariable(boolean[] firstType, String firstName) {
+
+    public void setVariable(boolean[] firstType, String firstName, ArrayList<StringBuffer> content) {
         //Set variables with first selected file information
         this.firstFileName = firstName;
         this.firstFileTypes = firstType;
+        this.firstFileContent = content;
 
         //Modify the design of some components
         reInitComponents();
@@ -36,6 +37,7 @@ public class secondFileChooserPanel extends fileChooserPanel {
     exonsPanel exonsPanel;
     boolean[] firstFileTypes;
     private boolean textual; //Is the selected display textual or graphical
+    ArrayList<StringBuffer> firstFileContent;
 
     //Data related to first chosen file
     public String firstFileName; //Name of the selected file
@@ -59,17 +61,16 @@ public class secondFileChooserPanel extends fileChooserPanel {
     public void confirm() {
         boolean rightFormat;
         rightFormat = checkFileType(firstFileTypes, gtfFile, fastaFile); //Check the type of the file
-        
-        if(rightFormat){
+
+        if (rightFormat) {
             //Open actionpanel and display results panel        
             mainFrame.displayResultsPane.setVisible(true);
             mainFrame.actionPanel.setVisible(true);
             mainFrame.displayResultsPane.setVisible(true);
-            
+
             //This chooser disappears 
             this.setVisible(false);
-        }
-        else{
+        } else {
             waitMessage.setVisible(true);
         }
     }
@@ -88,17 +89,25 @@ public class secondFileChooserPanel extends fileChooserPanel {
             exonsPanel.jLayeredPane1.setVisible(true);
             //Change the card panel according to the selected type pof display
             //Set right card panel
-            if(textual) { //Show text
-                exonsPanel.changeCardPanel("textual");
-                
-                //New instance of class exons
-                exons exons = new exons();
-                //Display text exon with propoer colors
-                exons.getExons(this.fileContent);
+            if (textual) { //Show text
+                textualDisplay();
             } else { //Show graphic
                 exonsPanel.changeCardPanel("graphical");
             }
             return true; //File has the right format
+        }
+    }
+
+    //Display text with colors for exons, taking into account the type of the first and second files
+    private void textualDisplay() {
+        exonsPanel.changeCardPanel("textual");
+        //Display text exon with propoer colors
+        if (gtfFile) //If second chosen file is gtf, first is fasta
+        {
+            exonsPanel.textExonsSingle(fileContent, firstFileContent);
+        } else if (fastaFile)//If second chosen file is fasta, first is gtf
+        {
+            exonsPanel.textExonsSingle(firstFileContent, fileContent);
         }
     }
 
