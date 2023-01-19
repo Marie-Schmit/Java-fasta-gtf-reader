@@ -26,7 +26,7 @@ public class gtfStatistics {
 
     //////////////////////////////////////// Calculation of average number of exons per gene ///////////////////////////////
     //Hashmap of each line
-    private HashMap hashLine(StringBuffer lineContent) {
+    public HashMap hashLine(StringBuffer lineContent) {
         //New hashmap
         HashMap<String, String> hash = new HashMap<String, String>();
         //Names of keys
@@ -35,7 +35,8 @@ public class gtfStatistics {
         //Separate each element into list of strings
         String lineText = lineContent.toString();
         String[] line = lineText.split("\t");
-
+        
+        //Each value of the gtf line is linked to a key
         for (int i = 0; i < keys.length; i++) {
             hash.put(keys[i], line[i]);
         }
@@ -66,6 +67,8 @@ public class gtfStatistics {
 
         for (i = 5; i < textContent.size(); i++) {
             line = hashLine(textContent.get(i));
+            
+            //If it is an exons
 
             //If key gene_id does not exist, create it
             if (exonsPerGene.get(line.get("Gene ID")) == null) {

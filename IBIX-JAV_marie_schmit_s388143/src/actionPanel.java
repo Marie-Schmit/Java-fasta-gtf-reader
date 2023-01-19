@@ -415,6 +415,9 @@ public class actionPanel extends javax.swing.JPanel {
         //Text display
         mainFrame.displayResultsPane.exonsPanel.secondFileChooser.setTextual(true);
         
+        int[][] matrix = {{1, 5},{10, 9}, {25, 3}};
+        mainFrame.displayResultsPane.exonsPanel.textExons(matrix);
+        
     }//GEN-LAST:event_menuTextExonsActionPerformed
 
     private void menuGraphExonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGraphExonsActionPerformed

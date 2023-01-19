@@ -1,11 +1,14 @@
 
 import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author marie
@@ -82,17 +85,38 @@ public class exonsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     public void fileChoiceVisibility(boolean choice) {
         if (choice) {
             secondFileChooser.setVisible(true);
         }
         jLayeredPane1.setVisible(false);
     }
-    
-    public void changeCardPanel(String cardName){
-        CardLayout card = (CardLayout)this.jLayeredPane1.getLayout();
+
+    public void changeCardPanel(String cardName) {
+        CardLayout card = (CardLayout) this.jLayeredPane1.getLayout();
         card.show(this.jLayeredPane1, cardName);
+    }
+
+    public void textExons(int[][] offsetLength){
+        /*
+        jTextPane.setContentType("text/html"); //The content type is html
+        String message = "<font color = 'red'> Hellos it's me </font>" + "<font color = 'blue'> MARIE </font>";
+        jTextPane.setText(message);
+        */
+        
+        String message = "Hello cest moi Marie et je veux changer la couleur des exons!!!";
+        jTextPane.setText(message);
+        //Creat attribute set to change color
+        SimpleAttributeSet attributes = new SimpleAttributeSet();
+        StyleConstants.setForeground(attributes, Color.cyan);
+        
+        //Apply to some parts of text
+        StyledDocument styleDoc = jTextPane.getStyledDocument();
+        for(int row = 0; row < offsetLength.length; row++){
+            styleDoc.setCharacterAttributes(offsetLength[row][0], offsetLength[row][0], attributes, false);
+        }
+        //styleDoc.setCharacterAttributes(1, 5, attributes, false);
+        //styleDoc.setCharacterAttributes(15, 3, attributes, false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
