@@ -94,26 +94,6 @@ public class fastaStatistics {
         }
     }
 
-    //Class to return results of length calculation (length value and indication of single or multiple sequences)
-    final class lengthResult {
-
-        private final double length;
-        private final String sequenceType;
-
-        public lengthResult(double length, String sequenceType) {
-            this.length = length;
-            this.sequenceType = sequenceType;
-        }
-
-        public double getLength() {
-            return this.length;
-        }
-
-        public String getType() {
-            return this.sequenceType;
-        }
-    }
-
     //Calculate number of G and umber of C characters in one string
     private int[] numberGC(StringBuffer line) {
         int numberG = 0;
@@ -158,5 +138,26 @@ public class fastaStatistics {
             gc = numberG / numberC; //Calculate GC content
         }
         return gc;
+    }
+    
+    
+    //Class to return results of length calculation (length value and indication of single or multiple sequences)
+    final class lengthResult {
+
+        private final double length;
+        private final String sequenceType;
+
+        public lengthResult(double length, String sequenceType) {
+            this.length = length;
+            this.sequenceType = sequenceType;
+        }
+
+        public double getLength() {
+            return this.length;
+        }
+
+        public String getType() {
+            return this.sequenceType;
+        }
     }
 }

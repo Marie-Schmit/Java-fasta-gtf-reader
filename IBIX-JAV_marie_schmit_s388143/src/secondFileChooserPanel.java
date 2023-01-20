@@ -23,6 +23,17 @@ public class secondFileChooserPanel extends fileChooserPanel {
         super();
     }
 
+    //Add variables linked to exon table
+    private exonsPanel exonsPanel;
+    private boolean[] firstFileTypes;
+    private boolean textual; //Is the selected display textual or graphical
+    private ArrayList<StringBuffer> firstFileContent;
+
+    //Data related to first chosen file
+    public String firstFileName; //Name of the selected file
+    public String firstFileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
+
+    
     public void setVariable(boolean[] firstType, String firstName, ArrayList<StringBuffer> content) {
         //Set variables with first selected file information
         this.firstFileName = firstName;
@@ -31,18 +42,8 @@ public class secondFileChooserPanel extends fileChooserPanel {
 
         //Modify the design of some components
         reInitComponents();
-    }
-
-    //Add variables linked to exon table
-    exonsPanel exonsPanel;
-    boolean[] firstFileTypes;
-    private boolean textual; //Is the selected display textual or graphical
-    ArrayList<StringBuffer> firstFileContent;
-
-    //Data related to first chosen file
-    public String firstFileName; //Name of the selected file
-    public String firstFileChosenMessage; //Message to display in actionFrame, indicating the name of the chosen file
-
+    }    
+    
     //Change some components of the panel
     private void reInitComponents() {
         //Set message displayed to user according to the first chosen file

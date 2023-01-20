@@ -31,7 +31,6 @@ public class fileChooserPanel extends javax.swing.JPanel {
         clearBtn.setVisible(false);
         confirmBtn.setVisible(false);
 
-        secondFileExons = false; //First file to be chosen, not for exons display
     }
     
     //Indicates if chosen file is fasta or gtf. If both are false, no file is chosen.
@@ -44,7 +43,6 @@ public class fileChooserPanel extends javax.swing.JPanel {
     private String fileDirectory; //Name of the selected file directory
     private FileDialog nameBox; //File browser
     private Pattern extension = Pattern.compile(".*\\.(gtf|fa)"); //Regex of files extensions
-    private boolean secondFileExons; //If second file choosen in case of exons calculation
 
     /**
      * This method is called from within the constructor to initialize the form.

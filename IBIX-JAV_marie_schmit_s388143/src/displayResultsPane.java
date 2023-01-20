@@ -287,17 +287,6 @@ public class displayResultsPane extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1AncestorAdded
 
-    //Switch panels
-    /*
-    public void switchLastPanel(String cardName) {
-        //Make this panel visible
-        this.setVisible(true);
-        //Define a card layout
-        this.setLayout(new java.awt.CardLayout());
-        CardLayout card = (CardLayout) (this.getLayout());
-        card.show(this, cardName);
-    }
-*/
 
     //Display text stored in StringBuffer, in an ArrayList in text area, one page at a time
     public void displayText(ArrayList<StringBuffer> textContent, int pageNumber, boolean textType) {
@@ -344,7 +333,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
 
     //Display text on a page page of text (1000 lines)
-    public void displayPage(ArrayList<StringBuffer> textContent, int startLine, int endLine) {
+    private void displayPage(ArrayList<StringBuffer> textContent, int startLine, int endLine) {
         int i;
         //Clear text area for new page
         textArea.setText(null);
@@ -355,7 +344,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
     
     //Display table on a page
-    public void displayTablePage(ArrayList<StringBuffer> textContent, int startLine, int endLine){
+    private void displayTablePage(ArrayList<StringBuffer> textContent, int startLine, int endLine){
         int i;
         //Clear table for new page
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
@@ -371,7 +360,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
     
     //Convert a string buffer to a row of table
-    public String[] contentToString(StringBuffer rowContent) {
+    private String[] contentToString(StringBuffer rowContent) {
         String rowText = rowContent.toString();
         String[] row;
 
@@ -382,7 +371,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
 
     //Add line to table, for gtf file
-    public void addToTable(String[] row) {
+    private void addToTable(String[] row) {
         int i;
 
         //Set default table of jTable1
@@ -393,7 +382,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
 
     //Resize colulumn of index colNumber of JTable table
-    public void setColSize(JTable table, int colNumber) {
+    private void setColSize(JTable table, int colNumber) {
         TableColumn tableCol = table.getColumnModel().getColumn(colNumber); //get desired column
 
         //Set initial width
@@ -432,7 +421,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     }
 
     //Set next and previous buttons visibility
-    public void nextPreviousBtnVisible() {
+    private void nextPreviousBtnVisible() {
         //If maximal number of page attained
         if (presentPage + 1 >= maxPages) {
             nextBtn.setVisible(false);
