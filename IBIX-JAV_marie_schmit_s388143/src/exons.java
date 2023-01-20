@@ -220,12 +220,14 @@ public class exons {
                 int width = (int)(indexMatrix[exon][1] * 0.1);  //Width of rectangle
                 
                 //If exon is too long, avoid that graphical goes out of the screening with a return to line of the graph
-                /*
-                if((x + width) > panelWidth){
-                    y += 40; //Displayed on another line
-                    x -= panelWidth; //Go back to begining of the line
+                int coeffSize = (int)(Math.ceil((x + width)/panelWidth));
+                System.out.println(coeffSize);
+                System.out.println(x + width);
+                
+                if(coeffSize > 0){
+                    y = 110 + (20 * coeffSize); //Displayed on another line
+                    x -= panelWidth; //Go back to begining of the line 
                 }
-*/
 
                 int[] rectCoordinates = {x, y, width, height};
                 System.out.print("x, y, h, w " + x + " " + y + " " + width + " " + height + "\n");

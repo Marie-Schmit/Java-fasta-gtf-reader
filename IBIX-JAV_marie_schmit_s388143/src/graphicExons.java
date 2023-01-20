@@ -7,13 +7,13 @@
  *
  * @author marie
  */
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 
-public class graphicExons extends javax.swing.JPanel {
+public class graphicExons extends javax.swing.JPanel{
 
     /**
      * Creates new form graphicExons
@@ -31,7 +31,16 @@ public class graphicExons extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setLayout(new java.awt.GridLayout());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 964, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 473, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     //Create instance of class exons
@@ -60,7 +69,12 @@ public class graphicExons extends javax.swing.JPanel {
             
             //Fill rectangle
             g.fillRect(rectDimensions[0], rectDimensions[1], rectDimensions[2], rectDimensions[3]);
+            
         }
+        
+        //Adapt dimensions of the panel
+        setPreferredSize(new Dimension(2500,getHeight()));
+        
     }
     
     public void setCoordinates(int[][] newCoordinates){
