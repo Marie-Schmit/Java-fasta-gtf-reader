@@ -88,11 +88,6 @@ public class exons {
 
             //Add to matrix
             indexMatrix[row] = indexColoration;
-            /*
-            if (indexMatrix[row][1] > 0) {
-                System.out.print("x, len " + indexMatrix[row][0] + " " + indexMatrix[row][1] + "\n");
-            }
-*/
         }
         return indexMatrix;
     }
@@ -179,7 +174,7 @@ public class exons {
     }
 
     //Get chromosome and chromosome location from single sequence fasta file annotation
-    private String[] parseAnnotation(ArrayList<StringBuffer> fastaContent) {
+    public String[] parseAnnotation(ArrayList<StringBuffer> fastaContent) {
         StringBuffer lineContent = fastaContent.get(0); //First line of the file, containing the annotation
 
         //Separate each element into list of strings
@@ -216,25 +211,72 @@ public class exons {
 
         for (int exon = 0; exon < indexMatrix.length; exon++) {
             if (indexMatrix[exon][1] > 0) { //If the length of the exon is not null
-                int x = (int)(indexMatrix[exon][0] * 0.05); //x coordinate of rectangle
-                int width = (int)(indexMatrix[exon][1] * 0.1);  //Width of rectangle
-                
+                int x = (int) (indexMatrix[exon][0] * 0.05); //x coordinate of rectangle
+                int width = (int) (indexMatrix[exon][1] * 0.1);  //Width of rectangle
+
                 //If exon is too long, avoid that graphical goes out of the screening with a return to line of the graph
-                int coeffSize = (int)(Math.ceil((x + width)/panelWidth));
-                System.out.println(coeffSize);
-                System.out.println(x + width);
-                
-                if(coeffSize > 0){
+                int coeffSize = (int) (Math.ceil((x + width) / panelWidth));
+
+                if (coeffSize > 0) {
                     y = 110 + (20 * coeffSize); //Displayed on another line
                     x -= panelWidth; //Go back to begining of the line 
                 }
 
                 int[] rectCoordinates = {x, y, width, height};
-                System.out.print("x, y, h, w " + x + " " + y + " " + width + " " + height + "\n");
                 coordinates.add(rectCoordinates); //Add coordinates in ArrayList
             }
         }
         return coordinates;
     }
 
+    //Get coordinates of a line drawn between exons
+    public ArrayList<int[]> lineCoordinates(String[] annotation, int panelWidth) {
+        //Get annotation of file
+        String[] fastaAnnotation = annotation;
+
+        //Start of the line
+        int faStart;
+        //End of the line
+        int faEnd;
+
+        if (fastaAnnotation.length > 3) {
+            faStart = Integer.parseInt(fastaAnnotation[4]);
+            faEnd = Integer.parseInt(fastaAnnotation[5]);
+        } else {
+            faStart = Integer.parseInt(fastaAnnotation[1]);
+            faEnd = Integer.parseInt(fastaAnnotation[2]);
+        }
+
+        //Store coordinates
+        ArrayList<int[]> lineCoordinates = new ArrayList<int[]>();
+
+        //Set coordinates
+        int x = 0;
+        int width = (int) ((faEnd - faStart) * 0.1); //Scale of 0.01 same as exons scaling
+        int height = 2;
+        int y = 109;
+        int count = 0;
+
+        if (width <= panelWidth) {
+            //Set coordinates in the arrayList
+            int[] rectCoordinates = {x, y, width, height};
+            lineCoordinates.add(rectCoordinates);
+        } else {
+            while (width > panelWidth) {
+                //Calculate coordinates and next coordinates
+                int nextWidth = width - panelWidth;
+                width -= panelWidth;
+                y += 30 * count;
+
+                //Set coordinates in the arrayList
+                int[] rectCoordinates = {x, y, width, height};
+                lineCoordinates.add(rectCoordinates);
+
+                //Set next cooridnates
+                width = nextWidth;
+                count++;
+            }
+        }
+        return lineCoordinates;
+    }
 }

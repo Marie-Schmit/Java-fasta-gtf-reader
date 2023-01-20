@@ -31,28 +31,38 @@ public class graphicExons extends javax.swing.JPanel{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        annotationLbl = new javax.swing.JLabel();
+
+        annotationLbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 964, Short.MAX_VALUE)
+            .addComponent(annotationLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(annotationLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(404, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     //Create instance of class exons
     private exons classExons = new exons();
     private int[][] coordinates;
+    private int[] lineCoordinates;
+    private String[] fastaAnnotation;
     
     
     
     //Override paint component
     @Override
     public void paintComponent(Graphics g){
-        super.paintComponent(g);
+        super.paintComponent(g); //Render lightweigth components
+        
         Color exonColor = new Color(255, 127, 80);
         //Set color and rectangles
         g.setColor(exonColor);
@@ -69,18 +79,31 @@ public class graphicExons extends javax.swing.JPanel{
             
             //Fill rectangle
             g.fillRect(rectDimensions[0], rectDimensions[1], rectDimensions[2], rectDimensions[3]);
-            
         }
         
-        //Adapt dimensions of the panel
-        setPreferredSize(new Dimension(2500,getHeight()));
-        
+        //Coordinate of line between exons
+        ArrayList<int[]> linesCoord = exons.lineCoordinates(fastaAnnotation, this.getSize().width);
+        //Draw a line between all exons
+        for(int i = 0; i < linesCoord.size(); i++){
+            g.fillRect(linesCoord.get(i)[0], linesCoord.get(i)[1], linesCoord.get(i)[2], linesCoord.get(i)[3]);
+        }
     }
     
     public void setCoordinates(int[][] newCoordinates){
         coordinates = newCoordinates;
+        lineCoordinates = lineCoordinates;
+    }
+    
+    public void setAnnotation(String[] annotation){
+        fastaAnnotation = annotation;
+        String message = fastaAnnotation[0] + ":" + fastaAnnotation[1] + "-" + fastaAnnotation[2];
+        annotationLbl.setText(message);
+        annotationLbl.setVisible(true);
+        repaint();
+        System.out.println(message);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel annotationLbl;
     // End of variables declaration//GEN-END:variables
 }

@@ -118,29 +118,51 @@ public class secondFileChooserPanel extends fileChooserPanel {
     
     //Display graphic for exons representaton
     private void graphicalDisplay(){
-        exonsPanel.changeCardPanel("graphical");
-        //Instance of exons
-        exons exons = new exons();
-        
+        exonsPanel.changeCardPanel("graphical");        
         //Display text exon with propoer colors
         if (gtfFile) //If second chosen file is gtf, first is fasta
         {
-            //Set rectangles coordinates
-            int[][] coordinates = exons.getSingleColoration(fileContent, firstFileContent);
-            //Set coordinates of rectangle
-            exonsPanel.graphicExons.setCoordinates(coordinates);
-            System.out.println(coordinates[1][1]);
+            singleGraphicalDisplay(fileContent, firstFileContent);
             
         } else//If second chosen file is fasta, first is gtf
         {
             //Set rectangles coordinates
-            int[][] coordinates = exons.getSingleColoration(firstFileContent, fileContent);
-            //Set coordinates of rectangle
-            exonsPanel.graphicExons.setCoordinates(coordinates);
-            System.out.println(coordinates[1][1]);
+            singleGraphicalDisplay(firstFileContent, fileContent);
         }
+    }
+    
+    //Graphical display with graphicExons only for single sequence
+    private void singleGraphicalDisplay(ArrayList<StringBuffer> gtfContent, ArrayList<StringBuffer> fastaContent){
+        //Only single sequence fasta can be converted to graphic
         
-        //Repaint panel
-        exonsPanel.graphicExons.repaint();
+            //Instance of fastaStatistic: determine if the file comports single or multiple sequences
+            fastaStatistics fastaStats = new fastaStatistics();
+            //Instance of exons
+            exons exons = new exons();
+            int numberSequences = fastaStats.numberSequence(fastaContent);
+
+            if(numberSequences == 0){
+                waitMessage.setText("The fasta file does not have any sequence. Please select another fasta file.");
+            }
+            else if(numberSequences == 1){
+                try{
+                //Set rectangles coordinates
+                int[][] coordinates = exons.getSingleColoration(gtfContent, fastaContent);
+                //Set line coordinates
+                String[] annotation = exons.parseAnnotation(fastaContent);
+                exonsPanel.graphicExons.setAnnotation(annotation);
+                //Set coordinates of rectangle
+                exonsPanel.graphicExons.setCoordinates(coordinates);
+                //Repaint panel
+                exonsPanel.graphicExons.repaint();
+                }
+                catch(java.lang.OutOfMemoryError ex){
+                    waitMessage.setText("Your file is too large to be processed.");
+                }
+            }
+            else if(numberSequences > 1){
+                waitMessage.setText("Please choose a fasta file with single sequence for graphical representation");
+                System.out.println("Please choose a fasta file with single sequence for graphical representation");
+            }
     }
 }
