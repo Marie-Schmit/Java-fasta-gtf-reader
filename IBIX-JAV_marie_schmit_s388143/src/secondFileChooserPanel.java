@@ -83,7 +83,7 @@ public class secondFileChooserPanel extends fileChooserPanel {
             waitMessage.setText("Please chose another file, format should be fasta.");
             return false; //File does not have the right format
         } else if (firstType[1] && fasta) {//Both files are fasta
-            waitMessage.setText("Please chose another file, format should be fasta.");
+            waitMessage.setText("Please chose another file, format should be gtf.");
             return false; //File does not have the right format
         } else {
             //Panels to display text or graphics are visible
