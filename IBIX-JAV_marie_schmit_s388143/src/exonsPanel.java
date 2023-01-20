@@ -133,6 +133,9 @@ public class exonsPanel extends javax.swing.JPanel {
         ArrayList<int[][]> indexSequences = new ArrayList<int[][]>();
         indexSequences = exons.getMultipleColoration(gtfContent, fastaContent);
         
+        //Count number of line return that are added
+        int moreCharacters = 0;
+        
         String text = "";
         //Text is the file content
         for (int i = 0; i < fastaContent.size(); i++){ //The first line is the sequence indication
@@ -155,7 +158,11 @@ public class exonsPanel extends javax.swing.JPanel {
             
             //Get each exons (ie each row of matrix offLength)
             for(int row = 0; row < offsetLength.length; row++){
-            styleDoc.setCharacterAttributes(offsetLength[row][0], offsetLength[row][1], attributes, false);
+                if((offsetLength[row][0] == 0) && (offsetLength[row][1] != 0)){
+                    System.out.println("Start " + offsetLength[row][0]);
+                    System.out.println("Len " + offsetLength[row][1]);
+                }
+                styleDoc.setCharacterAttributes(offsetLength[row][0], offsetLength[row][1], attributes, false);
             }
         }
     }

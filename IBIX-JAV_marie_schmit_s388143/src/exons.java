@@ -35,7 +35,7 @@ public class exons {
             StringBuffer sequence = new StringBuffer(fastaContent.get(seq+1));
             
             //Calculate len of sum of annotations
-            lenAnnotations += annotation.length();
+            lenAnnotations += annotation.length() + 1; //For text display character of line return "\n" is added at the end of annotatoin line
             
             //Add them into an ArrayList
             ArrayList singleSeq = new ArrayList();
@@ -48,18 +48,19 @@ public class exons {
             //The index of start must take the length of the previous lines (annotations and sequences) into account
             for(int i = 0; i < indexSequence.length; i++){
                 //If start is not null
-                if(indexSequence[i][0] != 0){
-                    System.out.println("Start" + indexSequence[i][0]);
+                if(indexSequence[i][1] != 0){
+                    //System.out.println("index " + i);
+                    //System.out.println("Start " + indexSequence[i][0]);
                     indexSequence[i][0] += lenAnnotations; //Add len of all the previous annotations
                     indexSequence[i][0] += lenSequences; //Add length of all the previous sequences
-                    System.out.println("len ANNo "+ lenAnnotations);
-                    System.out.println("len seq "+ lenSequences);
-                    System.out.println("Start + annotations" + indexSequence[i][0]);
-                    System.out.println();
+                    //System.out.println("len ANNo "+ lenAnnotations);
+                    //System.out.println("len seq "+ lenSequences);
+                    //System.out.println("Start + annotations " + indexSequence[i][0]);
+                    //System.out.println();
                 }
             }
             //Actualise len of sequences
-            lenSequences += sequence.length();
+            lenSequences += sequence.length() + 1; //For text display, a character \n return is added at the end of the sequence
             //Add matrix of each sequence on matrix of all the sequences
             allIndexes.add(indexSequence);
         }
