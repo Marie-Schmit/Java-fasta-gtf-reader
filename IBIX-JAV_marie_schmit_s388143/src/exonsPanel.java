@@ -35,7 +35,7 @@ public class exonsPanel extends javax.swing.JPanel {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         textExons = new javax.swing.JScrollPane();
         jTextPane = new javax.swing.JTextPane();
-        graphicExons = new javax.swing.JPanel();
+        graphicExons = new graphicExons();
         secondFileChooser = new secondFileChooserPanel(this);
 
         jLayeredPane1.setLayout(new java.awt.CardLayout());
@@ -181,12 +181,9 @@ public class exonsPanel extends javax.swing.JPanel {
         }
     }
     
-    //Graphical representation of one exon
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel graphicExons;
+    public graphicExons graphicExons;
     public javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JTextPane jTextPane;
     public secondFileChooserPanel secondFileChooser;

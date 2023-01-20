@@ -92,7 +92,7 @@ public class secondFileChooserPanel extends fileChooserPanel {
             if (textual) { //Show text
                 textualDisplay();
             } else { //Show graphic
-                exonsPanel.changeCardPanel("graphical");
+                graphicalDisplay();
             }
             return true; //File has the right format
         }
@@ -114,5 +114,33 @@ public class secondFileChooserPanel extends fileChooserPanel {
     //Set value of textual (true if text has to be shown)
     public void setTextual(boolean textual) {
         this.textual = textual;
+    }
+    
+    //Display graphic for exons representaton
+    private void graphicalDisplay(){
+        exonsPanel.changeCardPanel("graphical");
+        //Instance of exons
+        exons exons = new exons();
+        
+        //Display text exon with propoer colors
+        if (gtfFile) //If second chosen file is gtf, first is fasta
+        {
+            //Set rectangles coordinates
+            int[][] coordinates = exons.getSingleColoration(fileContent, firstFileContent);
+            //Set coordinates of rectangle
+            exonsPanel.graphicExons.setCoordinates(coordinates);
+            System.out.println(coordinates[1][1]);
+            
+        } else//If second chosen file is fasta, first is gtf
+        {
+            //Set rectangles coordinates
+            int[][] coordinates = exons.getSingleColoration(firstFileContent, fileContent);
+            //Set coordinates of rectangle
+            exonsPanel.graphicExons.setCoordinates(coordinates);
+            System.out.println(coordinates[1][1]);
+        }
+        
+        //Repaint panel
+        exonsPanel.graphicExons.repaint();
     }
 }
