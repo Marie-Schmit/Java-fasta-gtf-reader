@@ -206,26 +206,31 @@ public class exons {
         //Store rectangles coordinates
         ArrayList<int[]> coordinates = new ArrayList<int[]>();
 
-        int y = 100; //y position of rectangle
-        int height = 20; //Height of rectangle
+        try {
+            int y = 100; //y position of rectangle
+            int height = 20; //Height of rectangle
 
-        for (int exon = 0; exon < indexMatrix.length; exon++) {
-            if (indexMatrix[exon][1] > 0) { //If the length of the exon is not null
-                int x = (int) (indexMatrix[exon][0] * 0.05); //x coordinate of rectangle
-                int width = (int) (indexMatrix[exon][1] * 0.1);  //Width of rectangle
+            for (int exon = 0; exon < indexMatrix.length; exon++) {
+                if (indexMatrix[exon][1] > 0) { //If the length of the exon is not null
+                    int x = (int) (indexMatrix[exon][0] * 0.05); //x coordinate of rectangle
+                    int width = (int) (indexMatrix[exon][1] * 0.1);  //Width of rectangle
 
-                //If exon is too long, avoid that graphical goes out of the screening with a return to line of the graph
-                int coeffSize = (int) (Math.ceil((x + width) / panelWidth));
+                    //If exon is too long, avoid that graphical goes out of the screening with a return to line of the graph
+                    int coeffSize = (int) (Math.ceil((x + width) / panelWidth));
 
-                if (coeffSize > 0) {
-                    y = 110 + (20 * coeffSize); //Displayed on another line
-                    x -= panelWidth; //Go back to begining of the line 
+                    if (coeffSize > 0) {
+                        y = 110 + (20 * coeffSize); //Displayed on another line
+                        x -= panelWidth; //Go back to begining of the line 
+                    }
+                    //Set coordinates
+                    int[] rectCoordinates = {x, y, width, height};
+                    coordinates.add(rectCoordinates); //Add coordinates in ArrayList
                 }
-
-                int[] rectCoordinates = {x, y, width, height};
-                coordinates.add(rectCoordinates); //Add coordinates in ArrayList
             }
+        } catch (NullPointerException ex) {
+            System.out.println("Please enter a single sequence fasta file");
         }
+
         return coordinates;
     }
 
@@ -235,16 +240,20 @@ public class exons {
         String[] fastaAnnotation = annotation;
 
         //Start of the line
-        int faStart;
+        int faStart = 0;
         //End of the line
-        int faEnd;
+        int faEnd = 0;
 
-        if (fastaAnnotation.length > 3) {
-            faStart = Integer.parseInt(fastaAnnotation[4]);
-            faEnd = Integer.parseInt(fastaAnnotation[5]);
-        } else {
-            faStart = Integer.parseInt(fastaAnnotation[1]);
-            faEnd = Integer.parseInt(fastaAnnotation[2]);
+        try {
+            if (fastaAnnotation.length > 3) {
+                faStart = Integer.parseInt(fastaAnnotation[4]);
+                faEnd = Integer.parseInt(fastaAnnotation[5]);
+            } else {
+                faStart = Integer.parseInt(fastaAnnotation[1]);
+                faEnd = Integer.parseInt(fastaAnnotation[2]);
+            }
+        } catch (NullPointerException ex) {
+            System.out.println("Fasta file is empty or does not provide the right information. Please select anotehr file.");
         }
 
         //Store coordinates
