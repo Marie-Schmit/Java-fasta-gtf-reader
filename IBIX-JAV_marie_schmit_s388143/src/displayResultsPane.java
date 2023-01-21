@@ -25,9 +25,6 @@ public class displayResultsPane extends javax.swing.JPanel {
         initComponents();
         presentPage = 0;
         
-        //Button panel initially invisible
-        buttonsPanel.setVisible(false);
-        
         //No nested panel visible at opening
         buttonsPanel.setVisible(false); //Panel containing the buttons for page management when file content is displayed
         exonsPane.setVisible(false);
@@ -416,7 +413,6 @@ public class displayResultsPane extends javax.swing.JPanel {
         if (maxNumber % 1000 != 0) {
             maxNumber++;
         }
-
         return maxNumber;
     }
 

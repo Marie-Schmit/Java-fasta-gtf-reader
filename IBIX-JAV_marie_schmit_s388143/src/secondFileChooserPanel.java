@@ -95,7 +95,7 @@ public class secondFileChooserPanel extends fileChooserPanel {
             } else { //Show graphic
                 graphicalDisplay();
             }
-            return true; //File has the right format
+            return true; //File has the right format 
         }
     }
 
