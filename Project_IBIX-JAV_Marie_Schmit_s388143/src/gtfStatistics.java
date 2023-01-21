@@ -138,7 +138,7 @@ public class gtfStatistics {
         String minGene = ""; //ID of shortest gene
         ArrayList allLength = new ArrayList(); //List to store all genes length
 
-        for (i = 5; i < textContent.size(); i++) {
+        for (i = 6; i < textContent.size(); i++) {
             //Convert each line of the file to hashmap
             line = hashLine(textContent.get(i));
 
