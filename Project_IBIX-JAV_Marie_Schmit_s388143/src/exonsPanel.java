@@ -159,6 +159,11 @@ public class exonsPanel extends javax.swing.JPanel {
             //Get each exons (ie each row of matrix offLength)
             for(int row = 0; row < offsetLength.length; row++){
                 styleDoc.setCharacterAttributes(offsetLength[row][0], offsetLength[row][1], attributes, false);
+                
+                if((offsetLength[row][0] == 0) && (offsetLength[row][1] != 0)){
+                    System.out.println("Start" + offsetLength[row][0]);
+                    System.out.println("Len " + offsetLength[row][1]);
+                }
             }
         }
     }

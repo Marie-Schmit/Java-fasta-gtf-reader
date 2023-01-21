@@ -49,7 +49,8 @@ public class exons {
             for (int i = 0; i < indexSequence.length; i++) {
                 //If start is not null
                 if (indexSequence[i][1] != 0) {
-                    indexSequence[i][0] += lenSequences;
+                    indexSequence[i][0] += lenAnnotations; //Add len of all the previous annotations
+                    indexSequence[i][0] += lenSequences; //Add length of all the previous sequences
                 }
             }
             //Actualise len of sequences
