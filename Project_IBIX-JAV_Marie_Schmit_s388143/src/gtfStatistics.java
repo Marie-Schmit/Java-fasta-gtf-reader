@@ -106,7 +106,13 @@ public class gtfStatistics {
             sum += gene.getValue();
             index++;
         }
-        average = (double) sum / (double) index;
+        if (index == 0) {
+            average = 0;
+            //Throw exception
+            throw new IllegalStateException("Division by 0. The number lines in the gtf file is null. File might be empty, please try with a new file.");
+        } else {
+            average = (double) sum / (double) index; //Calculate average
+        }
         avgNumberExons = average;
         return average;
     }
@@ -132,7 +138,7 @@ public class gtfStatistics {
         String minGene = ""; //ID of shortest gene
         ArrayList allLength = new ArrayList(); //List to store all genes length
 
-        for (i = 6; i < textContent.size(); i++) {
+        for (i = 5; i < textContent.size(); i++) {
             //Convert each line of the file to hashmap
             line = hashLine(textContent.get(i));
 

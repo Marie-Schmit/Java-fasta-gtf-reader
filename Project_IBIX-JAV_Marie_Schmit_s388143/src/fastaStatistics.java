@@ -32,7 +32,7 @@ public class fastaStatistics {
         return (numberSequence);
     }
 
-    //Caclulate average length of multiple sequences from a list of length
+    //Calculate average length of multiple sequences from a list of length
     private double averageLengthSequences(int[] lengthList) {
         int sum = 0;
         int i;
@@ -50,7 +50,7 @@ public class fastaStatistics {
         }
     }
 
-    //Return list of length
+    //Return list of length of sequences of the file
     private int[] listLength(ArrayList<StringBuffer> fileContent, int numberSequences) {
         //Initialisation of list of length
         int[] listLen = new int[numberSequences];

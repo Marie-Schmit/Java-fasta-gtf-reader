@@ -1,5 +1,5 @@
 
-import java.awt.CardLayout;
+//import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -300,7 +300,7 @@ public class displayResultsPane extends javax.swing.JPanel {
         //Reset text area
         textArea.setText(null);
 
-        //Set end and start lines for ta page
+        //Set end and start lines for the page
         startLine = 1000 * pageNumber;
         endLine = startLine + 1000;
 
@@ -309,7 +309,7 @@ public class displayResultsPane extends javax.swing.JPanel {
             endLine = textContent.size();
         }
         
-        //Dislay text
+        //Display text
         if(textType){
             //Display lines in this interval
             displayPage(textContent, startLine, endLine);
@@ -333,7 +333,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     private void displayPage(ArrayList<StringBuffer> textContent, int startLine, int endLine) {
         int i;
         //Clear text area for new page
-        textArea.setText(null);
+        textArea.setText("");
         
         for (i = startLine; i < endLine; i++) {
             textArea.append(textContent.get(i).toString() + "\n");
