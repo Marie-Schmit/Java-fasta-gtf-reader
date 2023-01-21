@@ -1,5 +1,4 @@
 
-//import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -435,7 +434,7 @@ public class displayResultsPane extends javax.swing.JPanel {
     
     //Reset text and table area
     public void resetText(){
-        displayText(null);
+        displayText("");
     }
 
     //Set next button to visible or invisible
