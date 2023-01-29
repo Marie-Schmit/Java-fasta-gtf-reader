@@ -5779,172 +5779,6 @@
 						},
 						{
 							"_type": "UMLClassView",
-							"_id": "AAAAAAGF0GKRdb2e6cA=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"model": {
-								"$ref": "AAAAAAGF0GKRdb2cM/E="
-							},
-							"subViews": [
-								{
-									"_type": "UMLNameCompartmentView",
-									"_id": "AAAAAAGF0GKRdb2fqII=",
-									"_parent": {
-										"$ref": "AAAAAAGF0GKRdb2e6cA="
-									},
-									"model": {
-										"$ref": "AAAAAAGF0GKRdb2cM/E="
-									},
-									"subViews": [
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGF0GKRdb2gSLA=",
-											"_parent": {
-												"$ref": "AAAAAAGF0GKRdb2fqII="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"height": 13
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGF0GKRdb2h5tk=",
-											"_parent": {
-												"$ref": "AAAAAAGF0GKRdb2fqII="
-											},
-											"font": "Arial;13;1",
-											"left": 2237,
-											"top": 583,
-											"width": 41.919921875,
-											"height": 13,
-											"text": "Class7"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGF0GKRdb2ips0=",
-											"_parent": {
-												"$ref": "AAAAAAGF0GKRdb2fqII="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"width": 104.00634765625,
-											"height": 13,
-											"text": "(from mainFrame)"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGF0GKRdb2jZNA=",
-											"_parent": {
-												"$ref": "AAAAAAGF0GKRdb2fqII="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"height": 13,
-											"horizontalAlignment": 1
-										}
-									],
-									"font": "Arial;13;0",
-									"left": 2232,
-									"top": 576,
-									"width": 51.919921875,
-									"height": 25,
-									"stereotypeLabel": {
-										"$ref": "AAAAAAGF0GKRdb2gSLA="
-									},
-									"nameLabel": {
-										"$ref": "AAAAAAGF0GKRdb2h5tk="
-									},
-									"namespaceLabel": {
-										"$ref": "AAAAAAGF0GKRdb2ips0="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAGF0GKRdb2jZNA="
-									}
-								},
-								{
-									"_type": "UMLAttributeCompartmentView",
-									"_id": "AAAAAAGF0GKRdb2kdOI=",
-									"_parent": {
-										"$ref": "AAAAAAGF0GKRdb2e6cA="
-									},
-									"model": {
-										"$ref": "AAAAAAGF0GKRdb2cM/E="
-									},
-									"font": "Arial;13;0",
-									"left": 2232,
-									"top": 601,
-									"width": 51.919921875,
-									"height": 10
-								},
-								{
-									"_type": "UMLOperationCompartmentView",
-									"_id": "AAAAAAGF0GKRdb2ldRg=",
-									"_parent": {
-										"$ref": "AAAAAAGF0GKRdb2e6cA="
-									},
-									"model": {
-										"$ref": "AAAAAAGF0GKRdb2cM/E="
-									},
-									"font": "Arial;13;0",
-									"left": 2232,
-									"top": 611,
-									"width": 51.919921875,
-									"height": 10
-								},
-								{
-									"_type": "UMLReceptionCompartmentView",
-									"_id": "AAAAAAGF0GKRdb2mtLE=",
-									"_parent": {
-										"$ref": "AAAAAAGF0GKRdb2e6cA="
-									},
-									"model": {
-										"$ref": "AAAAAAGF0GKRdb2cM/E="
-									},
-									"visible": false,
-									"font": "Arial;13;0",
-									"width": 10,
-									"height": 10
-								},
-								{
-									"_type": "UMLTemplateParameterCompartmentView",
-									"_id": "AAAAAAGF0GKRdb2ns8Y=",
-									"_parent": {
-										"$ref": "AAAAAAGF0GKRdb2e6cA="
-									},
-									"model": {
-										"$ref": "AAAAAAGF0GKRdb2cM/E="
-									},
-									"visible": false,
-									"font": "Arial;13;0",
-									"width": 10,
-									"height": 10
-								}
-							],
-							"font": "Arial;13;0",
-							"containerChangeable": true,
-							"left": 2232,
-							"top": 576,
-							"width": 51.919921875,
-							"height": 45,
-							"nameCompartment": {
-								"$ref": "AAAAAAGF0GKRdb2fqII="
-							},
-							"attributeCompartment": {
-								"$ref": "AAAAAAGF0GKRdb2kdOI="
-							},
-							"operationCompartment": {
-								"$ref": "AAAAAAGF0GKRdb2ldRg="
-							},
-							"receptionCompartment": {
-								"$ref": "AAAAAAGF0GKRdb2mtLE="
-							},
-							"templateParameterCompartment": {
-								"$ref": "AAAAAAGF0GKRdb2ns8Y="
-							}
-						},
-						{
-							"_type": "UMLClassView",
 							"_id": "AAAAAAGF0GKc37576IA=",
 							"_parent": {
 								"$ref": "AAAAAAFF+qBtyKM79qY="
@@ -6241,7 +6075,7 @@
 									"font": "Arial;13;0",
 									"left": 5385,
 									"top": 2567,
-									"width": 12.65087890625,
+									"width": 13.83154296875,
 									"height": 13,
 									"alpha": 2.2823978705006875,
 									"distance": 21.2602916254693,
@@ -6512,7 +6346,7 @@
 									"font": "Arial;13;0",
 									"left": 6030,
 									"top": 1907,
-									"width": 12.65087890625,
+									"width": 13.83154296875,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -8398,7 +8232,8 @@
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
 							"name": "clearBtn",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8407,7 +8242,8 @@
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
 							"name": "falseFileLbl",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8416,7 +8252,8 @@
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
 							"name": "confirmBtn",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8425,7 +8262,8 @@
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
 							"name": "filler1",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8434,7 +8272,8 @@
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
 							"name": "jLabel2",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8443,7 +8282,8 @@
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
 							"name": "jLabel3",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8452,7 +8292,8 @@
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
 							"name": "jTextField",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8461,7 +8302,8 @@
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
 							"name": "searchBarFile",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8469,7 +8311,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
-							"name": "textLbl"
+							"name": "textLbl",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8477,7 +8320,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGFz+li2llm8P0="
 							},
-							"name": "waitMessage"
+							"name": "waitMessage",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -8882,7 +8726,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "MenuExons",
-							"isStatic": true
+							"isStatic": true,
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8892,7 +8737,8 @@
 							},
 							"name": "fastaMenuDisplayText",
 							"visibility": "private",
-							"isStatic": true
+							"isStatic": true,
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8902,7 +8748,8 @@
 							},
 							"name": "fastaMenuStats",
 							"visibility": "private",
-							"isStatic": true
+							"isStatic": true,
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8911,7 +8758,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "getMenuAllStats",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8921,7 +8769,8 @@
 							},
 							"name": "internalFrame",
 							"visibility": "private",
-							"isStatic": true
+							"isStatic": true,
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8930,7 +8779,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "menuAllFastaStats",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8939,7 +8789,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "menuAverageGeneLength",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8948,7 +8799,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "manuAverageNumberExons",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8958,7 +8810,8 @@
 							},
 							"name": "menuBar",
 							"visibility": "private",
-							"isStatic": true
+							"isStatic": true,
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8967,7 +8820,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "menuGCContent",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8976,7 +8830,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "menuGraphExons",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8985,7 +8840,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "menuLongestShortestModels",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8994,7 +8850,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "enuNewFile",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9003,7 +8860,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "menuSequenceLen",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9012,7 +8870,8 @@
 								"$ref": "AAAAAAGF0AxXTGI1hb4="
 							},
 							"name": "menuTextExons",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -9679,7 +9538,8 @@
 								"$ref": "AAAAAAGF0A1sN2j4FKg="
 							},
 							"name": "firstFileTypes",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9688,7 +9548,8 @@
 								"$ref": "AAAAAAGF0A1sN2j4FKg="
 							},
 							"name": "textual",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9697,7 +9558,8 @@
 								"$ref": "AAAAAAGF0A1sN2j4FKg="
 							},
 							"name": "firstFileContent",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9705,7 +9567,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGF0A1sN2j4FKg="
 							},
-							"name": "firstFileName"
+							"name": "firstFileName",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -9713,7 +9576,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGF0A1sN2j4FKg="
 							},
-							"name": "firstFileChosenMessage"
+							"name": "firstFileChosenMessage",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -10070,7 +9934,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "presentPage",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10079,7 +9944,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "maxPages",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10088,7 +9954,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "text",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10097,7 +9964,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "buttonsPanel",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10106,7 +9974,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "exonsPane",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10115,7 +9984,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "goToPageField",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10124,7 +9994,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "gtfTable",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10133,7 +10004,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "jLabel1",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10142,7 +10014,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "jLayeredPane1",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10151,7 +10024,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "jScrollPane1",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10160,7 +10034,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "jTable1",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10169,7 +10044,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "jTextPane1",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10178,7 +10054,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "nextBtn",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10187,7 +10064,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "pageNumberLbl",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10196,7 +10074,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "previousBtn",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10205,7 +10084,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "tabPanel",
-							"isStatic": true
+							"isStatic": true,
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10214,7 +10094,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "textArea",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10223,7 +10104,8 @@
 								"$ref": "AAAAAAGF0A6JPHA6w+0="
 							},
 							"name": "textPanel",
-							"isStatic": true
+							"isStatic": true,
+							"type": ""
 						}
 					],
 					"operations": [
@@ -10816,7 +10698,8 @@
 								"$ref": "AAAAAAGF0A8A6nQE5ps="
 							},
 							"name": "avgNumberExons",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10825,7 +10708,8 @@
 								"$ref": "AAAAAAGF0A8A6nQE5ps="
 							},
 							"name": "HIGH_LENGTH",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -11108,7 +10992,8 @@
 										"$ref": "AAAAAAGF0GKc3755Oa0="
 									},
 									"name": "length",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -11117,7 +11002,8 @@
 										"$ref": "AAAAAAGF0GKc3755Oa0="
 									},
 									"name": "sequenceType",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -11453,7 +11339,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGF0A+oKneiqrc="
 							},
-							"name": "jLayeredPane1"
+							"name": "jLayeredPane1",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -11462,7 +11349,8 @@
 								"$ref": "AAAAAAGF0A+oKneiqrc="
 							},
 							"name": "jTextPane",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -11471,7 +11359,8 @@
 								"$ref": "AAAAAAGF0A+oKneiqrc="
 							},
 							"name": "textExons",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -11756,7 +11645,8 @@
 								"$ref": "AAAAAAGF0BAomXv22gA="
 							},
 							"name": "fastaAnnotation",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -11765,7 +11655,8 @@
 								"$ref": "AAAAAAGF0BAomXv22gA="
 							},
 							"name": "lineCoordinates",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -11774,7 +11665,8 @@
 								"$ref": "AAAAAAGF0BAomXv22gA="
 							},
 							"name": "coordinates",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -11783,7 +11675,8 @@
 								"$ref": "AAAAAAGF0BAomXv22gA="
 							},
 							"name": "annotationLbl",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
